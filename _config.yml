@@ -257,10 +257,10 @@ plugins:
   - jekyll-email-protect
   - jekyll-feed
   - jekyll-get-json
-  - jekyll-imagemagick
+  # - jekyll-imagemagick  # Disabled for faster builds
   - jekyll-jupyter-notebook
   - jekyll-link-attributes
-  - jekyll-minifier
+  # - jekyll-minifier  # Disabled for faster builds
   - jekyll-paginate-v2
   - jekyll-regex-replace
   - jekyll/scholar
