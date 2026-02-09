@@ -75,3 +75,28 @@
   padding-left: 18px;
   margin-bottom: 0;
 }
+
+/* Teaching list styles */
+.teaching-list {
+  margin-bottom: 40px;
+}
+
+.teaching-item {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 5px;
+  background-color: var(--global-bg-color);
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
+
+  .teaching-description {
+    font-size: 0.95rem;
+    color: var(--global-text-color-light);
+    min-height: 40px;
+  }
+}
