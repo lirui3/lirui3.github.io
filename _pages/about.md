@@ -2,33 +2,41 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: PhD Candidate in Civil and Environmental Engineering at <a href='https://www.monash.edu/'>Monash University</a>
 
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: false # 如果你想让照片变圆，把这里改成 true
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>Department of Civil and Environmental Engineering</p>
+    <p>Monash University</p>
+    <p>Clayton, VIC, Australia</p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+selected_papers: true # 这一项设为 true，网页会自动抓取你在 .bib 文件里标记为 selected=true 的论文
+social: true # 显示你的 LinkedIn 和 Google Scholar 图标
 
 announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  enabled: true # 开启新闻动态
+  scrollable: true
+  limit: 5
 
 latest_posts:
-  enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  enabled: false # 暂时关闭博客显示，等你写了博客再改为 true
+  scrollable: true
+  limit: 3
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](https://www.reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am a PhD candidate in Civil and Environmental Engineering at Monash University, advised by **Dr. Wynita Griggs** and **Dr. [cite_start]Michael Burke**[cite: 15]. [cite_start]My research lies at the intersection of **intelligent transport systems**, **business analytics**, and **human–AI interaction**[cite: 2].
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+[cite_start]Currently, I am working on my thesis titled *"From perception to interaction: Psychological drivers and adaptive conversational agents for shared autonomous vehicles (SAVs)"*[cite: 17]. [cite_start]My work explores how **Large Language Models (LLMs)** and psychological ownership can regulate user experience in autonomous mobility systems[cite: 20, 21].
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+[cite_start]Prior to my PhD, I gained experience as a Research Assistant in Mechanical and Aerospace Engineering[cite: 28]. [cite_start]I am also passionate about education, currently serving as an **Assistant Lecturer** at Monash University[cite: 38], where I apply AI and analytics to enhance engineering education.
+
+[cite_start]My research has been published in top-tier journals such as *Technological Forecasting & Social Change* (Q1) and *Computer-Aided Civil and Infrastructure Engineering* (Q1)[cite: 22, 27].
+
+### Research Interests
+
+* [cite_start]**Human–AI Interaction & User Experience:** Designing adaptive agents for autonomous systems[cite: 32].
+* [cite_start]**Intelligent Transport Systems:** Predictive modelling and real-time analytics in transport behaviour[cite: 34].
+* [cite_start]**LLM Applications:** Exploring LLMs in engineering education and business environments[cite: 35].
