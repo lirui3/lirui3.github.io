@@ -6,7 +6,7 @@ subtitle: PhD Candidate in Civil and Environmental Engineering at <a href='https
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: avatar.jpg
   image_circular: false # 如果你想让照片变圆，把这里改成 true
   more_info: >
     <p>Department of Civil and Environmental Engineering</p>
