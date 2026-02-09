@@ -2,13 +2,13 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: Lirui Guo # 网页标题
-first_name: Lirui # 你的名
-middle_name: # 中间名留空
-last_name: Guo # 你的姓
-email: Lirui.Guo@monash.edu # 你的邮箱
-linkedin: lirui-guo # LinkedIn ID (网址最后那部分)
-google_scholar: 13uW1k0AAAAJ # Google Scholar ID
+title: Lirui Guo
+first_name: Lirui
+middle_name:
+last_name: Guo
+email: Lirui.Guo@monash.edu
+linkedin: lirui-guo
+google_scholar: 13uW1k0AAAAJ
 
 contact_note: >
   You can contact me via email.
@@ -20,11 +20,11 @@ footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 
-keywords: intelligent transport systems, human-AI interaction, business analytics, shared autonomous vehicles, Monash University # 你的研究关键词
+keywords: intelligent transport systems, human-AI interaction, business analytics, shared autonomous vehicles, Monash University
 
 lang: en
-icon: ⚛️ 
+icon: ⚛️
 
 url: https://lirui3.github.io
-baseurl: 
+baseurl: ""
 last_updated: false
