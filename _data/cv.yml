@@ -1,189 +1,225 @@
 cv:
-  name: Albert Einstein
-  label: Scientist
-  email: einstein@example.com
-  location: Princeton, NJ
-  image: ""
-  summary: A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time
+  name: Lirui Guo
+  label: PhD Candidate in Civil and Environmental Engineering
+  email: Lirui.Guo@monash.edu
+  location: Clayton, VIC, Australia
+  image: "assets/img/avatar.jpg"
+  summary: PhD candidate in Civil and Environmental Engineering at Monash University with a research focus on intelligent transport systems, business analytics, and human–AI interaction. Experienced in interdisciplinary research, high-quality teaching, and industry-relevant applications of AI and analytics. Strong publication record (Q1 journals and conferences), with expertise in machine learning, LLMs, and user experience in mobility systems.
 
   social_networks:
-    - network: X
-      username: AlbertEinstein
-    - network: GitHub
-      username: example
     - network: LinkedIn
-      username: example
+      username: lirui-guo
+      url: https://www.linkedin.com/in/lirui-guo
+    - network: Google Scholar
+      username: Lirui Guo
+      url: https://scholar.google.com/citations?user=13uW1k0AAAAJ
 
   address:
-    street: 2712 Broadway St
-    city: San Francisco
-    region: California
-    postalCode: CA 94115
-    countryCode: US
+    street: Department of Civil and Environmental Engineering, Monash University
+    city: Clayton
+    region: Victoria
+    postalCode: 3800
+    countryCode: AU
 
   sections:
     Education:
-      - institution: University of Zurich
-        location: Zurich, Switzerland
-        url: https://www.uzh.ch/
-        area: Physics
-        studyType: PhD
-        start_date: 1900
-        end_date: 1905
-        score: ""
-        courses: "Theory of Relativity"
-        highlights:
-          - Description 1.
-          - Description 2.
+      - institution: Monash University
+        location: Clayton, VIC
+        url: https://www.monash.edu/
+        area: Civil and Environmental Engineering
+        studyType: Ph.D.
+        start_date: 2022-01-01
+        end_date: Present
+        summary: "Thesis: From perception to interaction: Psychological drivers and adaptive conversational agents for shared autonomous vehicles (SAVs)"
 
-      - institution: Eidgenössische Technische Hochschule
-        location: Zurich, Switzerland
-        area: Physics
-        studyType: Federal teaching diploma
-        start_date: 1896
-        end_date: 1900
-        highlights:
-          - Description 1.
-          - Description 2.
+      - institution: Monash University
+        location: Clayton, VIC
+        area: Civil Engineering
+        studyType: B.Eng. (Honours)
+        start_date: 2022
+        end_date: 2022
+
+      - institution: Monash University
+        location: Clayton, VIC
+        area: Business Analytics
+        studyType: B.Com.
+        start_date: 2022
+        end_date: 2022
 
     Experience:
-      - company: Institute for Advanced Study, Princeton University
-        position: Professor of Theoretical Physics
-        location: Princeton University, NJ
-        start_date: 1933
-        end_date: 1955
-        summary: Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.
+      - company: Monash University
+        position: Assistant Lecturer
+        location: Clayton, VIC
+        start_date: 2025-01-01
+        end_date: Present
+        summary: Civil and Environmental Engineering
         highlights:
-          - Relativity
-          - Description 2.
+          - Assisted in coordinating administrative processes, led practical sessions, and managed student consultations for units with cohorts of up to 340 students.
+          - Developed assessments and teaching materials.
+          - Manage the online learning portal for course materials, discussions, and assessment markings.
 
-      - company: California Institute of Technology
-        position: Visiting Professor
-        location: Pasadena, California, US
-        start_date: 1933
-        end_date: 1933
+      - company: The University of Melbourne
+        position: Tutor (Sustainable Commerce)
+        location: Melbourne, VIC
+        start_date: 2024-02-01
+        end_date: Present
         highlights:
-          - Description 1.
-          - Description 2.
+          - Supported a large first-year cohort of ~1,700 students per semester.
+          - Independently led and delivered tutorial sessions and interactive class activities.
+          - Managed consultations, graded assessments, and provided individualized support.
 
-      - company: Kaiser Wilhelm Institute for Physics
-        position: Director
-        location: Berlin, Germany
-        start_date: 1917
-        end_date: 1933
+      - company: Monash University
+        position: Researcher Collaborator
+        location: Clayton, VIC
+        start_date: 2024-01-01
+        end_date: Present
+        summary: With Associate Professor Nan Zheng and Dr. Linxin Hua
+        highlights:
+          - Explored the applications of LLM in Engineering Education and designed LLM-powered Learning Assistant.
+          - Proposed a novel proactive evaluation framework for Retrieval-Augmented Generation (RAG)-based learning assistants.
 
-      - company: Karl-Ferdinand University
-        position: Professor of Theoretical Physics
-        location: Prague, Czechoslovakia
-        start_date: 1911
-        end_date: 1917
+      - company: Monash University
+        position: Teaching Associate
+        location: Clayton, VIC
+        start_date: 2023-02-01
+        end_date: 2025-01-01
+        summary: Civil and Environmental Engineering
+        highlights:
+          - Taught undergraduate core and elective units including Spatial Communication, Transport Engineering, and Road Engineering.
+          - Facilitated engaging and inclusive classroom environments.
+          - Guided students in computing engineering drawings and road designs.
 
-      - company: University of Zurich
-        position: Associate Professor of Theoretical Physics
-        location: Zurich, Switzerland
-        start_date: 1909
-        end_date: 1911
+      - company: Monash University
+        position: Graduate Researcher (Ph.D. Candidate)
+        location: Clayton, VIC
+        start_date: 2022-01-01
+        end_date: Present
+        summary: With Dr. Wynita Griggs and Dr. Michael Burke
+        highlights:
+          - Proposed a framework to predict and visualize technology acceptance.
+          - Explored the role of psychological ownership in autonomous mobilities.
+          - Evaluated prompting strategies for LLM-powered SAV agents.
+
+      - company: Monash University
+        position: Research Assistant
+        location: Clayton, VIC
+        start_date: 2022-01-01
+        end_date: 2023-01-01
+        summary: Mechanical and Aerospace Engineering
+        highlights:
+          - Performed comprehensive literature reviews on risk assessment methodologies for autonomous system design.
 
     Volunteer:
-      - company: People's Climate March
-        position: Lead Organizer
-        location: Zurich, Switzerland
-        start_date: 2014-04-01
-        end_date: 2015-07-01
-        summary: Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.
+      - company: Monash University
+        position: Mental Health First Aider (MHFA)
+        location: Faculty of Engineering
+        start_date: 2024-01-01
+        end_date: Present
+
+      - company: Academic Journals
+        position: Journal Reviewer
+        summary: The IEEE Robotics and Automation Letters, Acta Psychologica
+        start_date: 2024-01-01
+        end_date: Present
+
+      - company: Access Monash Mentoring
+        position: Mentor
+        start_date: 2023-01-01
+        end_date: 2023-12-31
         highlights:
-          - "Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march."
-          - "Men of the year 2014 by Time magazine"
+          - Provided one-on-one mentoring to Year 11–12 students.
+          - Supported students from under-represented communities.
 
     Awards:
-      - title: Nobel Prize in Physics
-        authors:
-          - "Royal Swedish Academy of Sciences"
-        date: 1921-11-01
-        awarder: Royal Swedish Academy of Sciences
-        url: https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/
-        summary: The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'
+      - title: Best Student Presentation (1st Place)
+        awarder: Australasian Transport Research Forum (ATRF)
+        date: 2024
+        summary: Top Ph.D. student presentation in the Travel Behaviour Modelling stream.
 
-      - title: Max Planck Medal
-        authors:
-          - "German Physical Society"
-        date: 2029
-        awarder: German Physical Society
-        summary: Awarded for outstanding scientific achievement
+      - title: Monash Graduate Scholarship
+        awarder: Monash University
+        date: 2025
+        summary: Awarded to high-achieving doctoral candidates based on academic excellence.
+
+      - title: GHD Highway Design Prize
+        awarder: Monash University
+        date: 2022
+        summary: Awarded to the top 1% of student teams for the best highway design project.
 
     Publications:
-      - title: Zur Elektrodynamik bewegter Körper
+      - title: A new framework to predict and visualize technology acceptance - A case study of shared autonomous vehicles
+        publisher: Technological Forecasting and Social Change (Q1, IF=13.3)
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-06-30
-        url: https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies
-        summary: It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source.
+          - L. Guo
+          - M. G. Burke
+          - W. M. Griggs
+        releaseDate: 2025
+        url: https://doi.org/10.1016/j.techfore.2024.123960
 
-      - title: Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt
+      - title: Proactive framework for evaluating retrieval-augmented generation-based learning assistants in engineering education
+        publisher: Computer-Aided Civil and Infrastructure Engineering (Q1, IF=9.1)
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-03-18
-        url: https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt
-        summary: In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921.
+          - L. Hua
+          - L. Guo
+          - et al.
+        releaseDate: 2025
+        url: https://doi.org/10.1111/mice.70063
 
-      - title: Die Grundlage der allgemeinen Relativitätstheorie
+      - title: Sentiment matters - An analysis of 200 human-sav interactions
+        publisher: IEEE International Conference on Intelligent Transportation Systems (ITSC)
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1916-03-20
-        url: https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie
-        summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
+          - L. Guo
+          - M. G. Burke
+          - W. M. Griggs
+        releaseDate: 2025
 
     Skills:
-      - name: Physics
-        level: Master
-        icon: fa-solid fa-hashtag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
+      - name: Programming
+        icon: fa-solid fa-code
+        keywords: "R, Python"
+
+      - name: Technical & Software
+        icon: fa-solid fa-laptop-code
+        keywords: "Qualtrics, AutoCAD, SketchUp, ArcGIS, Canvas, Moodle"
 
     Languages:
-      - name: German
-        summary: "Native speaker"
-
       - name: English
+        summary: "Fluent"
+      - name: Chinese (Mandarin)
         summary: "Fluent"
 
     Interests:
-      - name: Physics
-        icon: fa-solid fa-tag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
+      - name: Research
+        icon: fa-solid fa-microscope
+        keywords: "Human–AI Interaction, Intelligent Transport Systems, Business Analytics, LLM Applications, Psychological Ownership"
 
     Certificates:
-      - name: Machine Learning
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-location-dot
-
-      - name: Quantum Computing
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-tag
-
-      - name: Quantum Information
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-envelope
-
-    Projects:
-      - name: Quantum Computing
-        summary: Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.
-        highlights:
-          - Quantum Teleportation
-          - Quantum Cryptography
-        start_date: 2018-01-01
-        end_date: 2018-01-01
+      - name: Working With Children Check (Employee)
+        icon: fa-solid fa-id-card
+      - name: Standard Mental Health First Aider
+        icon: fa-solid fa-heart-pulse
+      - name: Provide First Aid
+        icon: fa-solid fa-briefcase-medical
+      - name: White Card
+        icon: fa-solid fa-hard-hat
 
     References:
-      - name: Professor John Doe
-        icon: fa-solid fa-laptop
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
+      - name: Dr. Wynita Griggs
+        icon: fa-solid fa-user-tie
+        reference: "Lecturer, Monash University. Email: Wynita.Griggs@monash.edu"
 
-      - name: Professor Jane Smith
-        icon: fa-solid fa-thumbtack
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
+      - name: Dr. Michael Burke
+        icon: fa-solid fa-user-tie
+        reference: "Senior Lecturer, Monash University. Email: Michael.G.Burke@monash.edu"
+
+      - name: Assoc. Prof. Nan Zheng
+        icon: fa-solid fa-user-tie
+        reference: "Director of MARRS, Monash University. Email: Nan.Zheng@monash.edu"
+
+      - name: Assoc. Prof. Dong Ngoduy
+        icon: fa-solid fa-user-tie
+        reference: "Head of Transport Engineering, Monash University. Email: Dong.Ngoduy@monash.edu"
+
+      - name: Prof. Hai Vu
+        icon: fa-solid fa-user-tie
+        reference: "Deputy Dean Research, Monash University. Email: Hai.Vu@monash.edu"
