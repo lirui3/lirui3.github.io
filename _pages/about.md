@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 bsubtitle: PhD Candidate in Civil and Environmental Engineering at <a href='https://www.monash.edu/'>Monash University</a>
 
