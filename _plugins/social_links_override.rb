@@ -47,9 +47,12 @@ module Jekyll
               
               # Check file extension to determine if SVG or regular image
               if logo.end_with?(".svg")
-                img = %(<svg class="svg-inline--fa"><image href="#{{src}}" /></svg>)
+                img = %(<svg class="svg-inline--fa"><image href="#
+{src}" /></svg>)
               else
-                img = %(<img src="#{{src}}" alt="#{{escape_html(alt)}" style="width: 1em; height: 1em; vertical-align: -0.125em;">)
+                img = %(<img src="#
+{src}" alt="#
+{escape_html(alt)}" style="width: 1em; height: 1em; vertical-align: -0.125em;">)
               end
               
               parts << link(img, url, alt)
@@ -64,11 +67,14 @@ module Jekyll
     private
 
     def icon(classes)
-      %(<i class="#{{classes}}"></i>)
+      %(<i class="#
+{classes}"></i>)
     end
 
     def link(inner_html, href, title)
-      %(<a href="#{{href}}" title="#{{escape_html(title)}}" target="_blank" rel="noopener noreferrer">#{inner_html}</a>)
+      %(<a href="#
+{href}" title="#
+{escape_html(title)}" target="_blank" rel="noopener noreferrer">#{inner_html}</a>)
     end
 
     def escape_html(str)
