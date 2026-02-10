@@ -14,7 +14,7 @@ profile:
     <p>Clayton, VIC, Australia</p>
 
 selected_papers: true
-social: false
+social: true
 
 announcements:
   enabled: true
@@ -49,6 +49,7 @@ latest_posts:
   </a>
 </div>
 
+<br> <br>
 
 I am a PhD candidate in Civil and Environmental Engineering at Monash University, supervised by **Dr. Wynita Griggs** and **Dr. Michael Burke**. My research lies at the intersection of **shared autonomous vehicles**, **psychological ownership**, and **human–AI interaction**.
 
