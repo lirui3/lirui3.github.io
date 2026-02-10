@@ -27,18 +27,6 @@ latest_posts:
   limit: 3
 ---
 
-I am a PhD candidate in Civil and Environmental Engineering at Monash University, supervised by **Dr. Wynita Griggs** and **Dr. Michael Burke**. My research lies at the intersection of **shared autonomous vehicles**, **psychological ownership**, and **human–AI interaction**.
-
-Currently, I am working on my thesis titled _"From perception to interaction: Psychological drivers and adaptive conversational agents for shared autonomous vehicles (SAVs)"_. My work explores how **Large Language Models (LLMs)** and psychological ownership can regulate user experience in autonomous mobility systems.
-
-With a passion for exploring the intersection of transportation, psychology, and emerging technologies, I am dedicated to advancing our understanding of how SAVs can contribute to sustainable mobility in the future. Passionate in researching, teaching, and making positive changes to the world.
-
-### Research Interests
-
-- **Human–AI Interaction & User Experience:** Designing adaptive agents for autonomous systems.
-- **Intelligent Transport Systems:** Predictive modelling and real-time analytics in transport behaviour.
-- **LLM Applications:** Exploring LLMs in engineering education and business environments.
-
 <div style="margin-top: 20px; text-align: inherit;">
   <a href="assets/pdf/cv.pdf" target="_blank" title="CV" style="margin-right: 15px; text-decoration: none;">
     <img src="assets/img/cv_icon.png" alt="CV" style="height: 32px; width: auto; vertical-align: middle;">
@@ -61,6 +49,17 @@ With a passion for exploring the intersection of transportation, psychology, and
   </a>
 </div>
 
-<p style="margin-top: 15px; font-size: 0.9em; color: gray;">
-  You can contact me via email.
-</p>
+
+I am a PhD candidate in Civil and Environmental Engineering at Monash University, supervised by **Dr. Wynita Griggs** and **Dr. Michael Burke**. My research lies at the intersection of **shared autonomous vehicles**, **psychological ownership**, and **human–AI interaction**.
+
+Currently, I am working on my thesis titled _"From perception to interaction: Psychological drivers and adaptive conversational agents for shared autonomous vehicles (SAVs)"_. My work explores how **Large Language Models (LLMs)** and psychological ownership can regulate user experience in autonomous mobility systems.
+
+With a passion for exploring the intersection of transportation, psychology, and emerging technologies, I am dedicated to advancing our understanding of how SAVs can contribute to sustainable mobility in the future. Passionate in researching, teaching, and making positive changes to the world.
+
+### Research Interests
+
+- **Human–AI Interaction & User Experience:** Designing adaptive agents for autonomous systems.
+- **Intelligent Transport Systems:** Predictive modelling and real-time analytics in transport behaviour.
+- **LLM Applications:** Exploring LLMs in engineering education and business environments.
+
+
