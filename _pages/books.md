@@ -1,8 +1,8 @@
 ---
 layout: page
-title: My Library
+title: Bookshelf
 permalink: /books/
-description: A 3D bookshelf of my reading list.
+description: My favorite.
 nav: true
 nav_order: 7
 ---
@@ -21,7 +21,7 @@ nav_order: 7
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
     height: 10px; /* 书架板的厚度视觉差 */
-    margin-bottom: 20px; /* 层间距 */
+    margin-bottom: 200px; /* 层间距 */
     position: relative;
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     display: flex;
