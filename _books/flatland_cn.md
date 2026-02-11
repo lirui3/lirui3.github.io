@@ -1,6 +1,7 @@
 ---
 layout: page
 title: 平面国
+year: 2022
 description: >
   [英] 埃德温·A·艾勃特 (Edwin A. Abbott) 著。
 
