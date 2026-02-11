@@ -11,5 +11,6 @@ description: >
 img: assets/img/book_covers/Fahrenheit451_cn.jpg
 importance: 2
 category: 科幻
+recommended: true
 redirect: https://book.douban.com/subject/35902371/
 ---
