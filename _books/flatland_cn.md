@@ -11,5 +11,6 @@ description: >
 img: assets/img/book_covers/flatland_cn.jpg
 importance: 1
 category: 科幻
+recommended: true
 redirect: https://book.douban.com/subject/35170896/
 ---
