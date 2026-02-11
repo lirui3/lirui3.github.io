@@ -1,6 +1,7 @@
 ---
 layout: page
 title: 华氏451
+year: 2022
 description: >
   [美] 雷·布拉德伯里 (Ray Bradbury) 著。
 
