@@ -5,6 +5,6 @@ inline: true
 related_posts: false
 ---
 
-AITPM newsletter | AI In Education | Insights from an Academic Partner
+**AITPM newsletter | _AI In Education | Insights from an Academic Partner_**
 
 Check AI in Education at Monash Institute of Transport Studies (ITS): https://transportprofessionals.com.au/policy/news/news-2/ai-in-education-insights-from-an-academic-partner-monash-university 
