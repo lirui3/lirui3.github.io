@@ -2,7 +2,7 @@
 layout: post
 title: "AITPM newsletter: AI In Education | Insights from an Academic Partner"
 date: 2025-08-11
-inline: true
+inline: false
 related_posts: false
 ---
 
