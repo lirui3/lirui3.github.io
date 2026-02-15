@@ -1,10 +1,9 @@
 ---
 layout: post
+title: AITPM newsletter: AI In Education | Insights from an Academic Partner
 date: 2025-8-11
 inline: true
 related_posts: false
 ---
 
-**AITPM newsletter | _AI In Education | Insights from an Academic Partner_**
-
-Check AI in Education at Monash Institute of Transport Studies (ITS): https://transportprofessionals.com.au/policy/news/news-2/ai-in-education-insights-from-an-academic-partner-monash-university 
+Check AI in Education at Monash Institute of Transport Studies (ITS): read it <a href="https://transportprofessionals.com.au/policy/news/news-2/ai-in-education-insights-from-an-academic-partner-monash-university">here</a>
