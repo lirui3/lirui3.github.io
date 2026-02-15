@@ -21,10 +21,6 @@ announcements:
   scrollable: true
   limit: 5
 
-latest_posts:
-  enabled: false
-  scrollable: true
-  limit: 3
 ---
 
 I am a PhD candidate in Civil and Environmental Engineering at Monash University, supervised by **Dr. Wynita Griggs** and **Dr. Michael Burke**. My research lies at the intersection of **shared autonomous vehicles**, **psychological ownership**, and **human–AI interaction**.
