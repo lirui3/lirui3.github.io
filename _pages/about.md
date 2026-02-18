@@ -15,6 +15,8 @@ profile:
 
 selected_papers: true
 social: true
+news: true
+latest_posts: false
 
 announcements:
   enabled: true
