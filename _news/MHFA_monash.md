@@ -11,4 +11,6 @@ Monash University offers a **two-day** Mental Health First Aid (MHFA) training p
 These workshops are **free** for Monash students, with 13 sessions available this year. 
 👉 [Register here](https://www.monash.edu/students/support/health/mental-health/programs/mental-health-first-aid) *using your Monash student account*.
 
-> I completed this in 2023 and highly recommend it for anyone interested in peer support and mental wellbeing. It truly helps you respond confidently when others need support. ☀️
+Mental health is just as important as physical health. ☀️
+
+> I completed the training in 2023 and found it extremely valuable, not only for improving my understanding of my own mental well-being, but also for learning how to respond appropriately and confidently when others may need support. If you are interested in mental health awareness and peer support, I highly recommend this training. 
