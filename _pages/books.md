@@ -88,7 +88,7 @@ nav_order: 7
     box-shadow: inset 0 0 50px rgba(0,0,0,0.02);
   }
 
-  /* === 4. 时光长河 (River of Time) === */
+  /* === 4. 时光长河 === */
   .time-river {
     position: absolute;
     top: 20px;
@@ -125,7 +125,7 @@ nav_order: 7
     margin-bottom: 40px;
   }
 
-  /* === 6. 年份标签 & 标记点 === */
+  /* === 6. 年份标签 === */
   .year-marker-container {
     position: absolute;
     right: -56px;
@@ -160,12 +160,23 @@ nav_order: 7
     transform: scale(1.1);
   }
 
-  /* === 7. 书脊样式 === */
+  /* === 7. 书脊样式 (核心修改) === */
   .book-spine {
     width: 32px;
     height: 150px;
-    background-color: #ddd;
-    color: rgba(255,255,255,0.9);
+    /* 默认底色，会被JS覆盖 */
+    background-color: #ddd; 
+    
+    /* 核心修改：添加纸张质感纹理 */
+    background-image: 
+      /* 1. 左右暗中间亮的渐变，模拟圆柱体光泽 */
+      linear-gradient(to right, rgba(0,0,0,0.15) 0%, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.15) 100%),
+      /* 2. 细微的噪点纹理，模拟纸张纤维 */
+      repeating-linear-gradient(90deg, transparent 0px, transparent 2px, rgba(0,0,0,0.03) 3px);
+      
+    background-blend-mode: multiply; /* 让纹理和底色自然融合 */
+
+    color: rgba(255,255,255,0.9); /* 默认白色，JS会动态改 */
     writing-mode: vertical-rl;
     text-orientation: mixed;
     text-align: center;
@@ -173,12 +184,15 @@ nav_order: 7
     letter-spacing: 1px;
     padding: 8px 0;
     cursor: pointer;
-    border-radius: 4px 4px 0 0;
+    
+    border-radius: 3px 3px 0 0;
+    /* 阴影：让书看起来有厚度 */
     box-shadow: 
-      inset 3px 0 5px rgba(255,255,255,0.15),
-      inset -2px 0 5px rgba(0,0,0,0.2),
-      4px 0 5px rgba(0,0,0,0.2);
-    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      inset 1px 0 2px rgba(255,255,255,0.3), 
+      inset -1px 0 2px rgba(0,0,0,0.2),
+      2px 0 3px rgba(0,0,0,0.15);
+      
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.5s;
     position: relative;
     margin-bottom: 0; 
     overflow: hidden;
@@ -197,34 +211,15 @@ nav_order: 7
   .book-spine:nth-child(4n+3) { height: 155px; }
   .book-spine:nth-child(5n+1) { height: 140px; }
 
-  /* === 8. 模态框 (Modal) === */
+  /* 模态框 (保持不变) */
   .book-modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(8px); justify-content: center; align-items: center; }
   .book-modal-content { background-color: #fff; padding: 30px; border-radius: 12px; max-width: 400px; width: 90%; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); animation: zoomIn 0.3s; }
   .book-modal img { max-height: 350px; width: auto; box-shadow: 5px 10px 20px rgba(0,0,0,0.3); margin-bottom: 20px; border-radius: 4px; }
   .modal-text-group { text-align: left; margin-top: 15px; }
-  .modal-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; color: #333; }
+  .modal-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; color: #333; }
   .modal-desc { font-size: 0.9rem; color: #666; line-height: 1.6; margin-bottom: 20px; }
   .close-btn { position: absolute; top: 15px; right: 20px; color: #aaa; font-size: 30px; font-weight: bold; cursor: pointer; }
   .close-btn:hover { color: #333; }
-
-  /* 新增：标签胶囊样式 */
-  .modal-tags {
-    margin-bottom: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .modal-tag-pill {
-    background-color: #e9ecef;
-    color: #495057;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
   @keyframes zoomIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
 </style>
 
@@ -242,7 +237,7 @@ nav_order: 7
 
       {% for book in display_books %}
         <div class="showcase-book" 
-             onclick="openBook('{{ book.title | escape }}', '{{ book.description | escape }}', '{{ book.img | relative_url }}', '{{ book.url | relative_url }}', '{{ book.tags | join: ',' }}')">
+             onclick="openBook('{{ book.title }}', '{{ book.description | escape }}', '{{ book.img | relative_url }}', '{{ book.url | relative_url }}')">
           <img src="{{ book.img | relative_url }}" alt="{{ book.title }}">
         </div>
       {% endfor %}
@@ -252,7 +247,6 @@ nav_order: 7
   <div class="bookshelf-main">
     <div class="time-river"></div>
     {% assign books_by_year = site.books | group_by: "year" | sort: "name" | reverse %}
-    
     {% for year_group in books_by_year %}
       <div class="shelf">
         <div class="year-marker-container">
@@ -263,12 +257,15 @@ nav_order: 7
         {% for book in year_books %}
           <div class="book-spine" 
                data-img="{{ book.img | relative_url }}"
-               onclick="openBook('{{ book.title | escape }}', '{{ book.description | escape }}', '{{ book.img | relative_url }}', '{{ book.url | relative_url }}', '{{ book.tags | join: ',' }}')">
+               onclick="openBook('{{ book.title }}', '{{ book.description | escape }}', '{{ book.img | relative_url }}', '{{ book.url | relative_url }}')">
             {{ book.title }}
           </div>
         {% endfor %}
       </div>
     {% endfor %}
+    {% if site.books.size == 0 %}
+      <div style="text-align:center; padding: 50px; color: #999;">Updating library...</div>
+    {% endif %}
   </div>
 
 </div>
@@ -279,9 +276,6 @@ nav_order: 7
     <img id="modalImg" src="" alt="Book Cover">
     <div class="modal-text-group">
       <div id="modalTitle" class="modal-title"></div>
-      
-      <div id="modalTags" class="modal-tags"></div>
-      
       <div id="modalDesc" class="modal-desc"></div>
       <a id="modalBtn" href="#" class="btn btn-primary btn-sm" style="width: 100%;">Read More</a>
     </div>
@@ -292,46 +286,52 @@ nav_order: 7
   window.addEventListener('load', function() {
     const colorThief = new ColorThief();
     const spines = document.querySelectorAll('.book-spine');
+
     spines.forEach(spine => {
       const imgUrl = spine.getAttribute('data-img');
       const img = new Image();
       img.crossOrigin = "Anonymous";
       img.src = imgUrl;
+
       img.onload = function() {
         try {
           const color = colorThief.getColor(img);
-          spine.style.backgroundColor = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.95)`;
-        } catch (e) { }
+          
+          // 1. 设置背景色
+          spine.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+
+          // 2. 计算亮度 (YIQ公式)
+          // 公式：(R*299 + G*587 + B*114) / 1000
+          // 如果结果 > 128，说明是浅色背景，字要用黑的。
+          const brightness = Math.round(((parseInt(color[0]) * 299) +
+                        (parseInt(color[1]) * 587) +
+                        (parseInt(color[2]) * 114)) / 1000);
+          
+          if (brightness > 140) { // 稍微调高一点阈值，让中间色也倾向于白色
+            // 背景很亮 -> 用深色字
+            spine.style.color = '#2c3e50'; 
+            spine.style.textShadow = 'none'; // 浅色背景去掉阴影更干净
+          } else {
+            // 背景很暗 -> 用白色字
+            spine.style.color = 'rgba(255,255,255,0.95)';
+            spine.style.textShadow = '1px 1px 2px rgba(0,0,0,0.8)'; // 加阴影增加可读性
+          }
+
+        } catch (e) { 
+          console.log("Color extraction error");
+        }
       };
     });
   });
 
-  // 更新：增加了 tags 参数
-  function openBook(title, desc, img, url, tags) {
+  // 弹窗逻辑
+  function openBook(title, desc, img, url) {
     document.getElementById('modalTitle').innerText = title;
     document.getElementById('modalDesc').innerText = desc;
     document.getElementById('modalImg').src = img;
     document.getElementById('modalBtn').href = url;
-    
-    // 处理标签
-    const tagsContainer = document.getElementById('modalTags');
-    tagsContainer.innerHTML = ""; // 清空旧标签
-    
-    if (tags && tags.trim() !== "") {
-      const tagArray = tags.split(','); // 无论是一个还是多个，都当做逗号分隔处理
-      tagArray.forEach(tag => {
-        if(tag.trim()) {
-           const span = document.createElement('span');
-           span.className = 'modal-tag-pill';
-           span.innerText = tag.trim();
-           tagsContainer.appendChild(span);
-        }
-      });
-    }
-
     document.getElementById('bookModal').style.display = "flex";
   }
-
   function closeBook() { document.getElementById('bookModal').style.display = "none"; }
   window.onclick = function(event) {
     if (event.target == document.getElementById('bookModal')) { closeBook(); }
