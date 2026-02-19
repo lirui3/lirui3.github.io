@@ -196,15 +196,15 @@
 
       {% if entry.pdf %}
         {% if entry.pdf contains '://' %}
-          <a href="{{ entry.pdf }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+          <a href="{{ entry.pdf }}" class="btn btn-sm z-depth-0" role="button" target="_blank">PDF</a>
         {% else %}
-          <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+          <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button" target="_blank">PDF</a>
         {% endif %}
       {% endif %}
 
       {% if entry.doi or entry.url %}
         {% if entry.url %}
-          <a href="{{ entry.url }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
+          <a href="{{ entry.url }}" class="btn btn-sm z-depth-0" role="button" target="_blank">HTML</a>
         {% else %}
           <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
         {% endif %}
