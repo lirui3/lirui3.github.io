@@ -8,10 +8,11 @@ profile:
   align: right
   image: avatar_c.jpg
   image_circular: true
-  more_info: >
+more_info: >
     <p>Department of Civil and Environmental Engineering</p>
-    <p>Monash University</p>
+    <p><a href="https://www.monash.edu/engineering/liruiguo" style="color: #006dae; font-weight: 500; text-decoration: underline;">Monash University</a></p>
     <p>Clayton, VIC, Australia</p>
+    <p><i class="fas fa-envelope"></i> <a href="mailto:lirui.guo@monash.edu">lirui.guo@monash.edu</a></p>
 
 selected_papers: true
 social: true
