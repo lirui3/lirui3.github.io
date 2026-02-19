@@ -6,7 +6,7 @@ bsubtitle: PhD Candidate in Civil and Environmental Engineering at <a href='http
 
 profile:
   align: right
-  image: avatar.jpg
+  image: avatar_c.jpg
   image_circular: true
   more_info: >
     <p>Department of Civil and Environmental Engineering</p>
