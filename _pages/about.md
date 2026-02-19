@@ -9,9 +9,10 @@ profile:
   image: avatar_c.jpg
   image_circular: true
 more_info: >
-    <p>Department of Civil and Environmental Engineering</p>
-    <p><a href="https://www.monash.edu/engineering/liruiguo" style="color: #006dae; font-weight: 500; text-decoration: underline;">Monash University</a></p>
-    <p>Clayton, VIC, Australia</p>
+  <p>Monash Institute of Transport Studies</p>
+  <p>Department of Civil and Environmental Engineering</p>
+  <p>Monash University</p>
+  <p>Clayton, VIC, Australia</p>
 
 selected_papers: true
 social: true
