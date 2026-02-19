@@ -9,8 +9,9 @@ profile:
   image: avatar_c.jpg
   image_circular: true
   more_info: >
-      <div style="font-size: 0.66rem; line-height: 1.4;">
-        <p>Department of Civil and Environmental Engineering</p>
+      <div style="font-size: 0.8rem; line-height: 1.4;">
+        <p>Monash Institute of Transport Studies</p>
+        <p>Department of Civil & Environmental Engineering</p>
         <p>
           <a href="https://www.monash.edu/engineering/liruiguo" target="_blank" style="color: #006dae; font-weight: 500;">
             Monash University
