@@ -9,10 +9,19 @@ profile:
   image: avatar_c.jpg
   image_circular: true
   more_info: >
-    <p>Monash Institute of Transport Studies</p>
-    <p>Department of Civil and Environmental Engineering</p>
-    <p><a href="https://www.monash.edu/engineering/liruiguo" style="color: #006dae; font-weight: 500; text-decoration: underline;">Monash University</a>, Clayton, VIC, Australia</p>
-    <p><i class="fas fa-envelope"></i> <a href="mailto:lirui.guo@monash.edu">lirui.guo@monash.edu</a></p>
+      <div style="font-size: 0.66rem; line-height: 1.4;">
+        <p>Department of Civil and Environmental Engineering</p>
+        <p>
+          <a href="https://www.monash.edu/engineering/liruiguo" target="_blank" style="color: #006dae; font-weight: 500;">
+            Monash University
+          </a>
+        </p>
+        <p>Clayton, VIC, Australia</p>
+        <p>
+          <i class="fas fa-envelope"></i> 
+          <a href="mailto:lirui.guo@monash.edu" style="color: inherit;">Lirui.Guo@monash.edu</a>
+        </p>
+      </div>
 
 selected_papers: true
 social: true
