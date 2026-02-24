@@ -9,7 +9,7 @@ profile:
   image: avatar_c.jpg
   image_circular: true
   more_info: >
-      <div style="font-size: 0.8rem; line-height: 1.4;">
+      <div style="font-size: 0.7rem; line-height: 1.2;">
         <p>Monash Institute of Transport Studies</p>
         <p>Department of Civil & Environmental Engineering</p>
         <p>
@@ -21,6 +21,12 @@ profile:
         <p>
           <i class="fas fa-envelope"></i> 
           <a href="mailto:lirui.guo@monash.edu" style="color: inherit;">Lirui.Guo@monash.edu</a>
+        </p>
+        </p>
+        <p>Clayton, VIC, Australia</p>
+        <p>
+          <i class="fas fa-envelope"></i> 
+          <a href="mailto:lirui.guo@yahoo.com" style="color: inherit;">Lirui.Guo@yahoo.com</a>
         </p>
       </div>
 
