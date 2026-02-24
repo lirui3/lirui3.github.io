@@ -2,8 +2,8 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Two core research programs: closed-loop human–AI interaction (PhD) and LLMs in engineering education.
-nav: true
+description: "Two core research programs: closed-loop human–AI interaction (PhD) and LLMs in engineering education."
+nav: false
 nav_order: 3
 ---
 
