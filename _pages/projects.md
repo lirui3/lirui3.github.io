@@ -365,7 +365,7 @@ nav_order: 3
   </div>
 
   <!-- ===================== CivASK ===================== -->
-  <div id="civask" class="proj-section proj-green anchor-offset">
+  <div id="ai-in-education" class="proj-section proj-green anchor-offset">
     <h2 class="proj-title" style="color:var(--p-green);">
       AI in Engineering Education: LLM-based Learning Assistant (CivASK) &amp; Evaluation
     </h2>
