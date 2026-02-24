@@ -260,10 +260,19 @@
       {% endif %}
 
       {% if entry.research_tag %}
+        {% assign tag_upcase = entry.research_tag | upcase %}
+        {% assign custom_class = "" %}
+        
+        {% if tag_upcase contains 'PHD' %}
+          {% assign custom_class = "tag-bubble tag-phd" %}
+        {% elsif tag_upcase contains 'AI IN EDUCATION' or tag_upcase contains 'AI IN EDU' %}
+          {% assign custom_class = "tag-bubble tag-edu" %}
+        {% endif %}
+
         {% if entry.research_url %}
-          <a href="{{ entry.research_url | relative_url }}" class="btn btn-sm z-depth-0" role="button">{{ entry.research_tag }}</a>
+          <a href="{{ entry.research_url | relative_url }}" class="btn btn-sm z-depth-0 {{ custom_class }}" role="button">{{ entry.research_tag }}</a>
         {% else %}
-          <a class="btn btn-sm z-depth-0" role="button">{{ entry.research_tag }}</a>
+          <a class="btn btn-sm z-depth-0 {{ custom_class }}" role="button">{{ entry.research_tag }}</a>
         {% endif %}
       {% endif %}
     </div>
