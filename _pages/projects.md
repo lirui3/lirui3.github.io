@@ -321,12 +321,12 @@ nav_order: 3
           <li><i class="fas fa-chart-line blue-text"></i><b>Prediction:</b> data-driven modelling and interpretable visualisation of psychological drivers of acceptance.</li>
           <li><i class="fas fa-comments blue-text"></i><b>Interaction platform:</b> an LLM-based conversational testbed for open-domain human–agent interaction studies at scale.</li>
           <li><i class="fas fa-heartbeat blue-text"></i><b>Measurement:</b> interaction-level sentiment/subjectivity analysis to quantify user experience signals from dialogue.</li>
-          <li><i class="fas fa-sliders-h blue-text"></i><b>Regulation:</b> closed-loop bang–bang control that adjusts agent response characteristics in real time, with analytical characterisation of stability and convergence (e.g., wrong-step probability, time-in-band).</li>
+          <li><i class="fas fa-sliders-h blue-text"></i><b>Regulation:</b> closed-loop feedback control for adaptive autonomy, enabling real-time adjustment of agent behaviour.</li>
         </ul>
 
         <h3 style="font-size:1.22rem; margin:18px 0 12px 0; font-weight:950;">Key outputs</h3>
         <ul class="icon-list">
-          <li><i class="fas fa-check-circle blue-text"></i>Predictive framework + interpretation/visualisation workflow for psychological drivers.</li>
+          <li><i class="fas fa-check-circle blue-text"></i>Predictive framework + chord diagram visualisation workflow for psychological drivers.</li>
           <li><i class="fas fa-check-circle blue-text"></i>Ethics-approved user studies and a curated interaction dataset for quantitative analysis.</li>
           <li><i class="fas fa-check-circle blue-text"></i>Measurement pipeline for experience signals in open-domain dialogue.</li>
           <li><i class="fas fa-check-circle blue-text"></i>Control-theoretic framework for adaptive, value-aligned interaction regulation.</li>
@@ -340,11 +340,9 @@ nav_order: 3
       <div class="info-card">
         <h4>Highlights</h4>
         <div class="badge-container">
-          <span class="badge-item badge-blue">Closed-loop feedback</span>
-          <span class="badge-item badge-blue">Bang–bang control</span>
+          <span class="badge-item badge-blue">Closed-loop feedback control</span>
           <span class="badge-item badge-blue">LLM conversational agents</span>
           <span class="badge-item badge-blue">Experience measurement</span>
-          <span class="badge-item badge-blue">Theory + guarantees</span>
           <span class="badge-item badge-blue">Human studies (ethics)</span>
         </div>
         <ul style="padding-left:18px; margin:0 0 18px 0; line-height:1.6; opacity:.82;">
