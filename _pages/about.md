@@ -23,7 +23,6 @@ profile:
           <a href="mailto:lirui.guo@monash.edu" style="color: inherit;">Lirui.Guo@monash.edu</a>
         </p>
         </p>
-        <p>Clayton, VIC, Australia</p>
         <p>
           <i class="fas fa-envelope"></i> 
           <a href="mailto:lirui.guo@yahoo.com" style="color: inherit;">Lirui.Guo@yahoo.com</a>
