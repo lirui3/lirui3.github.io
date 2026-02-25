@@ -38,21 +38,35 @@ categories: resources
   .best-for-list ul { margin-bottom: 0; padding-left: 20px; margin-top: 10px; }
   .best-for-list li { margin-bottom: 5px; }
 
-  /* 实体下载按钮 */
-  .dl-btn {
-    display: inline-block;
+  /* --- 按钮容器 & 基础样式 --- */
+  .btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
     margin-top: 25px;
-    padding: 12px 24px;
+  }
+  .dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
     border-radius: 8px;
     font-weight: 600;
     text-decoration: none !important;
     transition: all 0.3s ease;
   }
-  .btn-car { background-color: #495057; color: white !important; }
-  .btn-car:hover { background-color: #343a40; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
   
-  .btn-book { background-color: #8d6e63; color: white !important; }
-  .btn-book:hover { background-color: #6d4c41; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(141,110,99,0.3); }
+  /* Car Buttons */
+  .btn-car { background-color: #495057; color: white !important; border: 2px solid #495057; }
+  .btn-car:hover { background-color: #343a40; border-color: #343a40; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+  .btn-car-outline { background-color: transparent; color: #495057 !important; border: 2px solid #495057; }
+  .btn-car-outline:hover { background-color: rgba(73, 80, 87, 0.1); transform: translateY(-3px); }
+  
+  /* Book Buttons */
+  .btn-book { background-color: #8d6e63; color: white !important; border: 2px solid #8d6e63; }
+  .btn-book:hover { background-color: #6d4c41; border-color: #6d4c41; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(141,110,99,0.3); }
+  .btn-book-outline { background-color: transparent; color: #8d6e63 !important; border: 2px solid #8d6e63; }
+  .btn-book-outline:hover { background-color: rgba(141, 110, 99, 0.1); transform: translateY(-3px); }
 
   /* --- 夜间模式适配 (Dark Mode) --- */
   html[data-theme='dark'] .tpl-car { background-color: #1a1c1e; border-left-color: #495057; }
@@ -61,6 +75,11 @@ categories: resources
   html[data-theme='dark'] .tpl-book .tpl-title { color: #e7e0db; }
   html[data-theme='dark'] .best-for-list { background: rgba(0,0,0,0.3); }
   
+  /* 夜间模式下的空心按钮反转 */
+  html[data-theme='dark'] .btn-car-outline { color: #e9ecef !important; border-color: #e9ecef; }
+  html[data-theme='dark'] .btn-car-outline:hover { background-color: rgba(233, 236, 239, 0.1); }
+  html[data-theme='dark'] .btn-book-outline { color: #e7e0db !important; border-color: #e7e0db; }
+  html[data-theme='dark'] .btn-book-outline:hover { background-color: rgba(231, 224, 219, 0.1); }
 </style>
 
 <div class="tpl-card tpl-car">
@@ -82,9 +101,14 @@ categories: resources
     </ul>
   </div>
 
-  <a href="{{ '/assets/resources/ppt_car-timeline_template_v1.pptx' | relative_url }}" target="_blank" class="dl-btn btn-car">
-    <i class="fas fa-file-powerpoint"></i> Download Template v1.0
-  </a>
+  <div class="btn-container">
+    <a href="{{ '/assets/resources/ppt_car-timeline_template_v1.pdf' | relative_url }}" target="_blank" class="dl-btn btn-car-outline">
+      <i class="fas fa-file-pdf"></i> Preview PDF
+    </a>
+    <a href="{{ '/assets/resources/ppt_car-timeline_template_v1.pptx' | relative_url }}" target="_blank" class="dl-btn btn-car">
+      <i class="fas fa-file-powerpoint"></i> Download PPTX
+    </a>
+  </div>
 </div>
 
 <div class="tpl-card tpl-book">
@@ -106,7 +130,12 @@ categories: resources
     </ul>
   </div>
 
-  <a href="{{ '/assets/resources/ppt_thesis-book_template_v1.pptx' | relative_url }}" target="_blank" class="dl-btn btn-book">
-    <i class="fas fa-file-powerpoint"></i> Download Template v1.0
-  </a>
+  <div class="btn-container">
+    <a href="{{ '/assets/resources/ppt_thesis-book_template_v1.pdf' | relative_url }}" target="_blank" class="dl-btn btn-book-outline">
+      <i class="fas fa-file-pdf"></i> Preview PDF
+    </a>
+    <a href="{{ '/assets/resources/ppt_thesis-book_template_v1.pptx' | relative_url }}" target="_blank" class="dl-btn btn-book">
+      <i class="fas fa-file-powerpoint"></i> Download PPTX
+    </a>
+  </div>
 </div>
