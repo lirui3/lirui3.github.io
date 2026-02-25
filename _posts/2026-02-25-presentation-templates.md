@@ -11,7 +11,7 @@ templates:
     emoji: "🚗"
     title: 'Template 1: The "Car on the Road" Timeline'
     desc:
-      - 'Standard progress bars or table of contents can sometimes feel a bit dry. To make the presentation&apos;s structure more intuitive and engaging, I designed a <b>dynamic road timeline header</b>.'
+      - 'Standard progress bars or table of contents can sometimes feel a bit dry. To make the presentation&amp;apos;s structure more intuitive and engaging, I designed a <b>dynamic road timeline header</b>.'
       - 'As you progress through your presentation, a small car "drives" along the road at the top of the slide. Each major section of your talk—such as <i>Introduction</i>, <i>Gap & Aims</i>, <i>Completed Research</i>, <i>Proposed Research</i>, <i>Thesis Structure</i>, and <i>Timeline</i>—acts as a signpost along the journey.'
     image: "/assets/img/car_timeline_header.png"
     image_alt: "Car Timeline Header"
@@ -33,7 +33,7 @@ templates:
     title: 'Template 2: The "Thesis Book"'
     desc:
       - 'When presenting a PhD thesis, you are essentially telling the story of a "book" you have been writing for several years. Why not make the presentation actually look like one?'
-      - 'This template transforms your slides into a physical open book. By using custom gradient fills to simulate the book&apos;s center binding and shadows, combined with PowerPoint&apos;s native <b>Page Curl</b> transition, each slide advancement feels exactly like turning a page in your thesis.'
+      - 'This template transforms your slides into a physical open book. By using custom gradient fills to simulate the book&amp;apos;s center binding and shadows, combined with PowerPoint&amp;apos;s native <b>Page Curl</b> transition, each slide advancement feels exactly like turning a page in your thesis.'
     note: "Note: The design mechanics for this realistic book transition were inspired by an excellent YouTube tutorial by Dr. Saeed Faal."
     best_for:
       - "PhD Thesis Defense (Final Oral Examination)"
@@ -109,8 +109,8 @@ templates:
   }
 
   /* ============ Buttons (single system) ============ */
-  .action-row { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 25px; }
-  .action-btn {
+  .tpl-actions { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 25px; }
+  .tpl-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -157,6 +157,7 @@ templates:
 </style>
 
 {% for t in page.templates %}
+
 <div class="tpl-card"
      style="
       --tpl-bg: {{ t.theme.bg }};
@@ -192,13 +193,14 @@ templates:
     </ul>
   </div>
 
-  <div class="action-row">
-    <a href="{{ t.pdf | relative_url }}" target="_blank" class="action-btn btn-outline">
+  <div class="tpl-actions">
+    <a href="{{ t.pdf | relative_url }}" target="_blank" class="tpl-btn btn-outline">
       <i class="fa-solid fa-file-pdf"></i> Preview PDF
     </a>
-    <a href="{{ t.pptx | relative_url }}" target="_blank" class="action-btn btn-solid">
+    <a href="{{ t.pptx | relative_url }}" target="_blank" class="tpl-btn btn-solid">
       <i class="fa-solid fa-file-powerpoint"></i> Download PPTX
     </a>
   </div>
 </div>
+
 {% endfor %}
