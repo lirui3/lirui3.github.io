@@ -10,7 +10,7 @@ profile:
   image_circular: true
   more_info: >
     <div style="font-size: 0.7rem; line-height: 1.2;">
-      <p>Monash Institute of Transport Studies</p>
+      <p>Institute of Transport Studies</p>
       <p>Department of Civil & Environmental Engineering</p>
       <p>
         <a href="https://www.monash.edu/engineering/liruiguo" target="_blank" style="color: #006dae; font-weight: 500;">
