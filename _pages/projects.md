@@ -294,7 +294,7 @@ nav_order: 3
       <p><b>From perception to interaction:</b> Psychological drivers and adaptive conversational agents for shared autonomous vehicles (SAVs)</p>
     </a>
 
-    <a href="#civask" class="nav-card green-card">
+    <a href="#ai-in-education" class="nav-card green-card">
       <div class="nav-top">
         <span class="nav-icon"><i class="fas fa-graduation-cap"></i></span>
         <h3>AI in Engineering Education</h3>
