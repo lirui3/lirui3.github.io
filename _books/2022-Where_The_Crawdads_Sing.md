@@ -2,7 +2,7 @@
 layout: page
 title: Where The Crawdads Sing
 description: >
-  Delia Owens 
+  Delia Owens
 img: assets/img/book_covers/2022_8.jpg
 importance: 8
 category: 小说

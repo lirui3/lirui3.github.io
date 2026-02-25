@@ -138,7 +138,8 @@ pagination:
     </h2>
   </div>
 
-  {% if site.display_tags or site.display_categories %}
+{% if site.display_tags or site.display_categories %}
+
   <div class="tag-pills">
     {% for category in site.display_categories %}
       <a class="tag-pill" href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">
@@ -154,28 +155,29 @@ pagination:
   </div>
   {% endif %}
 
-  {% assign featured_posts = site.posts | where: "featured", "true" %}
-  {% if featured_posts.size > 0 %}
-    <h3 style="margin-bottom: 20px; font-weight: bold;">Featured</h3>
-    <div class="container featured-posts">
-      {% assign is_even = featured_posts.size | modulo: 2 %}
-      <div class="row row-cols-{% if featured_posts.size <= 2 or is_even == 0 %}2{% else %}3{% endif %}">
-        {% for post in featured_posts %}
-        <div class="col mb-4">
-          <a href="{{ post.url | relative_url }}" style="text-decoration:none;">
-            <div class="card hoverable">
-              <div class="card-body">
-                <h3 class="card-title text-lowercase">{{ post.title }}</h3>
-                <p class="card-text">{{ post.description }}</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    <hr>
-  {% endif %}
+{% assign featured_posts = site.posts | where: "featured", "true" %}
+{% if featured_posts.size > 0 %}
+
+<h3 style="margin-bottom: 20px; font-weight: bold;">Featured</h3>
+<div class="container featured-posts">
+{% assign is_even = featured_posts.size | modulo: 2 %}
+<div class="row row-cols-{% if featured_posts.size <= 2 or is_even == 0 %}2{% else %}3{% endif %}">
+{% for post in featured_posts %}
+<div class="col mb-4">
+<a href="{{ post.url | relative_url }}" style="text-decoration:none;">
+<div class="card hoverable">
+<div class="card-body">
+<h3 class="card-title text-lowercase">{{ post.title }}</h3>
+<p class="card-text">{{ post.description }}</p>
+</div>
+</div>
+</a>
+</div>
+{% endfor %}
+</div>
+</div>
+<hr>
+{% endif %}
 
   <div class="post-list-container">
 
@@ -203,9 +205,9 @@ pagination:
 
       <div class="post-item">
         <div class="row align-items-center">
-          
+
           <div class="{% if post_image %}col-md-9{% else %}col-12{% endif %}">
-            
+
             <h3>
               {% if post.redirect == blank %}
                 <a class="post-title-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
@@ -223,10 +225,10 @@ pagination:
             <div class="post-meta-row">
               <span><i class="fa-solid fa-calendar meta-icon"></i> {{ post.date | date: '%b %d, %Y' }}</span>
               <span><i class="fa-solid fa-clock meta-icon"></i> {{ read_time }} min read</span>
-              
+
               {% if post.tags.size > 0 %}
                 <span class="d-none d-sm-inline-block">
-                  <i class="fa-solid fa-tags meta-icon"></i> 
+                  <i class="fa-solid fa-tags meta-icon"></i>
                   {{ post.tags | join: ", " }}
                 </span>
               {% endif %}
@@ -241,7 +243,7 @@ pagination:
             </a>
           </div>
           {% endif %}
-          
+
         </div>
       </div>
 
@@ -249,8 +251,8 @@ pagination:
 
   </div>
 
-  {% if page.pagination.enabled %}
-    {% include pagination.liquid %}
-  {% endif %}
+{% if page.pagination.enabled %}
+{% include pagination.liquid %}
+{% endif %}
 
 </div>

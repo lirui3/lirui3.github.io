@@ -10,7 +10,8 @@ categories: resources
 A collection of useful links I frequently revisit. Keep it simple, keep it useful. 🛠️
 
 ### 🎨 Visual Assets
-*For when words just aren't enough.*
+
+_For when words just aren't enough._
 
 - **FontAwesome Search**: [The go-to library for academic icons (like ORCID)](https://fontawesome.com/search?q=orcid)
 - **Icons8**: [Extensive collection of flat & colored icons](https://icons8.com/)
@@ -18,7 +19,8 @@ A collection of useful links I frequently revisit. Keep it simple, keep it usefu
 ---
 
 ### 🖼️ Image Magic
-*Quick fixes for presentation-ready visuals.*
+
+_Quick fixes for presentation-ready visuals._
 
 - **Background Remover**: [Photoroom (Clean & Fast)](https://www.photoroom.com/tools/background-remover)
 - **Image Upscaler**: [AI Upscaler (No more pixelated diagrams)](https://imgupscaler.ai/)
@@ -26,7 +28,8 @@ A collection of useful links I frequently revisit. Keep it simple, keep it usefu
 ---
 
 ### 🌈 Research Palette
-*Scientific data visualization doesn't have to be ugly.*
+
+_Scientific data visualization doesn't have to be ugly._
 
 - **Coolors Generator**: [My go-to palette](https://coolors.co/403990-80a6e2-bec2b4-fbdd85-f8a664-f46f43-cf3d3e)
 - **R Graph Gallery**: [RColorBrewer Palettes Guide](https://r-graph-gallery.com/38-rcolorbrewers-palettes.html)
@@ -35,10 +38,12 @@ A collection of useful links I frequently revisit. Keep it simple, keep it usefu
 ---
 
 ### 🧠 Brain Food
-*References and languages.*
+
+_References and languages._
 
 - **Forecasting: Principles and Practice**: [The definitive textbook (FPP3)](https://otexts.com/fpp3/)
 - **JapanDict**: [Japanese dictionary & study tool](https://www.japandict.com/)
 
 ---
-*Last updated: Feb 2026*
+
+_Last updated: Feb 2026_

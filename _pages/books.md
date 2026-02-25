@@ -236,12 +236,13 @@ nav_order: 7
       {% endif %}
 
       {% for book in display_books %}
-        <div class="showcase-book" 
+        <div class="showcase-book"
              onclick="openBook('{{ book.title }}', '{{ book.description | escape }}', '{{ book.img | relative_url }}', '{{ book.url | relative_url }}')">
           <img src="{{ book.img | relative_url }}" alt="{{ book.title }}">
         </div>
       {% endfor %}
     </div>
+
   </div>
 
   <div class="bookshelf-main">

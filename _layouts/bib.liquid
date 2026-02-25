@@ -261,12 +261,12 @@
 
       {% if entry.research_tag %}
         {% assign tag_upcase = entry.research_tag | upcase %}
-        {% assign custom_class = "" %}
-        
+        {% assign custom_class = '' %}
+
         {% if tag_upcase contains 'PHD' %}
-          {% assign custom_class = "tag-bubble tag-phd" %}
+          {% assign custom_class = 'tag-bubble tag-phd' %}
         {% elsif tag_upcase contains 'AI IN EDUCATION' or tag_upcase contains 'AI IN EDU' %}
-          {% assign custom_class = "tag-bubble tag-edu" %}
+          {% assign custom_class = 'tag-bubble tag-edu' %}
         {% endif %}
 
         {% if entry.research_url %}

@@ -12,10 +12,10 @@ Writing a thesis that includes published or accepted journal papers sounds strai
 
 If you’re preparing a thesis by publication (or a hybrid thesis), you may encounter problems such as:
 
-- Page numbers that don’t match the Table of Contents  
-- Blurry figures after copying journal content into Word  
-- Word becoming slow or crashing due to large files  
-- Inconsistent formatting across chapters  
+- Page numbers that don’t match the Table of Contents
+- Blurry figures after copying journal content into Word
+- Word becoming slow or crashing due to large files
+- Inconsistent formatting across chapters
 
 After testing multiple approaches, I found that the most reliable solution is:
 
@@ -29,10 +29,10 @@ This guide describes a workflow that produces a clean, submission-ready thesis w
 
 This workflow is especially useful if:
 
-- Your thesis includes published or accepted papers  
-- You are required to keep the journal layout unchanged  
-- You want consistent page numbering across the entire thesis  
-- You want to avoid formatting problems close to submission  
+- Your thesis includes published or accepted papers
+- You are required to keep the journal layout unchanged
+- You want consistent page numbering across the entire thesis
+- You want to avoid formatting problems close to submission
 
 ---
 
@@ -41,11 +41,13 @@ This workflow is especially useful if:
 The process consists of two stages:
 
 Stage 1 – Word
+
 - Create sections
 - Set page numbering
 - Leave placeholder pages for journal chapters
 
 Stage 2 – PDF
+
 - Export the thesis
 - Remove placeholder pages
 - Insert journal PDFs
@@ -66,29 +68,32 @@ If a chapter is a published paper, insert blank placeholder pages where the pape
 ### Step 1. Create Three Sections
 
 Insert Section Breaks (Next Page) at:
-- End of the cover page  
-- End of the Table of Contents  
+
+- End of the cover page
+- End of the Table of Contents
 
 You should have:
 
-| Section | Content | Page style |
-|---|---|---|
-| 1 | Cover page | No number |
-| 2 | Front matter | Roman numerals (i, ii, iii…) |
-| 3 | Main chapters | Arabic numerals (1, 2, 3…) |
+| Section | Content       | Page style                   |
+| ------- | ------------- | ---------------------------- |
+| 1       | Cover page    | No number                    |
+| 2       | Front matter  | Roman numerals (i, ii, iii…) |
+| 3       | Main chapters | Arabic numerals (1, 2, 3…)   |
 
 ---
 
 ### Step 2. Set Page Numbers
 
 Front matter
-- Insert page numbers  
-- Format as i, ii, iii…  
+
+- Insert page numbers
+- Format as i, ii, iii…
 - Start at i
 
 Main chapters
-- Insert page numbers  
-- Format as 1, 2, 3…  
+
+- Insert page numbers
+- Format as 1, 2, 3…
 - Start at 1
 
 ---
@@ -102,8 +107,9 @@ Update the Table of Contents so all page numbers are correct.
 ### Step 4. Check Page Number Font
 
 Double-click a page number and note:
-- Font family  
-- Font size  
+
+- Font family
+- Font size
 
 Tip: Some PDF tools only support even font sizes. Using 10 pt often avoids issues later.
 
@@ -113,10 +119,10 @@ Tip: Some PDF tools only support even font sizes. Using 10 pt often avoids issue
 
 Before exporting:
 
-1. Go to Chapter 1  
-2. Double-click the footer  
-3. Turn off “Link to Previous”  
-4. Delete the page number  
+1. Go to Chapter 1
+2. Double-click the footer
+3. Turn off “Link to Previous”
+4. Delete the page number
 
 This removes numbering from all main chapters.
 
@@ -144,10 +150,11 @@ Delete the blank pages that were reserved for the published paper.
 Insert the official journal PDF at the correct position.
 
 This preserves:
-- Original layout  
-- Fonts and formatting  
-- Figure quality  
-- Publisher requirements  
+
+- Original layout
+- Fonts and formatting
+- Figure quality
+- Publisher requirements
 
 ---
 
@@ -155,10 +162,10 @@ This preserves:
 
 Use the PDF editor’s page numbering feature:
 
-- Style: 1, 2, 3…  
-- Start number: 1  
-- Apply only to the main chapter range  
-- Match the font and size used in Word  
+- Style: 1, 2, 3…
+- Start number: 1
+- Apply only to the main chapter range
+- Match the font and size used in Word
 
 Make sure numbering begins from the page where Chapter 1 actually starts.
 
@@ -168,10 +175,10 @@ Save the final file — your hybrid thesis is now ready.
 
 ## Common Mistakes to Avoid
 
-- Updating the Table of Contents after removing page numbers in Word  
-- Copy-pasting journal content instead of inserting the official PDF  
-- Adding page numbers in both Word and PDF (causes duplication)  
-- Forgetting to keep a backup before exporting  
+- Updating the Table of Contents after removing page numbers in Word
+- Copy-pasting journal content instead of inserting the official PDF
+- Adding page numbers in both Word and PDF (causes duplication)
+- Forgetting to keep a backup before exporting
 
 ---
 
@@ -179,16 +186,17 @@ Save the final file — your hybrid thesis is now ready.
 
 This approach separates responsibilities:
 
-| Tool | Role |
-|---|---|
-| Word | Structure, sections, ToC |
+| Tool       | Role                       |
+| ---------- | -------------------------- |
+| Word       | Structure, sections, ToC   |
 | PDF editor | Final layout and numbering |
 
 Benefits:
-- Stable performance in Word  
-- High-quality journal pages  
-- Consistent page numbering  
-- Minimal last-minute formatting stress  
+
+- Stable performance in Word
+- High-quality journal pages
+- Consistent page numbering
+- Minimal last-minute formatting stress
 
 ---
 
