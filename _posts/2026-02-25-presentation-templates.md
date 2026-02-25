@@ -20,11 +20,11 @@ categories: resources
   
   /* 模板 1：公路主题色 (浅灰蓝) */
   .tpl-car { background-color: #f8f9fa; border-left: 5px solid #6c757d; }
-  .tpl-car .tpl-title { color: #495057; }
+  .tpl-car .tpl-title, .tpl-car p, .tpl-car li { color: #495057; }
   
   /* 模板 2：书本主题色 (浅米黄) */
   .tpl-book { background-color: #fdfbf7; border-left: 5px solid #8d6e63; }
-  .tpl-book .tpl-title { color: #5d4037; }
+  .tpl-book .tpl-title, .tpl-book p, .tpl-book li { color: #5d4037; }
 
   .tpl-title { margin-top: 0 !important; font-size: 1.5rem; font-weight: bold; }
   
@@ -38,14 +38,14 @@ categories: resources
   .best-for-list ul { margin-bottom: 0; padding-left: 20px; margin-top: 10px; }
   .best-for-list li { margin-bottom: 5px; }
 
-  /* --- 按钮容器 & 基础样式 --- */
+  /* --- 按钮容器 & 基础样式 (避开广告拦截器) --- */
   .btn-container {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
     margin-top: 25px;
   }
-  .dl-btn {
+  .action-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -68,18 +68,29 @@ categories: resources
   .btn-book-outline { background-color: transparent; color: #8d6e63 !important; border: 2px solid #8d6e63; }
   .btn-book-outline:hover { background-color: rgba(141, 110, 99, 0.1); transform: translateY(-3px); }
 
-  /* --- 夜间模式适配 (Dark Mode) --- */
-  html[data-theme='dark'] .tpl-car { background-color: #1a1c1e; border-left-color: #495057; }
-  html[data-theme='dark'] .tpl-car .tpl-title { color: #e9ecef; }
-  html[data-theme='dark'] .tpl-book { background-color: #27201e; border-left-color: #5d4037; }
-  html[data-theme='dark'] .tpl-book .tpl-title { color: #e7e0db; }
-  html[data-theme='dark'] .best-for-list { background: rgba(0,0,0,0.3); }
+  /* =========================================
+     强制夜间模式适配 (Dark Mode Overrides)
+     ========================================= */
+  html[data-theme='dark'] .tpl-car, [data-theme='dark'] .tpl-car { 
+    background-color: #1a1c1e !important; border-left-color: #495057 !important; 
+  }
+  html[data-theme='dark'] .tpl-car .tpl-title, html[data-theme='dark'] .tpl-car p, html[data-theme='dark'] .tpl-car li,
+  [data-theme='dark'] .tpl-car .tpl-title, [data-theme='dark'] .tpl-car p, [data-theme='dark'] .tpl-car li { color: #e9ecef !important; }
   
-  /* 夜间模式下的空心按钮反转 */
-  html[data-theme='dark'] .btn-car-outline { color: #e9ecef !important; border-color: #e9ecef; }
-  html[data-theme='dark'] .btn-car-outline:hover { background-color: rgba(233, 236, 239, 0.1); }
-  html[data-theme='dark'] .btn-book-outline { color: #e7e0db !important; border-color: #e7e0db; }
-  html[data-theme='dark'] .btn-book-outline:hover { background-color: rgba(231, 224, 219, 0.1); }
+  html[data-theme='dark'] .tpl-book, [data-theme='dark'] .tpl-book { 
+    background-color: #27201e !important; border-left-color: #5d4037 !important; 
+  }
+  html[data-theme='dark'] .tpl-book .tpl-title, html[data-theme='dark'] .tpl-book p, html[data-theme='dark'] .tpl-book li,
+  [data-theme='dark'] .tpl-book .tpl-title, [data-theme='dark'] .tpl-book p, [data-theme='dark'] .tpl-book li { color: #e7e0db !important; }
+  
+  html[data-theme='dark'] .best-for-list, [data-theme='dark'] .best-for-list { background: rgba(0,0,0,0.4) !important; }
+  
+  /* 夜间模式按钮反转 */
+  html[data-theme='dark'] .btn-car-outline, [data-theme='dark'] .btn-car-outline { color: #e9ecef !important; border-color: #e9ecef !important; }
+  html[data-theme='dark'] .btn-car-outline:hover, [data-theme='dark'] .btn-car-outline:hover { background-color: rgba(233, 236, 239, 0.1) !important; }
+  
+  html[data-theme='dark'] .btn-book-outline, [data-theme='dark'] .btn-book-outline { color: #e7e0db !important; border-color: #e7e0db !important; }
+  html[data-theme='dark'] .btn-book-outline:hover, [data-theme='dark'] .btn-book-outline:hover { background-color: rgba(231, 224, 219, 0.1) !important; }
 </style>
 
 <div class="tpl-card tpl-car">
@@ -94,7 +105,7 @@ categories: resources
   </div>
 
   <div class="best-for-list">
-    <b><i class="fas fa-star" style="color:#f39c12;"></i> Best for:</b>
+    <b><i class="fa-solid fa-star" style="color:#f39c12;"></i> Best for:</b>
     <ul>
       <li>Milestone reviews (e.g., Confirmation of Candidature / Mid-Candidature Review)</li>
       <li>Presentations that require a clear visual roadmap of your progress.</li>
@@ -102,11 +113,11 @@ categories: resources
   </div>
 
   <div class="btn-container">
-    <a href="{{ '/assets/resources/ppt_car-timeline_template_v1.pdf' | relative_url }}" target="_blank" class="dl-btn btn-car-outline">
-      <i class="fas fa-file-pdf"></i> Preview PDF
+    <a href="{{ '/assets/resources/ppt_car-timeline_template_v1.pdf' | relative_url }}" target="_blank" class="action-btn btn-car-outline">
+      <i class="fa-solid fa-file-pdf"></i> Preview PDF
     </a>
-    <a href="{{ '/assets/resources/ppt_car-timeline_template_v1.pptx' | relative_url }}" target="_blank" class="dl-btn btn-car">
-      <i class="fas fa-file-powerpoint"></i> Download PPTX
+    <a href="{{ '/assets/resources/ppt_car-timeline_template_v1.pptx' | relative_url }}" target="_blank" class="action-btn btn-car">
+      <i class="fa-solid fa-file-powerpoint"></i> Download PPTX
     </a>
   </div>
 </div>
@@ -118,12 +129,12 @@ categories: resources
   
   <p>This template transforms your slides into a physical open book. By using custom gradient fills to simulate the book's center binding and shadows, combined with PowerPoint's native <b>Page Curl</b> transition, each slide advancement feels exactly like turning a page in your thesis.</p>
   
-  <p style="font-size: 0.9rem; color: #777; font-style: italic; border-left: 3px solid #ccc; padding-left: 10px;">
+  <p style="font-size: 0.9rem; opacity: 0.8; font-style: italic; border-left: 3px solid #ccc; padding-left: 10px;">
     Note: The design mechanics for this realistic book transition were inspired by an excellent YouTube tutorial by Dr. Saeed Faal.
   </p>
 
   <div class="best-for-list">
-    <b><i class="fas fa-star" style="color:#f39c12;"></i> Best for:</b>
+    <b><i class="fa-solid fa-star" style="color:#f39c12;"></i> Best for:</b>
     <ul>
       <li>PhD Thesis Defense (Final Oral Examination)</li>
       <li>Story-driven academic talks or lecture series.</li>
@@ -131,11 +142,11 @@ categories: resources
   </div>
 
   <div class="btn-container">
-    <a href="{{ '/assets/resources/ppt_thesis-book_template_v1.pdf' | relative_url }}" target="_blank" class="dl-btn btn-book-outline">
-      <i class="fas fa-file-pdf"></i> Preview PDF
+    <a href="{{ '/assets/resources/ppt_thesis-book_template_v1.pdf' | relative_url }}" target="_blank" class="action-btn btn-book-outline">
+      <i class="fa-solid fa-file-pdf"></i> Preview PDF
     </a>
-    <a href="{{ '/assets/resources/ppt_thesis-book_template_v1.pptx' | relative_url }}" target="_blank" class="dl-btn btn-book">
-      <i class="fas fa-file-powerpoint"></i> Download PPTX
+    <a href="{{ '/assets/resources/ppt_thesis-book_template_v1.pptx' | relative_url }}" target="_blank" class="action-btn btn-book">
+      <i class="fa-solid fa-file-powerpoint"></i> Download PPTX
     </a>
   </div>
 </div>
