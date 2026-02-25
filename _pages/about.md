@@ -9,25 +9,25 @@ profile:
   image: avatar_c.jpg
   image_circular: true
   more_info: >
-      <div style="font-size: 0.7rem; line-height: 1.2;">
-        <p>Monash Institute of Transport Studies</p>
-        <p>Department of Civil & Environmental Engineering</p>
-        <p>
-          <a href="https://www.monash.edu/engineering/liruiguo" target="_blank" style="color: #006dae; font-weight: 500;">
-            Monash University
-          </a>
-        </p>
-        <p>Clayton, VIC, Australia</p>
-        <p>
-          <i class="fas fa-envelope"></i> 
-          <a href="mailto:lirui.guo@monash.edu" style="color: inherit;">Lirui.Guo@monash.edu</a>
-        </p>
-        </p>
-        <p>
-          <i class="fas fa-envelope"></i> 
-          <a href="mailto:lirui.guo@yahoo.com" style="color: inherit;">Lirui.Guo@yahoo.com</a>
-        </p>
-      </div>
+    <div style="font-size: 0.7rem; line-height: 1.2;">
+      <p>Monash Institute of Transport Studies</p>
+      <p>Department of Civil & Environmental Engineering</p>
+      <p>
+        <a href="https://www.monash.edu/engineering/liruiguo" target="_blank" style="color: #006dae; font-weight: 500;">
+          Monash University
+        </a>
+      </p>
+      <p>Clayton, VIC, Australia</p>
+      <p>
+        <i class="fas fa-envelope"></i> 
+        <a href="mailto:lirui.guo@monash.edu" style="color: inherit;">Lirui.Guo@monash.edu</a>
+      </p>
+      </p>
+      <p>
+        <i class="fas fa-envelope"></i> 
+        <a href="mailto:lirui.guo@yahoo.com" style="color: inherit;">Lirui.Guo@yahoo.com</a>
+      </p>
+    </div>
 
 selected_papers: true
 social: true
@@ -37,7 +37,6 @@ announcements:
   enabled: false
   scrollable: true
   limit: 5
-
 ---
 
 I am a PhD candidate in Civil and Environmental Engineering at Monash University, supervised by **Dr. Wynita Griggs** and **Dr. Michael Burke**. My research lies at the intersection of **shared autonomous vehicles**, **psychological ownership**, and **human–AI interaction**.

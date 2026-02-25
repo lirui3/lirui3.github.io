@@ -11,7 +11,7 @@ templates:
     emoji: "🚗"
     title: 'Template 1: The "Car on the Road" Timeline'
     desc:
-      - 'Standard progress bars or table of contents can sometimes feel a bit dry. To make the presentation&amp;apos;s structure more intuitive and engaging, I designed a <b>dynamic road timeline header</b>.'
+      - "Standard progress bars or table of contents can sometimes feel a bit dry. To make the presentation&amp;apos;s structure more intuitive and engaging, I designed a <b>dynamic road timeline header</b>."
       - 'As you progress through your presentation, a small car "drives" along the road at the top of the slide. Each major section of your talk—such as <i>Introduction</i>, <i>Gap & Aims</i>, <i>Completed Research</i>, <i>Proposed Research</i>, <i>Thesis Structure</i>, and <i>Timeline</i>—acts as a signpost along the journey.'
     image: "/assets/img/car_timeline_header.png"
     image_alt: "Car Timeline Header"
@@ -33,7 +33,7 @@ templates:
     title: 'Template 2: The "Thesis Book"'
     desc:
       - 'When presenting a PhD thesis, you are essentially telling the story of a "book" you have been writing for several years. Why not make the presentation actually look like one?'
-      - 'This template transforms your slides into a physical open book. By using custom gradient fills to simulate the book&amp;apos;s center binding and shadows, combined with PowerPoint&amp;apos;s native <b>Page Curl</b> transition, each slide advancement feels exactly like turning a page in your thesis.'
+      - "This template transforms your slides into a physical open book. By using custom gradient fills to simulate the book&amp;apos;s center binding and shadows, combined with PowerPoint&amp;apos;s native <b>Page Curl</b> transition, each slide advancement feels exactly like turning a page in your thesis."
     note: "Note: The design mechanics for this realistic book transition were inspired by an excellent YouTube tutorial by Dr. Saeed Faal."
     best_for:
       - "PhD Thesis Defense (Final Oral Examination)"
@@ -170,19 +170,22 @@ templates:
 
   <h3 class="tpl-title">{{ t.emoji }} {{ t.title }}</h3>
 
-  {% for para in t.desc %}
-    <p>{{ para }}</p>
-  {% endfor %}
+{% for para in t.desc %}
 
-  {% if t.image %}
+<p>{{ para }}</p>
+{% endfor %}
+
+{% if t.image %}
+
   <div class="tpl-media">
     <img src="{{ t.image | relative_url }}" alt="{{ t.image_alt }}">
   </div>
   {% endif %}
 
-  {% if t.note %}
-    <p class="tpl-note">{{ t.note }}</p>
-  {% endif %}
+{% if t.note %}
+
+<p class="tpl-note">{{ t.note }}</p>
+{% endif %}
 
   <div class="best-for">
     <b><i class="fa-solid fa-star" style="color:#f39c12;"></i> Best for:</b>

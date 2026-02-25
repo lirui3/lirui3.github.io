@@ -301,6 +301,7 @@ nav_order: 3
       </div>
       <p><b>LLM-based Learning Assistant (CivASK)</b> &amp; evaluation in real teaching contexts</p>
     </a>
+
   </div>
 
   <!-- ===================== Thesis / PhD ===================== -->
@@ -362,6 +363,7 @@ nav_order: 3
         </div>
       </div>
     </div>
+
   </div>
 
   <!-- ===================== CivASK ===================== -->
@@ -419,6 +421,7 @@ nav_order: 3
         </div>
       </div>
     </div>
+
   </div>
 
   <div class="collab">
