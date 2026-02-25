@@ -53,6 +53,14 @@ categories: resources
   
   .btn-book { background-color: #8d6e63; color: white !important; }
   .btn-book:hover { background-color: #6d4c41; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(141,110,99,0.3); }
+
+  /* --- 夜间模式适配 (Dark Mode) --- */
+  html[data-theme='dark'] .tpl-car { background-color: #1a1c1e; border-left-color: #495057; }
+  html[data-theme='dark'] .tpl-car .tpl-title { color: #e9ecef; }
+  html[data-theme='dark'] .tpl-book { background-color: #27201e; border-left-color: #5d4037; }
+  html[data-theme='dark'] .tpl-book .tpl-title { color: #e7e0db; }
+  html[data-theme='dark'] .best-for-list { background: rgba(0,0,0,0.3); }
+  
 </style>
 
 <div class="tpl-card tpl-car">
