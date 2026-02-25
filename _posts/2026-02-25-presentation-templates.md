@@ -15,11 +15,16 @@ Standard progress bars or table of contents can sometimes feel a bit dry. To mak
 
 As you progress through your presentation, a small car "drives" along the road at the top of the slide. Each major section of your talk—such as *Introduction*, *Gap & Aims*, *Completed Research*, *Proposed Research*, *Thesis Structure*, and *Timeline*—acts as a signpost along the journey.
 
-![Car Timeline Header](/assets/img/car_timeline_header.png)
+<div style="text-align: center; margin: 30px 0;">
+  <img src="{{ '/assets/img/car_timeline_header.png' | relative_url }}" alt="Car Timeline Header" style="max-width: 60%; border-radius: 8px; box-shadow: 0 6px 15px rgba(0,0,0,0.1);">
+</div>
 
 **Best for:** * Milestone reviews (e.g., Confirmation of Candidature / Mid-Candidature Review)
 * Presentations that require a clear visual roadmap of your progress.
 
+**📥 Download the Template**
+
+* <i class="fas fa-file-powerpoint"></i> <a href="{{ '/assets/resources/ppt_car-timeline_template_v1.pptx' | relative_url }}" target="_blank">Download the Car Timeline Template v1.0</a>
 ---
 
 ### 📖 Template 2: The "Thesis Book"
@@ -34,11 +39,7 @@ This template transforms your slides into a physical open book. By using custom 
 * PhD Thesis Defense (Final Oral Examination)
 * Story-driven academic talks or lecture series.
 
----
+**📥 Download the Template**
 
-### 📥 Download the Templates
-
-Feel free to download, modify, and use these templates for your own presentations. If they help you ace your defense, I'd love to hear about it!
-
-* <i class="fas fa-file-powerpoint"></i> <a href="{{ '/assets/resources/ppt_car-timeline_template_v1.pptx' | relative_url }}" target="_blank">Download the Car Timeline Template v1.0</a>
 * <i class="fas fa-file-powerpoint"></i> <a href="{{ '/assets/resources/ppt_thesis-book_template_v1.pptx' | relative_url }}" target="_blank">Download the Thesis Book Template v1.0</a>
+---
