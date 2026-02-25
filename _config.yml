@@ -257,7 +257,7 @@ keep_files:
 
 # Plug-ins
 plugins:
-  # - jekyll-archives-v2
+  - jekyll-archives-v2
   - jekyll-email-protect
   - jekyll-feed
   - jekyll-get-json
@@ -297,13 +297,12 @@ jekyll-minifier:
 # Jekyll Archives
 # -----------------------------------------------------------------------------
 
-# Temporarily disabled jekyll-archives to fix build issues
-# jekyll-archives:
-#   enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
-#   layouts:
-#     year: archive-year
-#     tag: archive-tag
-#     category: archive-category
+jekyll-archives:
+  enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
+  layouts:
+    year: archive
+    tag: archive
+    category: archive
 #   permalinks:
 #     year: "/blog/:year/"
 #     tag: "/blog/tag/:name/"
