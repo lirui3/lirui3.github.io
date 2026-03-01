@@ -3,7 +3,7 @@ layout: post
 title: "🖥️ PowerPoint Templates for Academic Presentations"
 date: 2026-02-25
 description: Sharing two custom-designed PPT templates I made for PhD milestones.
-tags: resources, PhD
+tags: resources PhD
 categories: resources
 
 templates:
