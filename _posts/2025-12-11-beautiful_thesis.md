@@ -3,8 +3,8 @@ layout: post
 title: "📓 Hybrid Thesis Formatting Guide for Word (Using PDF Instead of Screenshots)"
 date: 2025-12-11
 description: A reliable workflow for integrating journal PDFs into a thesis with correct page numbering and professional formatting.
-tags: formatting, resources, PhD
-categories: phd-guide
+tags: formatting resources PhD
+categories: resources
 reading_time: 6 min
 ---
 
