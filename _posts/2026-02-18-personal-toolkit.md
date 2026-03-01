@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "The Digital Toolkit: Resources for Personal Use"
+title: "⚙️ The Digital Toolkit: Resources for Personal Use"
 date: 2026-02-18
 description: A curated list of design assets, research tools, and learning materials that save my life daily.
-tags: tools resources design research
+tags: resources
 categories: resources
 ---
 
