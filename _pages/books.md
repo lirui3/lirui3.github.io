@@ -2,7 +2,7 @@
 layout: page
 title: Bookshelf
 permalink: /books/
-description: A high-tech reading archive through time.
+description: A cyber archive with an old-library soul.
 nav: true
 nav_order: 7
 ---
@@ -13,11 +13,15 @@ nav_order: 7
 
 <style>
   .bookshelf-wrapper,
-  .book-modal {
+  .book-modal,
+  .cover-tooltip {
     --bs-cyan: #35e7ff;
     --bs-mint: #6effc8;
     --bs-amber: #f4c861;
     --bs-pink: #ff4fb8;
+    --bs-vermilion: #e24d3b;
+    --bs-paper-gold: #d8b46a;
+    --bs-jade: #78dec7;
     --bs-text: #edf9ff;
     --bs-muted: #9ab2c8;
     --bs-dim: #5f748b;
@@ -32,11 +36,12 @@ nav_order: 7
     padding: 28px;
     color: var(--bs-text);
     background:
+      repeating-linear-gradient(106deg, rgba(216, 180, 106, 0.035) 0 1px, transparent 1px 18px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
       linear-gradient(0deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(145deg, #090b15 0%, #101827 46%, #070812 100%);
-    background-size: 34px 34px, 34px 34px, auto;
-    border: 1px solid rgba(111, 247, 255, 0.22);
+      linear-gradient(145deg, #080a13 0%, #101827 46%, #070812 100%);
+    background-size: auto, 34px 34px, 34px 34px, auto;
+    border: 1px solid rgba(216, 180, 106, 0.28);
     border-radius: 8px;
     box-shadow:
       0 30px 80px rgba(0, 0, 0, 0.3),
@@ -54,15 +59,18 @@ nav_order: 7
 
   .bookshelf-wrapper::before {
     background:
-      linear-gradient(115deg, transparent 0%, rgba(53, 231, 255, 0.11) 38%, transparent 54%),
+      linear-gradient(115deg, transparent 0%, rgba(53, 231, 255, 0.1) 38%, transparent 54%),
+      linear-gradient(22deg, transparent 0%, rgba(226, 77, 59, 0.07) 64%, transparent 82%),
       repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 7px);
-    opacity: 0.78;
+    opacity: 0.82;
   }
 
   .bookshelf-wrapper::after {
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
-    box-shadow: inset 0 0 0 1px rgba(53, 231, 255, 0.07);
+    box-shadow:
+      inset 0 0 0 1px rgba(53, 231, 255, 0.07),
+      inset 0 0 0 2px rgba(216, 180, 106, 0.04);
   }
 
   .bookshelf-wrapper button {
@@ -82,13 +90,24 @@ nav_order: 7
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, rgba(12, 20, 36, 0.96), rgba(12, 15, 28, 0.72));
-    border: 1px solid rgba(105, 236, 255, 0.2);
+    border: 1px solid rgba(216, 180, 106, 0.18);
     border-radius: 8px;
-    box-shadow: inset 0 0 30px rgba(53, 231, 255, 0.045);
+    box-shadow:
+      inset 0 0 30px rgba(53, 231, 255, 0.045),
+      inset 0 0 0 1px rgba(53, 231, 255, 0.055);
   }
 
   .command-copy {
-    padding: 28px;
+    padding: 28px 104px 28px 28px;
+  }
+
+  .command-copy.header-snack-style {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 28px;
+    align-items: center;
+    min-height: 214px;
+    padding: 30px 34px;
   }
 
   .command-copy::before {
@@ -98,13 +117,119 @@ nav_order: 7
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, var(--bs-cyan), var(--bs-amber), var(--bs-pink));
+    background: linear-gradient(90deg, var(--bs-cyan), var(--bs-jade), var(--bs-paper-gold), var(--bs-vermilion));
+  }
+
+  .command-copy::after {
+    content: "藏";
+    position: absolute;
+    right: 24px;
+    bottom: 20px;
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    color: rgba(226, 77, 59, 0.78);
+    border: 1px solid rgba(226, 77, 59, 0.52);
+    border-radius: 7px;
+    font-size: 1.55rem;
+    font-weight: 800;
+    line-height: 1;
+    transform: rotate(-8deg);
+    box-shadow:
+      0 0 22px rgba(226, 77, 59, 0.12),
+      inset 0 0 18px rgba(226, 77, 59, 0.08);
+  }
+
+  .command-copy.header-snack-style::after {
+    display: none;
+  }
+
+  .brand-logo-container {
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+
+  .brand-logo-container::before {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border: 1px solid rgba(216, 180, 106, 0.22);
+    border-radius: 50%;
+    box-shadow:
+      0 0 28px rgba(53, 231, 255, 0.16),
+      inset 0 0 22px rgba(216, 180, 106, 0.08);
+  }
+
+  .brand-logo {
+    position: relative;
+    display: block;
+    width: 82px;
+    height: auto;
+    filter:
+      drop-shadow(0 0 14px rgba(53, 231, 255, 0.3))
+      drop-shadow(0 0 10px rgba(216, 180, 106, 0.18));
+  }
+
+  .header-poem-wrap {
+    min-width: 0;
+  }
+
+  .header-poem {
+    position: relative;
+    margin: 0 0 18px;
+    padding: 0;
+    color: rgba(250, 246, 232, 0.96);
+    background: transparent;
+    border: 0;
+    font-family: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+    font-size: 1.28rem;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.78;
+    letter-spacing: 0;
+    text-shadow: 0 2px 7px rgba(0, 0, 0, 0.48);
+  }
+
+  .header-poem::before,
+  .header-poem::after {
+    position: absolute;
+    color: var(--bs-paper-gold);
+    font-family: Georgia, serif;
+    font-size: 2.25rem;
+    font-style: normal;
+    line-height: 1;
+    opacity: 0.48;
+  }
+
+  .header-poem::before {
+    content: "「";
+    left: -34px;
+    top: -10px;
+  }
+
+  .header-poem::after {
+    content: "」";
+    right: -30px;
+    bottom: -22px;
+  }
+
+  .poem-author {
+    display: block;
+    color: #ffc53d;
+    font-family: "Courier New", monospace;
+    font-size: 0.78rem;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
 
   .command-eyebrow,
   .section-kicker,
   .matrix-label {
-    color: var(--bs-cyan);
+    color: var(--bs-paper-gold);
     font-family: "Courier New", monospace;
     font-size: 0.76rem;
     font-weight: 700;
@@ -122,7 +247,7 @@ nav_order: 7
   }
 
   .command-copy p {
-    max-width: 620px;
+    max-width: 560px;
     margin: 0;
     color: var(--bs-muted);
     font-size: 0.98rem;
@@ -140,13 +265,13 @@ nav_order: 7
     min-width: 0;
     padding: 14px 12px;
     background: rgba(255, 255, 255, 0.035);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(216, 180, 106, 0.16);
     border-radius: 6px;
   }
 
   .stat-node strong {
     display: block;
-    color: #ffffff;
+    color: #fff7dc;
     font-family: "Courier New", monospace;
     font-size: 1.6rem;
     line-height: 1;
@@ -165,8 +290,10 @@ nav_order: 7
     position: relative;
     margin-bottom: 34px;
     padding: 22px;
-    background: rgba(8, 14, 27, 0.76);
-    border: 1px solid rgba(53, 231, 255, 0.18);
+    background:
+      linear-gradient(180deg, rgba(216, 180, 106, 0.045), transparent 38%),
+      rgba(8, 14, 27, 0.76);
+    border: 1px solid rgba(216, 180, 106, 0.2);
     border-radius: 8px;
   }
 
@@ -180,9 +307,10 @@ nav_order: 7
   .signal-dot {
     width: 9px;
     height: 9px;
-    background: var(--bs-mint);
-    border-radius: 50%;
-    box-shadow: 0 0 18px rgba(110, 255, 200, 0.88);
+    background: var(--bs-vermilion);
+    border-radius: 2px;
+    box-shadow: 0 0 18px rgba(226, 77, 59, 0.88);
+    transform: rotate(45deg);
   }
 
   .showcase-shelf {
@@ -227,10 +355,11 @@ nav_order: 7
     content: "";
     position: absolute;
     inset: -8px;
-    border: 1px solid rgba(var(--book-rgb), 0.42);
+    border: 1px solid rgba(var(--book-rgb), 0.36);
     border-radius: 8px;
     box-shadow:
       0 0 24px rgba(var(--book-rgb), 0.24),
+      0 0 0 1px rgba(216, 180, 106, 0.12),
       inset 0 0 18px rgba(var(--book-rgb), 0.08);
     transform: translateZ(-1px);
   }
@@ -264,7 +393,7 @@ nav_order: 7
   .cover-caption {
     display: block;
     min-height: 2.7em;
-    color: var(--bs-muted);
+    color: #b8c7ca;
     font-size: 0.78rem;
     line-height: 1.35;
     text-align: center;
@@ -279,9 +408,10 @@ nav_order: 7
     position: relative;
     padding: 24px 72px 34px 24px;
     background:
+      repeating-linear-gradient(90deg, rgba(216, 180, 106, 0.04) 0 1px, transparent 1px 38px),
       linear-gradient(90deg, rgba(53, 231, 255, 0.06), transparent 18%),
       linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(216, 180, 106, 0.16);
     border-radius: 8px;
   }
 
@@ -294,7 +424,7 @@ nav_order: 7
   }
 
   .matrix-subtitle {
-    color: var(--bs-dim);
+    color: #82939c;
     font-family: "Courier New", monospace;
     font-size: 0.78rem;
   }
@@ -305,8 +435,10 @@ nav_order: 7
     right: 36px;
     bottom: 34px;
     width: 2px;
-    background: linear-gradient(180deg, transparent, var(--bs-cyan) 18%, var(--bs-pink) 58%, transparent);
-    box-shadow: 0 0 22px rgba(53, 231, 255, 0.48);
+    background: linear-gradient(180deg, transparent, var(--bs-cyan) 16%, var(--bs-paper-gold) 48%, var(--bs-vermilion) 72%, transparent);
+    box-shadow:
+      0 0 22px rgba(53, 231, 255, 0.36),
+      0 0 12px rgba(216, 180, 106, 0.18);
   }
 
   .shelf {
@@ -324,23 +456,30 @@ nav_order: 7
     top: 28px;
     display: grid;
     justify-items: center;
-    gap: 8px;
-    width: 46px;
+    gap: 9px;
+    width: 48px;
   }
 
   .water-dot {
     width: 15px;
     height: 15px;
     background: #07111e;
-    border: 2px solid var(--bs-cyan);
-    border-radius: 50%;
+    border: 2px solid var(--bs-paper-gold);
+    border-radius: 2px;
     box-shadow:
-      0 0 0 6px rgba(53, 231, 255, 0.08),
-      0 0 20px rgba(53, 231, 255, 0.78);
+      0 0 0 6px rgba(216, 180, 106, 0.08),
+      0 0 20px rgba(53, 231, 255, 0.48);
+    transform: rotate(45deg);
   }
 
   .year-text {
-    color: rgba(237, 249, 255, 0.88);
+    padding: 9px 5px;
+    color: #fff2c7;
+    background:
+      linear-gradient(180deg, rgba(216, 180, 106, 0.16), rgba(8, 17, 29, 0.68)),
+      rgba(8, 14, 27, 0.76);
+    border: 1px solid rgba(216, 180, 106, 0.28);
+    border-radius: 999px;
     font-family: "Courier New", monospace;
     font-size: 1rem;
     font-weight: 800;
@@ -350,7 +489,7 @@ nav_order: 7
   }
 
   .year-count {
-    color: var(--bs-dim);
+    color: rgba(216, 180, 106, 0.72);
     font-family: "Courier New", monospace;
     font-size: 0.64rem;
     letter-spacing: 0.08em;
@@ -366,9 +505,10 @@ nav_order: 7
     gap: 7px;
     min-height: 184px;
     padding: 26px 18px 18px;
-    border-bottom: 3px solid rgba(53, 231, 255, 0.56);
+    border-bottom: 3px solid rgba(216, 180, 106, 0.5);
     box-shadow:
-      0 22px 34px -26px rgba(53, 231, 255, 0.88),
+      0 22px 34px -26px rgba(53, 231, 255, 0.66),
+      0 14px 26px -30px rgba(226, 77, 59, 0.65),
       inset 0 -1px 0 rgba(255, 255, 255, 0.16);
   }
 
@@ -384,7 +524,7 @@ nav_order: 7
   .shelf-track::before {
     bottom: -8px;
     height: 12px;
-    background: linear-gradient(90deg, transparent, rgba(53, 231, 255, 0.45), rgba(244, 200, 97, 0.34), transparent);
+    background: linear-gradient(90deg, transparent, rgba(53, 231, 255, 0.42), rgba(216, 180, 106, 0.38), rgba(226, 77, 59, 0.22), transparent);
     filter: blur(8px);
   }
 
@@ -406,15 +546,17 @@ nav_order: 7
     overflow: hidden;
     color: rgba(255, 255, 255, 0.96);
     background:
+      linear-gradient(180deg, rgba(216, 180, 106, 0.38) 0 3px, transparent 3px calc(100% - 5px), rgba(226, 77, 59, 0.3) calc(100% - 5px)),
       linear-gradient(90deg, rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.13) 32%, rgba(0, 0, 0, 0.2)),
       repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 13px),
       rgb(var(--book-rgb));
-    border: 1px solid rgba(var(--book-rgb), 0.64);
+    border: 1px solid rgba(var(--book-rgb), 0.58);
     border-bottom: 0;
     border-radius: 5px 5px 1px 1px;
     box-shadow:
       inset 1px 0 0 rgba(255, 255, 255, 0.34),
       inset -1px 0 0 rgba(0, 0, 0, 0.3),
+      inset 0 0 0 1px rgba(216, 180, 106, 0.08),
       0 0 18px rgba(var(--book-rgb), 0.28),
       8px 12px 22px rgba(0, 0, 0, 0.34);
     appearance: none;
@@ -432,8 +574,8 @@ nav_order: 7
     left: 7px;
     right: 7px;
     height: 2px;
-    background: rgba(255, 255, 255, 0.78);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.72);
+    background: rgba(255, 242, 199, 0.82);
+    box-shadow: 0 0 12px rgba(216, 180, 106, 0.68);
   }
 
   .book-spine::after {
@@ -443,9 +585,10 @@ nav_order: 7
     bottom: 8px;
     width: 6px;
     height: 6px;
-    background: var(--bs-mint);
-    border-radius: 50%;
-    box-shadow: 0 0 12px rgba(110, 255, 200, 0.9);
+    background: var(--bs-vermilion);
+    border-radius: 2px;
+    box-shadow: 0 0 12px rgba(226, 77, 59, 0.88);
+    transform: rotate(45deg);
   }
 
   .book-spine:hover,
@@ -456,6 +599,7 @@ nav_order: 7
     box-shadow:
       inset 1px 0 0 rgba(255, 255, 255, 0.36),
       0 0 30px rgba(var(--book-rgb), 0.5),
+      0 0 18px rgba(216, 180, 106, 0.16),
       12px 20px 34px rgba(0, 0, 0, 0.48);
   }
 
@@ -487,7 +631,7 @@ nav_order: 7
     bottom: 8px;
     max-height: 48px;
     overflow: hidden;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 242, 199, 0.56);
     font-family: "Courier New", monospace;
     font-size: 0.5rem;
     letter-spacing: 0.08em;
@@ -516,6 +660,59 @@ nav_order: 7
     color: var(--bs-muted);
     font-family: "Courier New", monospace;
     text-align: center;
+  }
+
+  .cover-tooltip {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+    width: 140px;
+    padding: 6px;
+    pointer-events: none;
+    background: rgba(8, 14, 27, 0.86);
+    border: 1px solid rgba(var(--book-rgb), 0.42);
+    border-radius: 6px;
+    box-shadow:
+      0 15px 35px rgba(0, 0, 0, 0.58),
+      0 0 24px rgba(var(--book-rgb), 0.22),
+      0 0 0 1px rgba(216, 180, 106, 0.12),
+      inset 0 0 18px rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(var(--tooltip-x, 0), var(--tooltip-y, 0), 0) scale(0.95);
+    transform-origin: top left;
+    transition:
+      opacity 0.15s ease-out,
+      transform 0.15s ease-out,
+      visibility 0.15s;
+  }
+
+  .cover-tooltip::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border: 1px solid rgba(216, 180, 106, 0.22);
+    border-radius: 8px;
+    clip-path: polygon(0 0, 38px 0, 38px 1px, 1px 1px, 1px 38px, 0 38px);
+  }
+
+  .cover-tooltip.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate3d(var(--tooltip-x, 0), var(--tooltip-y, 0), 0) scale(1);
+  }
+
+  .cover-tooltip img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
   }
 
   .book-modal {
@@ -552,12 +749,14 @@ nav_order: 7
     color: var(--bs-text);
     background:
       linear-gradient(135deg, rgba(13, 21, 38, 0.98), rgba(6, 9, 18, 0.96)),
-      linear-gradient(90deg, rgba(var(--book-rgb), 0.1), transparent);
-    border: 1px solid rgba(var(--book-rgb), 0.36);
+      linear-gradient(90deg, rgba(var(--book-rgb), 0.1), transparent),
+      linear-gradient(180deg, rgba(216, 180, 106, 0.05), transparent 35%);
+    border: 1px solid rgba(216, 180, 106, 0.26);
     border-radius: 8px;
     box-shadow:
       0 30px 90px rgba(0, 0, 0, 0.68),
       0 0 44px rgba(var(--book-rgb), 0.18),
+      0 0 20px rgba(226, 77, 59, 0.08),
       inset 0 0 34px rgba(255, 255, 255, 0.035);
     transform: translateY(14px) scale(0.98);
     transition: transform 0.22s ease;
@@ -602,9 +801,9 @@ nav_order: 7
     max-width: 100%;
     margin-bottom: 12px;
     padding: 6px 9px;
-    color: var(--bs-cyan);
-    background: rgba(53, 231, 255, 0.08);
-    border: 1px solid rgba(53, 231, 255, 0.2);
+    color: #fff2c7;
+    background: rgba(216, 180, 106, 0.09);
+    border: 1px solid rgba(216, 180, 106, 0.24);
     border-radius: 999px;
     font-family: "Courier New", monospace;
     font-size: 0.72rem;
@@ -634,7 +833,7 @@ nav_order: 7
     width: 100%;
     min-height: 42px;
     color: #041018 !important;
-    background: linear-gradient(90deg, var(--bs-cyan), var(--bs-mint));
+    background: linear-gradient(90deg, var(--bs-cyan), var(--bs-jade), var(--bs-paper-gold));
     border: 0;
     border-radius: 6px;
     font-weight: 800;
@@ -665,8 +864,8 @@ nav_order: 7
 
   .close-btn:hover,
   .close-btn:focus-visible {
-    color: #041018;
-    background: var(--bs-cyan);
+    color: #fff7dc;
+    background: var(--bs-vermilion);
   }
 
   .book-trigger:focus-visible,
@@ -686,7 +885,34 @@ nav_order: 7
     }
 
     .command-copy {
-      padding: 22px;
+      padding: 22px 92px 22px 22px;
+    }
+
+    .command-copy.header-snack-style {
+      grid-template-columns: 74px minmax(0, 1fr);
+      gap: 20px;
+      min-height: 184px;
+      padding: 26px 24px;
+    }
+
+    .brand-logo {
+      width: 66px;
+    }
+
+    .header-poem {
+      font-size: 1.12rem;
+    }
+
+    .header-poem::before {
+      left: -24px;
+      top: -7px;
+      font-size: 1.8rem;
+    }
+
+    .header-poem::after {
+      right: -22px;
+      bottom: -16px;
+      font-size: 1.8rem;
     }
 
     .command-copy h2 {
@@ -787,6 +1013,36 @@ nav_order: 7
       padding: 14px;
     }
 
+    .command-copy {
+      padding-right: 22px;
+    }
+
+    .command-copy.header-snack-style {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 18px;
+      min-height: auto;
+      padding: 26px 20px 30px;
+      text-align: center;
+    }
+
+    .command-copy::after {
+      display: none;
+    }
+
+    .header-poem {
+      font-size: 1.02rem;
+    }
+
+    .header-poem::before,
+    .header-poem::after {
+      display: none;
+    }
+
+    .poem-author {
+      font-size: 0.7rem;
+    }
+
     .bookshelf-stats {
       grid-template-columns: 1fr;
     }
@@ -807,6 +1063,7 @@ nav_order: 7
   @media (prefers-reduced-motion: reduce) {
     .book-spine,
     .cover-frame,
+    .cover-tooltip,
     .book-modal,
     .book-modal-content {
       transition: none;
@@ -823,10 +1080,17 @@ nav_order: 7
 
 <div class="bookshelf-wrapper">
   <div class="bookshelf-command">
-    <div class="command-copy">
-      <div class="command-eyebrow">Reading Signal Deck</div>
-      <h2>A living archive of books, years, and afterglow.</h2>
-      <p>Every cover becomes a color signal, every year becomes a rail, and the whole shelf reads like a time-coded map of curiosity.</p>
+    <div class="command-copy header-snack-style">
+      <div class="brand-logo-container">
+        <img src="{{ '/assets/img/book_logo.png' | relative_url }}" alt="Archive Logo" class="brand-logo">
+      </div>
+      <div class="header-poem-wrap">
+        <blockquote class="header-poem">
+          我心里一直都在暗暗设想，<br>
+          天堂应该是图书馆的模样。
+        </blockquote>
+        <cite class="poem-author">—— Jorge Luis Borges</cite>
+      </div>
     </div>
 
     <div class="bookshelf-stats" aria-label="Bookshelf statistics">
@@ -848,7 +1112,7 @@ nav_order: 7
   <section class="showcase-container" aria-labelledby="signal-picks-title">
     <div class="section-kicker" id="signal-picks-title">
       <span class="signal-dot" aria-hidden="true"></span>
-      <span>Signal Picks</span>
+      <span>Signal Picks · 珍藏</span>
     </div>
 
     <div class="showcase-shelf">
@@ -881,8 +1145,8 @@ nav_order: 7
 
   <section class="bookshelf-main" aria-label="Books grouped by year">
     <div class="matrix-header">
-      <div class="matrix-label">Chronological Matrix</div>
-      <div class="matrix-subtitle">{{ site.books.size }} entries indexed across {{ books_by_year.size }} reading years</div>
+      <div class="matrix-label">Chronicle Matrix · 年卷</div>
+      <div class="matrix-subtitle">{{ site.books.size }} volumes indexed across {{ books_by_year.size }} luminous year scrolls</div>
     </div>
 
     <div class="time-river" aria-hidden="true"></div>
@@ -924,6 +1188,10 @@ nav_order: 7
   </section>
 </div>
 
+<div id="cover-tooltip" class="cover-tooltip" aria-hidden="true">
+  <img id="tooltip-img" src="" alt="Cover preview">
+</div>
+
 <div id="bookModal" class="book-modal" aria-hidden="true">
   <div class="book-modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button class="close-btn" type="button" aria-label="Close book details">&times;</button>
@@ -942,6 +1210,9 @@ nav_order: 7
 <script>
   (function() {
     const triggers = Array.from(document.querySelectorAll(".book-trigger"));
+    const spines = Array.from(document.querySelectorAll(".book-spine"));
+    const coverTooltip = document.getElementById("cover-tooltip");
+    const tooltipImg = document.getElementById("tooltip-img");
     const modal = document.getElementById("bookModal");
     const modalPanel = modal.querySelector(".book-modal-content");
     const modalImg = document.getElementById("modalImg");
@@ -1060,10 +1331,65 @@ nav_order: 7
       trigger.addEventListener("click", () => openBook(trigger));
     });
 
+    function moveTooltip(event) {
+      if (!coverTooltip) return;
+
+      const tooltipWidth = coverTooltip.offsetWidth || 152;
+      const tooltipHeight = coverTooltip.offsetHeight || 232;
+      const gap = 16;
+      const edge = 14;
+      let x = event.clientX + gap;
+      let y = event.clientY + gap;
+
+      if (x + tooltipWidth + edge > window.innerWidth) {
+        x = event.clientX - tooltipWidth - gap;
+      }
+
+      if (y + tooltipHeight + edge > window.innerHeight) {
+        y = event.clientY - tooltipHeight - gap;
+      }
+
+      x = Math.max(edge, x);
+      y = Math.max(edge, y);
+
+      coverTooltip.style.setProperty("--tooltip-x", `${x}px`);
+      coverTooltip.style.setProperty("--tooltip-y", `${y}px`);
+    }
+
+    function hideTooltip() {
+      if (!coverTooltip) return;
+      coverTooltip.classList.remove("is-active");
+      coverTooltip.setAttribute("aria-hidden", "true");
+    }
+
+    if (coverTooltip && tooltipImg && window.matchMedia("(pointer: fine)").matches) {
+      spines.forEach((spine) => {
+        spine.addEventListener("mouseenter", (event) => {
+          const imgSrc = spine.dataset.img;
+          if (!imgSrc) return;
+
+          tooltipImg.src = imgSrc;
+          tooltipImg.alt = `${spine.dataset.title || "Book"} cover preview`;
+          coverTooltip.style.setProperty(
+            "--book-rgb",
+            getComputedStyle(spine).getPropertyValue("--book-rgb").trim() || "53, 231, 255"
+          );
+          moveTooltip(event);
+          coverTooltip.classList.add("is-active");
+          coverTooltip.setAttribute("aria-hidden", "false");
+        });
+
+        spine.addEventListener("mousemove", moveTooltip);
+        spine.addEventListener("mouseleave", hideTooltip);
+        spine.addEventListener("focus", hideTooltip);
+      });
+    }
+
     function openBook(trigger) {
       lastFocused = document.activeElement;
       const rgbValue = getComputedStyle(trigger).getPropertyValue("--book-rgb").trim() || "53, 231, 255";
 
+      hideTooltip();
       modalTitle.textContent = trigger.dataset.title || "Untitled";
       modalDesc.textContent = trigger.dataset.desc || "No notes yet.";
       modalMeta.textContent = `${trigger.dataset.year || "Year"} / ${trigger.dataset.category || "Archive"}`;
