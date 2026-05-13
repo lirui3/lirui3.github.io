@@ -183,8 +183,8 @@ nav_order: 7
     color: rgba(250, 246, 232, 0.96);
     background: transparent;
     border: 0;
-    font-family: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
-    font-size: 1.28rem;
+    font-family: Georgia, "Times New Roman", "Noto Serif SC", "Songti SC", serif;
+    font-size: 1.16rem;
     font-style: italic;
     font-weight: 500;
     line-height: 1.78;
@@ -204,13 +204,13 @@ nav_order: 7
   }
 
   .header-poem::before {
-    content: "「";
+    content: "“";
     left: -34px;
     top: -10px;
   }
 
   .header-poem::after {
-    content: "」";
+    content: "”";
     right: -30px;
     bottom: -22px;
   }
@@ -1086,10 +1086,11 @@ nav_order: 7
       </div>
       <div class="header-poem-wrap">
         <blockquote class="header-poem">
-          我心里一直都在暗暗设想，<br>
-          天堂应该是图书馆的模样。
+          The moon is high up in the sky and it's spring.<br>
+          I think of you and within myself I'm complete.<br>
+          A light breeze comes to me from across the hazy fields.
         </blockquote>
-        <cite class="poem-author">—— Jorge Luis Borges</cite>
+        <cite class="poem-author">— Fernando Pessoa</cite>
       </div>
     </div>
 
