@@ -2,233 +2,856 @@
 layout: page
 title: Bookshelf
 permalink: /books/
-description: My reading journey through time.
+description: A high-tech reading archive through time.
 nav: true
 nav_order: 7
 ---
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+{% assign books_by_year = site.books | group_by: "year" | sort: "name" | reverse %}
+{% assign recommended_books = site.books | where: "recommended", true %}
+{% assign latest_year = books_by_year.first.name %}
 
 <style>
-  /* === 1. 页面整体布局 === */
+  .bookshelf-wrapper,
+  .book-modal {
+    --bs-cyan: #35e7ff;
+    --bs-mint: #6effc8;
+    --bs-amber: #f4c861;
+    --bs-pink: #ff4fb8;
+    --bs-text: #edf9ff;
+    --bs-muted: #9ab2c8;
+    --bs-dim: #5f748b;
+    --book-rgb: 53, 231, 255;
+  }
+
   .bookshelf-wrapper {
     position: relative;
-    padding-bottom: 50px;
+    isolation: isolate;
+    overflow: hidden;
+    margin-top: 1.4rem;
+    padding: 28px;
+    color: var(--bs-text);
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(145deg, #090b15 0%, #101827 46%, #070812 100%);
+    background-size: 34px 34px, 34px 34px, auto;
+    border: 1px solid rgba(111, 247, 255, 0.22);
+    border-radius: 8px;
+    box-shadow:
+      0 30px 80px rgba(0, 0, 0, 0.3),
+      inset 0 0 70px rgba(53, 231, 255, 0.06);
   }
 
-  /* === 2. 顶部展示柜 (Showcase) === */
-  .showcase-container {
-    margin-bottom: 60px;
-    padding: 30px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    text-align: center;
-    border: 1px solid #eaeaea;
+  .bookshelf-wrapper::before,
+  .bookshelf-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
   }
 
-  .showcase-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 25px;
+  .bookshelf-wrapper::before {
+    background:
+      linear-gradient(115deg, transparent 0%, rgba(53, 231, 255, 0.11) 38%, transparent 54%),
+      repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 7px);
+    opacity: 0.78;
+  }
+
+  .bookshelf-wrapper::after {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 1px rgba(53, 231, 255, 0.07);
+  }
+
+  .bookshelf-wrapper button {
+    font: inherit;
+  }
+
+  .bookshelf-command {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(240px, 0.8fr);
+    gap: 22px;
+    align-items: stretch;
+    margin-bottom: 30px;
+  }
+
+  .command-copy,
+  .bookshelf-stats {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(12, 20, 36, 0.96), rgba(12, 15, 28, 0.72));
+    border: 1px solid rgba(105, 236, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: inset 0 0 30px rgba(53, 231, 255, 0.045);
+  }
+
+  .command-copy {
+    padding: 28px;
+  }
+
+  .command-copy::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--bs-cyan), var(--bs-amber), var(--bs-pink));
+  }
+
+  .command-eyebrow,
+  .section-kicker,
+  .matrix-label {
+    color: var(--bs-cyan);
+    font-family: "Courier New", monospace;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    border-bottom: 2px solid #f0f0f0;
-    display: inline-block;
-    padding-bottom: 5px;
+  }
+
+  .command-copy h2 {
+    max-width: 680px;
+    margin: 12px 0 12px;
+    color: var(--bs-text);
+    font-size: 2rem;
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
+  .command-copy p {
+    max-width: 620px;
+    margin: 0;
+    color: var(--bs-muted);
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+
+  .bookshelf-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 18px;
+    gap: 10px;
+  }
+
+  .stat-node {
+    min-width: 0;
+    padding: 14px 12px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+  }
+
+  .stat-node strong {
+    display: block;
+    color: #ffffff;
+    font-family: "Courier New", monospace;
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+
+  .stat-node span {
+    display: block;
+    margin-top: 8px;
+    color: var(--bs-muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .showcase-container {
+    position: relative;
+    margin-bottom: 34px;
+    padding: 22px;
+    background: rgba(8, 14, 27, 0.76);
+    border: 1px solid rgba(53, 231, 255, 0.18);
+    border-radius: 8px;
+  }
+
+  .section-kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .signal-dot {
+    width: 9px;
+    height: 9px;
+    background: var(--bs-mint);
+    border-radius: 50%;
+    box-shadow: 0 0 18px rgba(110, 255, 200, 0.88);
   }
 
   .showcase-shelf {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    align-items: flex-end;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+    gap: 18px;
+    align-items: end;
+  }
+
+  .book-trigger {
+    color: inherit;
+    cursor: pointer;
   }
 
   .showcase-book {
-    width: 100px;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
+    --book-rgb: 53, 231, 255;
+    display: grid;
+    gap: 12px;
+    min-width: 0;
+    padding: 0;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    appearance: none;
+    transform-style: preserve-3d;
+  }
+
+  .cover-frame {
     position: relative;
-  }
-
-  .showcase-book:hover {
-    transform: translateY(-10px) scale(1.05);
-    z-index: 10;
-  }
-
-  .showcase-book img {
-    width: 100%;
-    border-radius: 4px;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
     display: block;
+    width: min(124px, 100%);
+    aspect-ratio: 2 / 3;
+    margin: 0 auto;
+    border-radius: 6px;
+    transform: perspective(700px) rotateY(-12deg) translateZ(0);
+    transition:
+      transform 0.28s ease,
+      filter 0.28s ease;
   }
 
-  .showcase-book::after {
-    content: '';
+  .cover-frame::before {
+    content: "";
     position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,1) 100%);
-    transform: scaleY(-1);
-    opacity: 0.3;
+    inset: -8px;
+    border: 1px solid rgba(var(--book-rgb), 0.42);
+    border-radius: 8px;
+    box-shadow:
+      0 0 24px rgba(var(--book-rgb), 0.24),
+      inset 0 0 18px rgba(var(--book-rgb), 0.08);
+    transform: translateZ(-1px);
+  }
+
+  .cover-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.22) 38%, transparent 54%);
+    border-radius: 6px;
+    opacity: 0.5;
+    mix-blend-mode: screen;
     pointer-events: none;
   }
 
-  /* === 3. 主书架容器 === */
-  .bookshelf-main {
-    padding: 40px 80px 40px 20px;
-    background-color: #faf9f6;
-    border-radius: 15px;
-    position: relative;
-    box-shadow: inset 0 0 50px rgba(0,0,0,0.02);
+  .cover-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
+    box-shadow: 12px 18px 28px rgba(0, 0, 0, 0.42);
   }
 
-  /* === 4. 时光长河 === */
+  .showcase-book:hover .cover-frame,
+  .showcase-book:focus-visible .cover-frame {
+    filter: saturate(1.12);
+    transform: perspective(700px) rotateY(-4deg) translateY(-8px);
+  }
+
+  .cover-caption {
+    display: block;
+    min-height: 2.7em;
+    color: var(--bs-muted);
+    font-size: 0.78rem;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .showcase-book:hover .cover-caption,
+  .showcase-book:focus-visible .cover-caption {
+    color: #ffffff;
+  }
+
+  .bookshelf-main {
+    position: relative;
+    padding: 24px 72px 34px 24px;
+    background:
+      linear-gradient(90deg, rgba(53, 231, 255, 0.06), transparent 18%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+  }
+
+  .matrix-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .matrix-subtitle {
+    color: var(--bs-dim);
+    font-family: "Courier New", monospace;
+    font-size: 0.78rem;
+  }
+
   .time-river {
     position: absolute;
-    top: 20px;
-    bottom: 20px;
-    right: 40px;
-    width: 8px;
-    background: linear-gradient(to bottom, 
-      rgba(66, 165, 245, 0) 0%, 
-      rgba(66, 165, 245, 0.4) 15%, 
-      rgba(66, 165, 245, 0.6) 50%, 
-      rgba(66, 165, 245, 0.4) 85%, 
-      rgba(66, 165, 245, 0) 100%);
-    border-radius: 10px;
-    z-index: 0;
-    filter: blur(2px);
+    top: 58px;
+    right: 36px;
+    bottom: 34px;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, var(--bs-cyan) 18%, var(--bs-pink) 58%, transparent);
+    box-shadow: 0 0 22px rgba(53, 231, 255, 0.48);
   }
 
-  /* === 5. 每一层书架 === */
   .shelf {
-    display: flex;
-    align-items: flex-end; 
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 6px;
-    border-bottom: 15px solid #8d6e63;
-    margin-bottom: 120px;
-    padding: 0 30px;
     position: relative;
-    box-shadow: 0 10px 15px -5px rgba(0,0,0,0.3), inset 0 -2px 5px rgba(0,0,0,0.2);
-    z-index: 1;
+    margin-bottom: 72px;
   }
 
   .shelf:last-of-type {
-    margin-bottom: 40px;
+    margin-bottom: 12px;
   }
 
-  /* === 6. 年份标签 === */
   .year-marker-container {
     position: absolute;
-    right: -56px;
-    bottom: -8px;
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
+    right: -54px;
+    top: 28px;
+    display: grid;
+    justify-items: center;
+    gap: 8px;
+    width: 46px;
   }
 
   .water-dot {
-    width: 16px;
-    height: 16px;
-    background-color: #42a5f5;
-    border: 3px solid #faf9f6;
+    width: 15px;
+    height: 15px;
+    background: #07111e;
+    border: 2px solid var(--bs-cyan);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(66, 165, 245, 0.6);
-    z-index: 2;
+    box-shadow:
+      0 0 0 6px rgba(53, 231, 255, 0.08),
+      0 0 20px rgba(53, 231, 255, 0.78);
   }
 
   .year-text {
-    margin-right: 15px;
-    font-family: 'Courier New', monospace;
-    font-weight: 900;
-    font-size: 28px;
-    color: rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    user-select: none;
-  }
-  
-  .shelf:hover .year-text {
-    color: #42a5f5;
-    transform: scale(1.1);
-  }
-
-  /* === 7. 书脊样式 (核心修改) === */
-  .book-spine {
-    width: 32px;
-    height: 150px;
-    /* 默认底色，会被JS覆盖 */
-    background-color: #ddd; 
-    
-    /* 核心修改：添加纸张质感纹理 */
-    background-image: 
-      /* 1. 左右暗中间亮的渐变，模拟圆柱体光泽 */
-      linear-gradient(to right, rgba(0,0,0,0.15) 0%, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.15) 100%),
-      /* 2. 细微的噪点纹理，模拟纸张纤维 */
-      repeating-linear-gradient(90deg, transparent 0px, transparent 2px, rgba(0,0,0,0.03) 3px);
-      
-    background-blend-mode: multiply; /* 让纹理和底色自然融合 */
-
-    color: rgba(255,255,255,0.9); /* 默认白色，JS会动态改 */
+    color: rgba(237, 249, 255, 0.88);
+    font-family: "Courier New", monospace;
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1;
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    text-align: center;
-    font-size: 11px;
-    letter-spacing: 1px;
-    padding: 8px 0;
-    cursor: pointer;
-    
-    border-radius: 3px 3px 0 0;
-    /* 阴影：让书看起来有厚度 */
-    box-shadow: 
-      inset 1px 0 2px rgba(255,255,255,0.3), 
-      inset -1px 0 2px rgba(0,0,0,0.2),
-      2px 0 3px rgba(0,0,0,0.15);
-      
-    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.5s;
+  }
+
+  .year-count {
+    color: var(--bs-dim);
+    font-family: "Courier New", monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+
+  .shelf-track {
     position: relative;
-    margin-bottom: 0; 
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 7px;
+    min-height: 184px;
+    padding: 26px 18px 18px;
+    border-bottom: 3px solid rgba(53, 231, 255, 0.56);
+    box-shadow:
+      0 22px 34px -26px rgba(53, 231, 255, 0.88),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.16);
+  }
+
+  .shelf-track::before,
+  .shelf-track::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
+
+  .shelf-track::before {
+    bottom: -8px;
+    height: 12px;
+    background: linear-gradient(90deg, transparent, rgba(53, 231, 255, 0.45), rgba(244, 200, 97, 0.34), transparent);
+    filter: blur(8px);
+  }
+
+  .shelf-track::after {
+    top: 0;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.028));
+  }
+
+  .book-spine {
+    --book-rgb: 53, 231, 255;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 154px;
+    padding: 10px 0;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    color: rgba(255, 255, 255, 0.96);
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, 0.38), rgba(255, 255, 255, 0.13) 32%, rgba(0, 0, 0, 0.2)),
+      repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 13px),
+      rgb(var(--book-rgb));
+    border: 1px solid rgba(var(--book-rgb), 0.64);
+    border-bottom: 0;
+    border-radius: 5px 5px 1px 1px;
+    box-shadow:
+      inset 1px 0 0 rgba(255, 255, 255, 0.34),
+      inset -1px 0 0 rgba(0, 0, 0, 0.3),
+      0 0 18px rgba(var(--book-rgb), 0.28),
+      8px 12px 22px rgba(0, 0, 0, 0.34);
+    appearance: none;
+    cursor: pointer;
+    transition:
+      transform 0.24s ease,
+      box-shadow 0.24s ease,
+      filter 0.24s ease;
   }
 
-  .book-spine:hover {
-    transform: translateY(-15px) scale(1.02);
-    z-index: 100;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+  .book-spine::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 7px;
+    right: 7px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.72);
   }
 
-  .book-spine:nth-child(3n+1) { height: 160px; }
-  .book-spine:nth-child(3n+2) { height: 145px; }
-  .book-spine:nth-child(4n+3) { height: 155px; }
-  .book-spine:nth-child(5n+1) { height: 140px; }
+  .book-spine::after {
+    content: "";
+    position: absolute;
+    right: 7px;
+    bottom: 8px;
+    width: 6px;
+    height: 6px;
+    background: var(--bs-mint);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(110, 255, 200, 0.9);
+  }
 
-  /* 模态框 (保持不变) */
-  .book-modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(8px); justify-content: center; align-items: center; }
-  .book-modal-content { background-color: #fff; padding: 30px; border-radius: 12px; max-width: 400px; width: 90%; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); animation: zoomIn 0.3s; }
-  .book-modal img { max-height: 350px; width: auto; box-shadow: 5px 10px 20px rgba(0,0,0,0.3); margin-bottom: 20px; border-radius: 4px; }
-  .modal-text-group { text-align: left; margin-top: 15px; }
-  .modal-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; color: #333; }
-  .modal-desc { font-size: 0.9rem; color: #666; line-height: 1.6; margin-bottom: 20px; }
-  .close-btn { position: absolute; top: 15px; right: 20px; color: #aaa; font-size: 30px; font-weight: bold; cursor: pointer; }
-  .close-btn:hover { color: #333; }
-  @keyframes zoomIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+  .book-spine:hover,
+  .book-spine:focus-visible {
+    z-index: 5;
+    filter: saturate(1.14) brightness(1.08);
+    transform: translateY(-18px) rotate(-1deg);
+    box-shadow:
+      inset 1px 0 0 rgba(255, 255, 255, 0.36),
+      0 0 30px rgba(var(--book-rgb), 0.5),
+      12px 20px 34px rgba(0, 0, 0, 0.48);
+  }
+
+  .book-spine.is-light {
+    color: #06101c;
+    text-shadow: none;
+  }
+
+  .spine-title {
+    max-height: 118px;
+    overflow: hidden;
+    text-align: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.72);
+  }
+
+  .book-spine.is-light .spine-title {
+    text-shadow: none;
+  }
+
+  .spine-glitch {
+    position: absolute;
+    left: 5px;
+    bottom: 8px;
+    max-height: 48px;
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: "Courier New", monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+
+  .book-spine:nth-child(3n + 1) {
+    height: 166px;
+  }
+
+  .book-spine:nth-child(3n + 2) {
+    height: 146px;
+  }
+
+  .book-spine:nth-child(4n + 3) {
+    height: 160px;
+  }
+
+  .book-spine:nth-child(5n + 1) {
+    height: 138px;
+  }
+
+  .bookshelf-empty {
+    padding: 50px 20px;
+    color: var(--bs-muted);
+    font-family: "Courier New", monospace;
+    text-align: center;
+  }
+
+  .book-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: grid;
+    place-items: center;
+    padding: 22px;
+    background: rgba(2, 5, 12, 0.86);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.22s ease,
+      visibility 0.22s ease;
+  }
+
+  .book-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .book-modal-content {
+    --book-rgb: 53, 231, 255;
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(150px, 0.72fr) minmax(220px, 1fr);
+    gap: 26px;
+    width: min(760px, 94vw);
+    max-height: 88vh;
+    padding: 28px;
+    overflow: auto;
+    color: var(--bs-text);
+    background:
+      linear-gradient(135deg, rgba(13, 21, 38, 0.98), rgba(6, 9, 18, 0.96)),
+      linear-gradient(90deg, rgba(var(--book-rgb), 0.1), transparent);
+    border: 1px solid rgba(var(--book-rgb), 0.36);
+    border-radius: 8px;
+    box-shadow:
+      0 30px 90px rgba(0, 0, 0, 0.68),
+      0 0 44px rgba(var(--book-rgb), 0.18),
+      inset 0 0 34px rgba(255, 255, 255, 0.035);
+    transform: translateY(14px) scale(0.98);
+    transition: transform 0.22s ease;
+  }
+
+  .book-modal.is-open .book-modal-content {
+    transform: translateY(0) scale(1);
+  }
+
+  .modal-cover-shell {
+    position: relative;
+    align-self: start;
+    margin: 8px auto 0;
+    width: min(210px, 100%);
+  }
+
+  .modal-cover-shell::before {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border: 1px solid rgba(var(--book-rgb), 0.35);
+    border-radius: 8px;
+    box-shadow: 0 0 32px rgba(var(--book-rgb), 0.28);
+  }
+
+  .book-modal img {
+    position: relative;
+    width: 100%;
+    max-height: 340px;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+    box-shadow: 14px 24px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  .modal-text-group {
+    align-self: center;
+  }
+
+  .modal-meta {
+    display: inline-flex;
+    max-width: 100%;
+    margin-bottom: 12px;
+    padding: 6px 9px;
+    color: var(--bs-cyan);
+    background: rgba(53, 231, 255, 0.08);
+    border: 1px solid rgba(53, 231, 255, 0.2);
+    border-radius: 999px;
+    font-family: "Courier New", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .modal-title {
+    margin-bottom: 12px;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .modal-desc {
+    margin-bottom: 22px;
+    color: var(--bs-muted);
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+
+  .modal-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 42px;
+    color: #041018 !important;
+    background: linear-gradient(90deg, var(--bs-cyan), var(--bs-mint));
+    border: 0;
+    border-radius: 6px;
+    font-weight: 800;
+    text-decoration: none !important;
+    box-shadow: 0 0 24px rgba(53, 231, 255, 0.28);
+  }
+
+  .modal-btn:hover,
+  .modal-btn:focus-visible {
+    color: #041018 !important;
+    filter: brightness(1.08);
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    color: var(--bs-text);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .close-btn:hover,
+  .close-btn:focus-visible {
+    color: #041018;
+    background: var(--bs-cyan);
+  }
+
+  .book-trigger:focus-visible,
+  .modal-btn:focus-visible,
+  .close-btn:focus-visible {
+    outline: 2px solid var(--bs-amber);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 820px) {
+    .bookshelf-wrapper {
+      padding: 18px;
+    }
+
+    .bookshelf-command {
+      grid-template-columns: 1fr;
+    }
+
+    .command-copy {
+      padding: 22px;
+    }
+
+    .command-copy h2 {
+      font-size: 1.55rem;
+    }
+
+    .showcase-shelf {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding: 8px 4px 14px;
+      scroll-snap-type: x proximity;
+    }
+
+    .showcase-book {
+      flex: 0 0 122px;
+      scroll-snap-align: start;
+    }
+
+    .bookshelf-main {
+      padding: 20px 14px 28px;
+    }
+
+    .matrix-header {
+      display: grid;
+      gap: 6px;
+    }
+
+    .time-river {
+      left: 12px;
+      right: auto;
+      top: 82px;
+      bottom: 28px;
+    }
+
+    .shelf {
+      margin-bottom: 54px;
+      padding-left: 24px;
+    }
+
+    .year-marker-container {
+      position: relative;
+      top: auto;
+      right: auto;
+      display: flex;
+      width: auto;
+      justify-items: start;
+      justify-content: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .year-text,
+    .year-count {
+      writing-mode: horizontal-tb;
+    }
+
+    .shelf-track {
+      min-height: 154px;
+      gap: 5px;
+      padding: 18px 8px 14px;
+    }
+
+    .book-spine {
+      width: 28px;
+      height: 132px;
+    }
+
+    .book-spine:nth-child(3n + 1),
+    .book-spine:nth-child(4n + 3) {
+      height: 140px;
+    }
+
+    .book-spine:nth-child(3n + 2),
+    .book-spine:nth-child(5n + 1) {
+      height: 122px;
+    }
+
+    .spine-title {
+      max-height: 98px;
+      font-size: 0.66rem;
+    }
+
+    .book-modal-content {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 24px;
+    }
+
+    .modal-cover-shell {
+      width: min(190px, 70vw);
+    }
+  }
+
+  @media (max-width: 540px) {
+    .bookshelf-wrapper {
+      margin-left: -4px;
+      margin-right: -4px;
+      padding: 14px;
+    }
+
+    .bookshelf-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .stat-node {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .stat-node span {
+      margin-top: 0;
+      text-align: right;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .book-spine,
+    .cover-frame,
+    .book-modal,
+    .book-modal-content {
+      transition: none;
+    }
+
+    .book-spine:hover,
+    .book-spine:focus-visible,
+    .showcase-book:hover .cover-frame,
+    .showcase-book:focus-visible .cover-frame {
+      transform: none;
+    }
+  }
 </style>
 
 <div class="bookshelf-wrapper">
+  <div class="bookshelf-command">
+    <div class="command-copy">
+      <div class="command-eyebrow">Reading Signal Deck</div>
+      <h2>A living archive of books, years, and afterglow.</h2>
+      <p>Every cover becomes a color signal, every year becomes a rail, and the whole shelf reads like a time-coded map of curiosity.</p>
+    </div>
 
-  <div class="showcase-container">
-    <div class="showcase-title">Editor's Pick</div>
+    <div class="bookshelf-stats" aria-label="Bookshelf statistics">
+      <div class="stat-node">
+        <strong>{{ site.books.size }}</strong>
+        <span>Volumes</span>
+      </div>
+      <div class="stat-node">
+        <strong>{{ books_by_year.size }}</strong>
+        <span>Years</span>
+      </div>
+      <div class="stat-node">
+        <strong>{{ latest_year }}</strong>
+        <span>Latest</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="showcase-container" aria-labelledby="signal-picks-title">
+    <div class="section-kicker" id="signal-picks-title">
+      <span class="signal-dot" aria-hidden="true"></span>
+      <span>Signal Picks</span>
+    </div>
+
     <div class="showcase-shelf">
-      {% assign recommended_books = site.books | where: "recommended", true %}
       {% if recommended_books.size == 0 %}
         {% assign display_books = site.books | slice: 0, 4 %}
       {% else %}
@@ -236,105 +859,239 @@ nav_order: 7
       {% endif %}
 
       {% for book in display_books %}
-        <div class="showcase-book"
-             onclick="openBook('{{ book.title }}', '{{ book.description | escape }}', '{{ book.img | relative_url }}', '{{ book.url | relative_url }}')">
-          <img src="{{ book.img | relative_url }}" alt="{{ book.title }}">
-        </div>
+        <button
+          class="book-trigger showcase-book"
+          type="button"
+          data-title="{{ book.title | escape }}"
+          data-desc="{{ book.description | strip | escape }}"
+          data-img="{{ book.img | relative_url }}"
+          data-url="{{ book.url | relative_url }}"
+          data-year="{{ book.year | escape }}"
+          data-category="{{ book.category | default: 'Archive' | escape }}"
+          aria-label="Open {{ book.title | escape }}"
+        >
+          <span class="cover-frame">
+            <img src="{{ book.img | relative_url }}" alt="{{ book.title | escape }}">
+          </span>
+          <span class="cover-caption">{{ book.title }}</span>
+        </button>
       {% endfor %}
     </div>
+  </section>
 
-  </div>
+  <section class="bookshelf-main" aria-label="Books grouped by year">
+    <div class="matrix-header">
+      <div class="matrix-label">Chronological Matrix</div>
+      <div class="matrix-subtitle">{{ site.books.size }} entries indexed across {{ books_by_year.size }} reading years</div>
+    </div>
 
-  <div class="bookshelf-main">
-    <div class="time-river"></div>
-    {% assign books_by_year = site.books | group_by: "year" | sort: "name" | reverse %}
+    <div class="time-river" aria-hidden="true"></div>
+
     {% for year_group in books_by_year %}
-      <div class="shelf">
+      <section class="shelf" aria-label="{{ year_group.name }} books">
         <div class="year-marker-container">
+          <div class="water-dot" aria-hidden="true"></div>
           <div class="year-text">{{ year_group.name }}</div>
-          <div class="water-dot"></div>
+          <div class="year-count">{{ year_group.items.size }} reads</div>
         </div>
-        {% assign year_books = year_group.items | sort: "importance" %}
-        {% for book in year_books %}
-          <div class="book-spine" 
-               data-img="{{ book.img | relative_url }}"
-               onclick="openBook('{{ book.title }}', '{{ book.description | escape }}', '{{ book.img | relative_url }}', '{{ book.url | relative_url }}')">
-            {{ book.title }}
-          </div>
-        {% endfor %}
-      </div>
-    {% endfor %}
-    {% if site.books.size == 0 %}
-      <div style="text-align:center; padding: 50px; color: #999;">Updating library...</div>
-    {% endif %}
-  </div>
 
+        <div class="shelf-track">
+          {% assign year_books = year_group.items | sort: "importance" %}
+          {% for book in year_books %}
+            <button
+              class="book-trigger book-spine"
+              type="button"
+              data-title="{{ book.title | escape }}"
+              data-desc="{{ book.description | strip | escape }}"
+              data-img="{{ book.img | relative_url }}"
+              data-url="{{ book.url | relative_url }}"
+              data-year="{{ book.year | escape }}"
+              data-category="{{ book.category | default: 'Archive' | escape }}"
+              aria-label="Open {{ book.title | escape }}"
+              title="{{ book.title | escape }} - {{ book.category | default: 'Archive' | escape }}"
+            >
+              <span class="spine-title">{{ book.title }}</span>
+              <span class="spine-glitch" aria-hidden="true">{{ book.category | default: "Archive" }}</span>
+            </button>
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+
+    {% if site.books.size == 0 %}
+      <div class="bookshelf-empty">Updating library...</div>
+    {% endif %}
+  </section>
 </div>
 
-<div id="bookModal" class="book-modal">
-  <div class="book-modal-content">
-    <span class="close-btn" onclick="closeBook()">&times;</span>
-    <img id="modalImg" src="" alt="Book Cover">
+<div id="bookModal" class="book-modal" aria-hidden="true">
+  <div class="book-modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="close-btn" type="button" aria-label="Close book details">&times;</button>
+    <div class="modal-cover-shell">
+      <img id="modalImg" src="" alt="Book cover">
+    </div>
     <div class="modal-text-group">
+      <div id="modalMeta" class="modal-meta"></div>
       <div id="modalTitle" class="modal-title"></div>
       <div id="modalDesc" class="modal-desc"></div>
-      <a id="modalBtn" href="#" class="btn btn-primary btn-sm" style="width: 100%;">Read More</a>
+      <a id="modalBtn" href="#" class="modal-btn">Open Dossier</a>
     </div>
   </div>
 </div>
 
 <script>
-  window.addEventListener('load', function() {
-    const colorThief = new ColorThief();
-    const spines = document.querySelectorAll('.book-spine');
+  (function() {
+    const triggers = Array.from(document.querySelectorAll(".book-trigger"));
+    const modal = document.getElementById("bookModal");
+    const modalPanel = modal.querySelector(".book-modal-content");
+    const modalImg = document.getElementById("modalImg");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDesc = document.getElementById("modalDesc");
+    const modalMeta = document.getElementById("modalMeta");
+    const modalBtn = document.getElementById("modalBtn");
+    const closeBtn = modal.querySelector(".close-btn");
+    const colorCache = new Map();
+    let lastFocused = null;
 
-    spines.forEach(spine => {
-      const imgUrl = spine.getAttribute('data-img');
-      const img = new Image();
-      img.crossOrigin = "Anonymous";
-      img.src = imgUrl;
+    const fallbackPalette = [
+      [53, 231, 255],
+      [110, 255, 200],
+      [244, 200, 97],
+      [255, 79, 184],
+      [137, 161, 255],
+      [255, 126, 90],
+    ];
 
-      img.onload = function() {
-        try {
-          const color = colorThief.getColor(img);
-          
-          // 1. 设置背景色
-          spine.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+    function fallbackColor(seed) {
+      return fallbackPalette[seed % fallbackPalette.length];
+    }
 
-          // 2. 计算亮度 (YIQ公式)
-          // 公式：(R*299 + G*587 + B*114) / 1000
-          // 如果结果 > 128，说明是浅色背景，字要用黑的。
-          const brightness = Math.round(((parseInt(color[0]) * 299) +
-                        (parseInt(color[1]) * 587) +
-                        (parseInt(color[2]) * 114)) / 1000);
-          
-          if (brightness > 140) { // 稍微调高一点阈值，让中间色也倾向于白色
-            // 背景很亮 -> 用深色字
-            spine.style.color = '#2c3e50'; 
-            spine.style.textShadow = 'none'; // 浅色背景去掉阴影更干净
-          } else {
-            // 背景很暗 -> 用白色字
-            spine.style.color = 'rgba(255,255,255,0.95)';
-            spine.style.textShadow = '1px 1px 2px rgba(0,0,0,0.8)'; // 加阴影增加可读性
+    function tuneColor(rgb) {
+      const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
+      if (brightness < 58) {
+        return rgb.map((channel) => Math.round(channel * 0.62 + 255 * 0.38));
+      }
+      if (brightness > 220) {
+        return rgb.map((channel) => Math.round(channel * 0.72));
+      }
+      return rgb;
+    }
+
+    function extractColor(image, seed) {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d", { willReadFrequently: true });
+      const width = 36;
+      const height = 54;
+      const buckets = new Map();
+
+      canvas.width = width;
+      canvas.height = height;
+      context.drawImage(image, 0, 0, width, height);
+
+      const pixels = context.getImageData(0, 0, width, height).data;
+      for (let i = 0; i < pixels.length; i += 20) {
+        const r = pixels[i];
+        const g = pixels[i + 1];
+        const b = pixels[i + 2];
+        const a = pixels[i + 3];
+        if (a < 200) continue;
+
+        const max = Math.max(r, g, b);
+        const min = Math.min(r, g, b);
+        const saturation = max === 0 ? 0 : (max - min) / max;
+        const brightness = (r + g + b) / 3;
+        if (brightness < 24 || brightness > 242 || saturation < 0.06) continue;
+
+        const key = `${r >> 5}-${g >> 5}-${b >> 5}`;
+        const weight = 1 + saturation * 3 + (brightness > 72 && brightness < 218 ? 1.4 : 0);
+        const bucket = buckets.get(key) || { r: 0, g: 0, b: 0, score: 0 };
+        bucket.r += r * weight;
+        bucket.g += g * weight;
+        bucket.b += b * weight;
+        bucket.score += weight;
+        buckets.set(key, bucket);
+      }
+
+      let best = null;
+      buckets.forEach((bucket) => {
+        if (!best || bucket.score > best.score) best = bucket;
+      });
+
+      if (!best) return fallbackColor(seed);
+      return tuneColor([
+        Math.round(best.r / best.score),
+        Math.round(best.g / best.score),
+        Math.round(best.b / best.score),
+      ]);
+    }
+
+    function loadColor(url, seed) {
+      if (!url) return Promise.resolve(fallbackColor(seed));
+      if (colorCache.has(url)) return colorCache.get(url);
+
+      const promise = new Promise((resolve) => {
+        const image = new Image();
+        image.onload = function() {
+          try {
+            resolve(extractColor(image, seed));
+          } catch (error) {
+            resolve(fallbackColor(seed));
           }
+        };
+        image.onerror = function() {
+          resolve(fallbackColor(seed));
+        };
+        image.src = url;
+      });
 
-        } catch (e) { 
-          console.log("Color extraction error");
-        }
-      };
+      colorCache.set(url, promise);
+      return promise;
+    }
+
+    function applyColor(element, rgb) {
+      const tuned = tuneColor(rgb);
+      const brightness = (tuned[0] * 299 + tuned[1] * 587 + tuned[2] * 114) / 1000;
+      element.style.setProperty("--book-rgb", tuned.join(", "));
+      element.classList.toggle("is-light", brightness > 164);
+    }
+
+    triggers.forEach((trigger, index) => {
+      loadColor(trigger.dataset.img, index).then((rgb) => applyColor(trigger, rgb));
+      trigger.addEventListener("click", () => openBook(trigger));
     });
-  });
 
-  // 弹窗逻辑
-  function openBook(title, desc, img, url) {
-    document.getElementById('modalTitle').innerText = title;
-    document.getElementById('modalDesc').innerText = desc;
-    document.getElementById('modalImg').src = img;
-    document.getElementById('modalBtn').href = url;
-    document.getElementById('bookModal').style.display = "flex";
-  }
-  function closeBook() { document.getElementById('bookModal').style.display = "none"; }
-  window.onclick = function(event) {
-    if (event.target == document.getElementById('bookModal')) { closeBook(); }
-  }
+    function openBook(trigger) {
+      lastFocused = document.activeElement;
+      const rgbValue = getComputedStyle(trigger).getPropertyValue("--book-rgb").trim() || "53, 231, 255";
+
+      modalTitle.textContent = trigger.dataset.title || "Untitled";
+      modalDesc.textContent = trigger.dataset.desc || "No notes yet.";
+      modalMeta.textContent = `${trigger.dataset.year || "Year"} / ${trigger.dataset.category || "Archive"}`;
+      modalImg.src = trigger.dataset.img || "";
+      modalImg.alt = `${trigger.dataset.title || "Book"} cover`;
+      modalBtn.href = trigger.dataset.url || "#";
+      modalPanel.style.setProperty("--book-rgb", rgbValue);
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      closeBtn.focus({ preventScroll: true });
+    }
+
+    function closeBook() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      if (lastFocused && typeof lastFocused.focus === "function") {
+        lastFocused.focus({ preventScroll: true });
+      }
+    }
+
+    closeBtn.addEventListener("click", closeBook);
+    modal.addEventListener("click", function(event) {
+      if (event.target === modal) closeBook();
+    });
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape" && modal.classList.contains("is-open")) {
+        closeBook();
+      }
+    });
+  })();
 </script>
