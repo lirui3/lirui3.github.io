@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-05-22'
+  last_updated: '2026-06-01'
 papers:
   13uW1k0AAAAJ:2osOgNQ5qMEC:
     citations: 1
@@ -14,7 +14,7 @@ papers:
     title: "Proactive framework for evaluating retrieval\u2010augmented generation\u2010based learning assistants in engineering education"
     year: '2025'
   13uW1k0AAAAJ:d1gkVwhDpl0C:
-    citations: 39
+    citations: 41
     title: 'A new framework to predict and visualize technology acceptance: A case study of shared autonomous vehicles'
     year: '2025'
   13uW1k0AAAAJ:qjMakFHDy7sC:
@@ -25,3 +25,7 @@ papers:
     citations: 4
     title: 'Use of Large Language Models in Engineering Education: a Case Study on Infrastructure Design Report Introductions'
     year: '2024'
+  13uW1k0AAAAJ:zYLM7Y9cAGgC:
+    citations: 0
+    title: Evaluating the effectiveness of a behavior change wheel-informed intervention to reduce risky riding behaviors among delivery riders
+    year: '2026'
