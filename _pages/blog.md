@@ -1,9 +1,10 @@
 ---
-layout: default
+layout: page
 permalink: /blog/
-title: blog
+title: Blog
+description: Sharing ideas on Research, Teaching, and Life.
 nav: true
-nav_order: 1
+nav_order: 4
 pagination:
   enabled: true
   collection: posts
@@ -15,128 +16,6 @@ pagination:
     before: 1
     after: 3
 ---
-
-<style>
-  /* 头部区域 */
-  .blog-header {
-    margin-bottom: 40px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
-  }
-  .blog-title {
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: #333;
-  }
-  .blog-subtitle {
-    color: #666;
-    font-size: 1.1rem;
-    font-weight: 300;
-  }
-
-  /* 标签胶囊样式 */
-  .tag-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 30px;
-  }
-  .tag-pill {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 50px;
-    padding: 5px 15px;
-    font-size: 0.85rem;
-    color: #555;
-    transition: all 0.2s;
-    text-decoration: none !important;
-  }
-  .tag-pill:hover {
-    background-color: #007bff;
-    color: #fff;
-    border-color: #007bff;
-    transform: translateY(-2px);
-  }
-  .tag-pill i { margin-right: 4px; color: #aaa; }
-  .tag-pill:hover i { color: #fff; }
-
-  /* 文章列表卡片化 */
-  .post-item {
-    background: #fff;
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 25px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #f0f0f0;
-  }
-  
-  /* 悬停效果：浮起 + 阴影 */
-  .post-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    border-color: transparent;
-  }
-
-  .post-title-link {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #2c3e50 !important; /* 强制深色标题 */
-    text-decoration: none;
-    line-height: 1.3;
-  }
-  .post-title-link:hover {
-    color: #007bff !important; /* 悬停变蓝 */
-  }
-
-  .post-desc {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-top: 10px;
-    margin-bottom: 15px;
-  }
-
-  .post-meta-row {
-    font-size: 0.85rem;
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-  
-  .meta-icon { margin-right: 5px; }
-
-  /* 图片样式 */
-  .post-thumb-container {
-    height: 100%;
-    min-height: 160px;
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-  }
-  .post-thumb-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-  .post-item:hover .post-thumb-img {
-    transform: scale(1.05); /* 悬停时图片轻微放大 */
-  }
-</style>
-
-<div class="post">
-
-  <div class="blog-header">
-    <h1 class="blog-title">
-      {% if site.blog_name %}{{ site.blog_name }}{% else %}Blog{% endif %}
-    </h1>
-    <h2 class="blog-subtitle">
-      {% if site.blog_description %}{{ site.blog_description }}{% else %}Thinking, researching, and coding.{% endif %}
-    </h2>
-  </div>
 
 {% if site.display_tags or site.display_categories %}
 
@@ -158,13 +37,13 @@ pagination:
 {% assign featured_posts = site.posts | where: "featured", "true" %}
 {% if featured_posts.size > 0 %}
 
-<h3 style="margin-bottom: 20px; font-weight: bold;">Featured</h3>
+<h2 class="section-heading">Featured</h2>
 <div class="container featured-posts">
 {% assign is_even = featured_posts.size | modulo: 2 %}
 <div class="row row-cols-{% if featured_posts.size <= 2 or is_even == 0 %}2{% else %}3{% endif %}">
 {% for post in featured_posts %}
 <div class="col mb-4">
-<a href="{{ post.url | relative_url }}" style="text-decoration:none;">
+<a href="{{ post.url | relative_url }}" class="featured-post-link">
 <div class="card hoverable">
 <div class="card-body">
 <h3 class="card-title text-lowercase">{{ post.title }}</h3>
@@ -254,5 +133,3 @@ pagination:
 {% if page.pagination.enabled %}
 {% include pagination.liquid %}
 {% endif %}
-
-</div>

@@ -57,8 +57,9 @@
         {% assign author_is_self = false %}
         {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
         {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
+        {%- assign author_first_name = author.first | regex_replace: '[.*∗†‡§¶‖&^]', '' | strip -%}
         {% if site.scholar.last_name contains author_last_name %}
-          {% if site.scholar.first_name contains author.first %}
+          {% if site.scholar.first_name contains author.first or site.scholar.first_name contains author_first_name or site.first_name contains author_first_name %}
             {% assign author_is_self = true %}
           {% endif %}
         {%- endif -%}
@@ -267,6 +268,8 @@
           {% assign custom_class = 'tag-bubble tag-phd' %}
         {% elsif tag_upcase contains 'AI IN EDUCATION' or tag_upcase contains 'AI IN EDU' %}
           {% assign custom_class = 'tag-bubble tag-edu' %}
+        {% elsif tag_upcase contains 'OTHER' or tag_upcase contains 'COLLAB' %}
+          {% assign custom_class = 'tag-bubble tag-collab' %}
         {% endif %}
 
         {% if entry.research_url %}
