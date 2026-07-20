@@ -1,12 +1,12 @@
 metadata:
-  last_updated: '2026-07-10'
+  last_updated: '2026-07-20'
 papers:
   13uW1k0AAAAJ:2osOgNQ5qMEC:
     citations: 1
     title: 'Sentiment Matters: An Analysis of 200 Human-SAV Interactions'
     year: '2025'
   13uW1k0AAAAJ:9yKSN-GCB0IC:
-    citations: 5
+    citations: 4
     title: 'Exploring human-SAV interaction using large language models: The impact of psychological ownership and anthropomorphism on user experience'
     year: '2025'
   13uW1k0AAAAJ:UeHWp8X0CEIC:
@@ -18,7 +18,7 @@ papers:
     title: 'Curriculum-Aligned Analysis of Assessment Feedback: A Retrieval-Augmented Large Language Model Approach for Revealing Fine-Grained Student Error Patterns in Higher Education'
     year: '2026'
   13uW1k0AAAAJ:d1gkVwhDpl0C:
-    citations: 45
+    citations: 49
     title: 'A new framework to predict and visualize technology acceptance: A case study of shared autonomous vehicles'
     year: '2025'
   13uW1k0AAAAJ:qjMakFHDy7sC:
