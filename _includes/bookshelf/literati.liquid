@@ -1,28 +1,55 @@
-{% assign books_by_year = site.books | group_by: "year" | sort: "name" | reverse %}
-{% assign recommended_books = site.books | where: "recommended", true %}
+{% assign books_by_year = site.books | group_by: 'year' | sort: 'name' | reverse %}
+{% assign recommended_books = site.books | where: 'recommended', true %}
 {% assign featured_books = recommended_books %}
 {% if featured_books.size == 0 %}
-  {% assign featured_books = site.books | sort: "year" | reverse | slice: 0, 4 %}
+  {% assign featured_books = site.books | sort: 'year' | reverse | slice: 0, 4 %}
 {% endif %}
-{% assign categories = site.books | map: "category" | uniq %}
+{% assign categories = site.books | map: 'category' | uniq %}
 {% assign latest_year = books_by_year.first.name %}
 
 <style>
+  html.page-bookshelf,
+  body.page-bookshelf {
+    background: #070a0f;
+    color: #dde3df;
+    color-scheme: dark;
+  }
+
+  body.page-bookshelf {
+    --global-bg-color: #070a0f;
+    --global-card-bg-color: #0f171d;
+    --global-divider-color: rgba(151, 177, 176, 0.18);
+    --global-hover-text-color: #071014;
+    --global-text-color: #dde3df;
+    --global-text-color-light: #9ba9aa;
+    --global-theme-color: #c8ad6d;
+  }
+
+  body.page-bookshelf #navbar {
+    border-bottom: 1px solid rgba(151, 177, 176, 0.14);
+    background: rgba(7, 10, 15, 0.92);
+    backdrop-filter: blur(12px);
+  }
+
+  body.page-bookshelf .post-header .post-title {
+    color: #edf0e9;
+  }
+
   .literati-bookshelf,
   .literati-modal {
-    --lr-paper: #f7f0e3;
-    --lr-paper-soft: #fffaf0;
-    --lr-ink: #202820;
-    --lr-muted: #72695e;
-    --lr-line: rgba(84, 61, 36, 0.18);
-    --lr-line-strong: rgba(84, 61, 36, 0.32);
-    --lr-cinnabar: #a33b2a;
-    --lr-jade: #587a63;
-    --lr-indigo: #2f5360;
-    --lr-gold: #a98545;
-    --lr-shadow: 0 18px 45px rgba(54, 38, 20, 0.12);
-    --lr-serif: "LXGW WenKai", "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", Georgia, serif;
-    --lr-sans: "Inter", "Avenir Next", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    --lr-paper: #081015;
+    --lr-paper-soft: #0f171d;
+    --lr-ink: #e5e9e3;
+    --lr-muted: #9ba9aa;
+    --lr-line: rgba(151, 177, 176, 0.17);
+    --lr-line-strong: rgba(184, 201, 197, 0.3);
+    --lr-cinnabar: #b96c61;
+    --lr-jade: #6f9b91;
+    --lr-indigo: #7c9fab;
+    --lr-gold: #c8ad6d;
+    --lr-shadow: 0 22px 60px rgba(0, 0, 0, 0.38);
+    --lr-serif: 'LXGW WenKai', 'Songti SC', 'STSong', 'Noto Serif CJK SC', 'Source Han Serif SC', Georgia, serif;
+    --lr-sans: 'Inter', 'Avenir Next', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
     position: relative;
     margin: 1.5rem 0 3rem;
     padding: 0 0 1rem;
@@ -31,19 +58,15 @@
     isolation: isolate;
   }
 
-  html[data-theme="dark"] .literati-bookshelf,
-  html[data-theme="dark"] .literati-modal {
-    --lr-paper: #181713;
-    --lr-paper-soft: #211f1a;
-    --lr-ink: #eee2cf;
-    --lr-muted: #b9aa95;
-    --lr-line: rgba(233, 214, 180, 0.14);
-    --lr-line-strong: rgba(233, 214, 180, 0.28);
-    --lr-cinnabar: #d06a55;
-    --lr-jade: #8eaa8c;
-    --lr-indigo: #83a8b2;
-    --lr-gold: #c7a563;
-    --lr-shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
+  html[data-theme='dark'] .literati-bookshelf,
+  html[data-theme='dark'] .literati-modal {
+    --lr-paper: #060b0f;
+    --lr-paper-soft: #0c141a;
+    --lr-ink: #e7eae4;
+    --lr-muted: #a0adae;
+    --lr-line: rgba(151, 177, 176, 0.16);
+    --lr-line-strong: rgba(184, 201, 197, 0.28);
+    --lr-shadow: 0 22px 60px rgba(0, 0, 0, 0.46);
   }
 
   .literati-bookshelf *,
@@ -53,32 +76,31 @@
   }
 
   .literati-bookshelf::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: -1.5rem calc(50% - 50vw) -3rem;
     z-index: -2;
     background:
-      linear-gradient(90deg, rgba(163, 59, 42, 0.05) 1px, transparent 1px) 0 0 / 36px 36px,
-      linear-gradient(0deg, rgba(88, 122, 99, 0.06) 1px, transparent 1px) 0 0 / 36px 36px,
-      radial-gradient(circle at 22% 8%, rgba(169, 133, 69, 0.14), transparent 28%),
-      linear-gradient(180deg, var(--lr-paper), var(--lr-paper-soft));
+      linear-gradient(90deg, rgba(124, 159, 171, 0.045) 1px, transparent 1px) 0 0 / 40px 40px,
+      linear-gradient(0deg, rgba(200, 173, 109, 0.035) 1px, transparent 1px) 0 0 / 40px 40px,
+      linear-gradient(145deg, #081117 0%, #0b1118 45%, #070a0f 100%);
   }
 
   .literati-bookshelf::after {
-    content: "";
+    content: '';
     position: absolute;
     inset: -1.5rem calc(50% - 50vw) -3rem;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.55;
+    opacity: 0.34;
     background:
-      repeating-linear-gradient(90deg, rgba(73, 54, 34, 0.035) 0 1px, transparent 1px 8px),
-      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 7px);
-    mix-blend-mode: multiply;
+      repeating-linear-gradient(90deg, rgba(174, 194, 191, 0.035) 0 1px, transparent 1px 9px),
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 8px);
+    mix-blend-mode: screen;
   }
 
-  html[data-theme="dark"] .literati-bookshelf::after {
-    opacity: 0.2;
+  html[data-theme='dark'] .literati-bookshelf::after {
+    opacity: 0.28;
     mix-blend-mode: screen;
   }
 
@@ -91,15 +113,13 @@
     padding: 1.5rem;
     border: 1px solid var(--lr-line);
     background:
-      linear-gradient(135deg, rgba(255, 250, 240, 0.86), rgba(247, 240, 227, 0.66)),
-      linear-gradient(90deg, rgba(163, 59, 42, 0.08), transparent 42%);
+      linear-gradient(135deg, rgba(17, 27, 34, 0.96), rgba(8, 14, 19, 0.9)), linear-gradient(90deg, rgba(200, 173, 109, 0.1), transparent 42%);
     box-shadow: var(--lr-shadow);
   }
 
-  html[data-theme="dark"] .literati-hero {
+  html[data-theme='dark'] .literati-hero {
     background:
-      linear-gradient(135deg, rgba(33, 31, 26, 0.92), rgba(24, 23, 19, 0.78)),
-      linear-gradient(90deg, rgba(208, 106, 85, 0.1), transparent 42%);
+      linear-gradient(135deg, rgba(14, 23, 29, 0.98), rgba(6, 11, 15, 0.94)), linear-gradient(90deg, rgba(200, 173, 109, 0.09), transparent 42%);
   }
 
   .literati-hero-copy {
@@ -118,6 +138,7 @@
     font-size: 2.15rem;
     font-weight: 600;
     line-height: 1.22;
+    text-shadow: 0 2px 24px rgba(200, 173, 109, 0.08);
   }
 
   .literati-hero p {
@@ -129,7 +150,7 @@
   }
 
   .literati-hero-cite {
-    color: var(--lr-cinnabar);
+    color: var(--lr-gold);
     font-family: var(--lr-serif);
     font-size: 0.95rem;
     font-style: normal;
@@ -143,11 +164,11 @@
     overflow: hidden;
     padding: 1.15rem;
     border: 1px solid var(--lr-line);
-    background: rgba(255, 250, 240, 0.68);
+    background: rgba(5, 10, 14, 0.72);
   }
 
-  html[data-theme="dark"] .literati-hero-aside {
-    background: rgba(17, 16, 13, 0.42);
+  html[data-theme='dark'] .literati-hero-aside {
+    background: rgba(3, 7, 10, 0.76);
   }
 
   .literati-hero-image {
@@ -159,8 +180,11 @@
     display: block;
     width: 100%;
     height: auto;
+    border: 1px solid rgba(200, 173, 109, 0.22);
     border-radius: 6px;
-    box-shadow: 0 14px 34px rgba(32, 40, 32, 0.14);
+    box-shadow:
+      0 20px 44px rgba(0, 0, 0, 0.46),
+      0 0 32px rgba(200, 173, 109, 0.08);
   }
 
   .literati-section-heading {
@@ -220,14 +244,12 @@
     min-height: 152px;
     padding: 0.9rem;
     background:
-      linear-gradient(180deg, rgba(255, 250, 240, 0.84), rgba(255, 250, 240, 0.62)),
-      linear-gradient(90deg, rgba(169, 133, 69, 0.1), transparent);
+      linear-gradient(180deg, rgba(16, 25, 32, 0.94), rgba(10, 17, 22, 0.9)), linear-gradient(90deg, rgba(200, 173, 109, 0.08), transparent);
   }
 
-  html[data-theme="dark"] .literati-feature-card {
+  html[data-theme='dark'] .literati-feature-card {
     background:
-      linear-gradient(180deg, rgba(33, 31, 26, 0.84), rgba(33, 31, 26, 0.62)),
-      linear-gradient(90deg, rgba(199, 165, 99, 0.08), transparent);
+      linear-gradient(180deg, rgba(14, 23, 29, 0.96), rgba(8, 14, 19, 0.92)), linear-gradient(90deg, rgba(200, 173, 109, 0.07), transparent);
   }
 
   .literati-feature-card:hover,
@@ -235,15 +257,15 @@
   .literati-feature-card:focus-visible,
   .literati-book-card:focus-visible {
     border-color: var(--accent, var(--lr-cinnabar));
-    box-shadow: 0 14px 28px rgba(54, 38, 20, 0.12);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.36);
     outline: none;
     transform: translateY(-3px);
   }
 
-  html[data-theme="dark"] .literati-feature-card:hover,
-  html[data-theme="dark"] .literati-book-card:hover,
-  html[data-theme="dark"] .literati-feature-card:focus-visible,
-  html[data-theme="dark"] .literati-book-card:focus-visible {
+  html[data-theme='dark'] .literati-feature-card:hover,
+  html[data-theme='dark'] .literati-book-card:hover,
+  html[data-theme='dark'] .literati-feature-card:focus-visible,
+  html[data-theme='dark'] .literati-book-card:focus-visible {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.34);
   }
 
@@ -251,8 +273,8 @@
   .literati-book-cover {
     position: relative;
     overflow: hidden;
-    background: #d8cab4;
-    box-shadow: 0 10px 20px rgba(48, 35, 21, 0.18);
+    background: #172127;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.38);
   }
 
   .literati-feature-cover {
@@ -292,7 +314,7 @@
   }
 
   .literati-book-eyebrow::before {
-    content: "";
+    content: '';
     width: 0.55rem;
     height: 0.55rem;
     border: 1px solid var(--accent, var(--lr-cinnabar));
@@ -361,7 +383,7 @@
   }
 
   .literati-year-marker::after {
-    content: "";
+    content: '';
     width: 1px;
     height: 4.2rem;
     background: linear-gradient(var(--lr-cinnabar), transparent);
@@ -379,15 +401,11 @@
     gap: 0.8rem;
     min-height: 124px;
     padding: 0.72rem;
-    background:
-      linear-gradient(90deg, color-mix(in srgb, var(--accent, var(--lr-jade)) 9%, transparent), transparent 38%),
-      rgba(255, 250, 240, 0.7);
+    background: linear-gradient(90deg, color-mix(in srgb, var(--accent, var(--lr-jade)) 9%, transparent), transparent 38%), rgba(13, 22, 28, 0.9);
   }
 
-  html[data-theme="dark"] .literati-book-card {
-    background:
-      linear-gradient(90deg, color-mix(in srgb, var(--accent, var(--lr-jade)) 10%, transparent), transparent 38%),
-      rgba(33, 31, 26, 0.72);
+  html[data-theme='dark'] .literati-book-card {
+    background: linear-gradient(90deg, color-mix(in srgb, var(--accent, var(--lr-jade)) 10%, transparent), transparent 38%), rgba(9, 16, 21, 0.94);
   }
 
   .literati-modal {
@@ -397,8 +415,8 @@
     display: grid;
     place-items: center;
     padding: 1.2rem;
-    background: rgba(24, 18, 12, 0.54);
-    backdrop-filter: blur(2px);
+    background: rgba(2, 5, 8, 0.76);
+    backdrop-filter: blur(5px);
     opacity: 0;
     pointer-events: none;
     transition: opacity 180ms ease;
@@ -407,6 +425,10 @@
   .literati-modal.is-open {
     opacity: 1;
     pointer-events: auto;
+  }
+
+  body.literati-modal-open {
+    overflow: hidden;
   }
 
   .literati-modal-panel {
@@ -421,18 +443,18 @@
     border: 1px solid var(--lr-line-strong);
     background-color: var(--lr-paper-soft);
     background-image:
-      linear-gradient(90deg, rgba(163, 59, 42, 0.08), transparent 34%),
-      repeating-linear-gradient(90deg, rgba(84, 61, 36, 0.035) 0 1px, transparent 1px 10px);
-    box-shadow: 0 24px 60px rgba(20, 14, 8, 0.32);
+      linear-gradient(90deg, rgba(200, 173, 109, 0.08), transparent 34%),
+      repeating-linear-gradient(90deg, rgba(151, 177, 176, 0.035) 0 1px, transparent 1px 10px);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.58);
     transform: translateY(10px);
     transition: transform 180ms ease;
   }
 
-  html[data-theme="dark"] .literati-modal-panel {
+  html[data-theme='dark'] .literati-modal-panel {
     background-color: var(--lr-paper-soft);
     background-image:
-      linear-gradient(90deg, rgba(208, 106, 85, 0.12), transparent 34%),
-      repeating-linear-gradient(90deg, rgba(233, 214, 180, 0.04) 0 1px, transparent 1px 10px);
+      linear-gradient(90deg, rgba(200, 173, 109, 0.07), transparent 34%),
+      repeating-linear-gradient(90deg, rgba(151, 177, 176, 0.035) 0 1px, transparent 1px 10px);
   }
 
   .literati-modal.is-open .literati-modal-panel {
@@ -443,8 +465,8 @@
     width: 168px;
     aspect-ratio: 2 / 3;
     overflow: hidden;
-    background: #d8cab4;
-    box-shadow: 0 16px 32px rgba(48, 35, 21, 0.22);
+    background: #172127;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.48);
   }
 
   .literati-modal-copy {
@@ -509,15 +531,15 @@
     height: 2.2rem;
     border: 1px solid var(--lr-line-strong);
     border-radius: 0;
-    background: rgba(255, 250, 240, 0.78);
+    background: rgba(12, 20, 26, 0.9);
     color: var(--lr-ink);
     font-size: 1.3rem;
     line-height: 1;
     cursor: pointer;
   }
 
-  html[data-theme="dark"] .literati-modal-close {
-    background: rgba(33, 31, 26, 0.78);
+  html[data-theme='dark'] .literati-modal-close {
+    background: rgba(8, 14, 19, 0.94);
   }
 
   .literati-modal-close:focus-visible,
@@ -627,7 +649,14 @@
     </div>
     <aside class="literati-hero-aside" aria-label="Moon illustration">
       <figure class="literati-hero-image">
-        <img src="{{ '/assets/img/book_logo.png' | relative_url }}" alt="Crescent moon bookshelf illustration" loading="eager">
+        <img
+          src="{{ '/assets/img/book_logo.png' | relative_url }}"
+          alt="Crescent moon bookshelf illustration"
+          width="1005"
+          height="894"
+          loading="eager"
+          fetchpriority="high"
+        >
       </figure>
     </aside>
   </section>
@@ -644,19 +673,19 @@
     <div class="literati-feature-grid">
       {% for book in featured_books limit: 4 %}
         {% assign book_url = book.redirect | default: book.url %}
-        {% if book_url == "#" or book_url == "" %}
+        {% if book_url == '#' or book_url == '' %}
           {% assign book_url = book.url %}
         {% endif %}
         {% assign accent_index = forloop.index0 | modulo: 4 %}
         {% case accent_index %}
           {% when 0 %}
-            {% assign book_accent = "#a33b2a" %}
+            {% assign book_accent = '#b96c61' %}
           {% when 1 %}
-            {% assign book_accent = "#587a63" %}
+            {% assign book_accent = '#6f9b91' %}
           {% when 2 %}
-            {% assign book_accent = "#2f5360" %}
+            {% assign book_accent = '#7c9fab' %}
           {% else %}
-            {% assign book_accent = "#a98545" %}
+            {% assign book_accent = '#c8ad6d' %}
         {% endcase %}
         <button
           class="literati-feature-card literati-book-trigger"
@@ -701,22 +730,22 @@
           </div>
 
           <div class="literati-book-grid">
-            {% assign sorted_books = year_group.items | sort: "importance" %}
+            {% assign sorted_books = year_group.items | sort: 'importance' %}
             {% for book in sorted_books %}
               {% assign book_url = book.redirect | default: book.url %}
-              {% if book_url == "#" or book_url == "" %}
+              {% if book_url == '#' or book_url == '' %}
                 {% assign book_url = book.url %}
               {% endif %}
               {% assign accent_index = forloop.index0 | modulo: 4 %}
               {% case accent_index %}
                 {% when 0 %}
-                  {% assign book_accent = "#587a63" %}
+                  {% assign book_accent = '#6f9b91' %}
                 {% when 1 %}
-                  {% assign book_accent = "#a33b2a" %}
+                  {% assign book_accent = '#b96c61' %}
                 {% when 2 %}
-                  {% assign book_accent = "#2f5360" %}
+                  {% assign book_accent = '#7c9fab' %}
                 {% else %}
-                  {% assign book_accent = "#a98545" %}
+                  {% assign book_accent = '#c8ad6d' %}
               {% endcase %}
               <button
                 class="literati-book-card literati-book-trigger"
@@ -734,7 +763,7 @@
                   <img src="{{ book.img | relative_url }}" alt="{{ book.title | escape }} cover" loading="lazy">
                 </span>
                 <span class="literati-book-copy">
-                  <span class="literati-book-eyebrow">{{ book.category | default: "Book" }}</span>
+                  <span class="literati-book-eyebrow">{{ book.category | default: 'Book' }}</span>
                   <span class="literati-book-title">{{ book.title }}</span>
                   <span class="literati-book-desc">{{ book.description | strip_html | strip_newlines | truncate: 46 }}</span>
                 </span>
@@ -751,7 +780,7 @@
   <div class="literati-modal-panel" role="dialog" aria-modal="true" aria-labelledby="literatiModalTitle">
     <button class="literati-modal-close" type="button" aria-label="Close book detail">&times;</button>
     <div class="literati-modal-cover">
-      <img id="literatiModalImg" src="" alt="">
+      <img id="literatiModalImg" alt="">
     </div>
     <div class="literati-modal-copy">
       <p class="literati-modal-meta" id="literatiModalMeta"></p>
@@ -763,65 +792,86 @@
 </div>
 
 <script>
-  (function() {
-    const root = document.querySelector(".literati-bookshelf");
-    const modal = document.getElementById("literatiBookModal");
+  (function () {
+    const root = document.querySelector('.literati-bookshelf');
+    const modal = document.getElementById('literatiBookModal');
     if (!root || !modal) return;
 
-    const triggers = Array.from(root.querySelectorAll(".literati-book-trigger"));
-    const panel = modal.querySelector(".literati-modal-panel");
-    const closeButton = modal.querySelector(".literati-modal-close");
-    const modalTitle = document.getElementById("literatiModalTitle");
-    const modalMeta = document.getElementById("literatiModalMeta");
-    const modalDesc = document.getElementById("literatiModalDesc");
-    const modalImg = document.getElementById("literatiModalImg");
-    const modalLink = document.getElementById("literatiModalLink");
+    const triggers = Array.from(root.querySelectorAll('.literati-book-trigger'));
+    const panel = modal.querySelector('.literati-modal-panel');
+    const closeButton = modal.querySelector('.literati-modal-close');
+    const modalTitle = document.getElementById('literatiModalTitle');
+    const modalMeta = document.getElementById('literatiModalMeta');
+    const modalDesc = document.getElementById('literatiModalDesc');
+    const modalImg = document.getElementById('literatiModalImg');
+    const modalLink = document.getElementById('literatiModalLink');
     let lastFocused = null;
 
     function openBook(trigger) {
       lastFocused = document.activeElement;
-      const title = trigger.dataset.title || "Untitled";
-      const url = trigger.dataset.url || "#";
+      const title = trigger.dataset.title || 'Untitled';
+      const url = trigger.dataset.url || '#';
 
       modalTitle.textContent = title;
-      modalMeta.textContent = `${trigger.dataset.year || "Year"} · ${trigger.dataset.category || "Book"}`;
-      modalDesc.textContent = trigger.dataset.desc || "No note yet.";
-      modalImg.src = trigger.dataset.img || "";
+      modalMeta.textContent = `${trigger.dataset.year || 'Year'} · ${trigger.dataset.category || 'Book'}`;
+      modalDesc.textContent = trigger.dataset.desc || 'No note yet.';
+      modalImg.src = trigger.dataset.img || '';
       modalImg.alt = `${title} cover`;
-      panel.style.setProperty("--modal-accent", trigger.dataset.accent || "#a33b2a");
+      panel.style.setProperty('--modal-accent', trigger.dataset.accent || '#b96c61');
 
-      if (url && url !== "#" && url !== "/#") {
+      if (url && url !== '#' && url !== '/#') {
         modalLink.hidden = false;
         modalLink.href = url;
       } else {
         modalLink.hidden = true;
-        modalLink.removeAttribute("href");
+        modalLink.removeAttribute('href');
       }
 
-      modal.classList.add("is-open");
-      modal.setAttribute("aria-hidden", "false");
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('literati-modal-open');
       closeButton.focus({ preventScroll: true });
     }
 
     function closeBook() {
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
-      if (lastFocused && typeof lastFocused.focus === "function") {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('literati-modal-open');
+      if (lastFocused && typeof lastFocused.focus === 'function') {
         lastFocused.focus({ preventScroll: true });
       }
     }
 
     triggers.forEach((trigger) => {
-      trigger.addEventListener("click", () => openBook(trigger));
+      trigger.addEventListener('click', () => openBook(trigger));
     });
 
-    closeButton.addEventListener("click", closeBook);
-    modal.addEventListener("click", (event) => {
+    closeButton.addEventListener('click', closeBook);
+    modal.addEventListener('click', (event) => {
       if (event.target === modal) closeBook();
     });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && modal.classList.contains("is-open")) {
+    document.addEventListener('keydown', (event) => {
+      if (!modal.classList.contains('is-open')) return;
+
+      if (event.key === 'Escape') {
         closeBook();
+        return;
+      }
+
+      if (event.key === 'Tab') {
+        const focusable = Array.from(panel.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')).filter(
+          (element) => !element.hidden
+        );
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     });
   })();

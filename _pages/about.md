@@ -13,7 +13,7 @@ profile:
       <p>Institute of Transport Studies</p>
       <p>Department of Civil & Environmental Engineering</p>
       <p>
-        <a href="https://www.monash.edu/engineering/liruiguo" target="_blank">
+        <a href="https://www.monash.edu/engineering/liruiguo" target="_blank" rel="noopener noreferrer">
           Monash University
         </a>
       </p>

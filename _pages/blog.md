@@ -4,7 +4,7 @@ permalink: /blog/
 title: Blog
 description: Sharing ideas on Research, Teaching, and Life.
 nav: true
-nav_order: 4
+nav_order: 5
 pagination:
   enabled: true
   collection: posts
@@ -91,7 +91,7 @@ pagination:
               {% if post.redirect == blank %}
                 <a class="post-title-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
               {% elsif post.redirect contains '://' %}
-                <a class="post-title-link" href="{{ post.redirect }}" target="_blank">{{ post.title }} <i class="fa-solid fa-arrow-up-right-from-square fa-2xs"></i></a>
+                <a class="post-title-link" href="{{ post.redirect }}" target="_blank" rel="noopener noreferrer">{{ post.title }} <i class="fa-solid fa-arrow-up-right-from-square fa-2xs"></i></a>
               {% else %}
                 <a class="post-title-link" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
               {% endif %}

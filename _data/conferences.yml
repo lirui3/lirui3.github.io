@@ -1,0 +1,75 @@
+- year: 2025
+  name: IEEE Intelligent Transportation Systems Conference (ITSC)
+  short_name: IEEE ITSC 2025
+  location: Gold Coast, Australia
+  role: Oral presentation
+  summary: Presented research on how sentiment in human-SAV dialogue shapes the perceived quality of the interaction.
+  photos:
+    - src: /assets/img/Conference photos/2025_IEEE-ITSC.jpeg
+      alt: Lirui Guo presenting a chord diagram during IEEE ITSC 2025
+    - src: /assets/img/Conference photos/2025_IEEE-ITSC_group.jpeg
+      alt: Lirui Guo with colleagues at IEEE ITSC 2025
+  publications:
+    - key: guo2025sentiment
+      title: "Sentiment matters: An analysis of 200 human-SAV interactions"
+      venue: IEEE ITSC 2025
+      url: https://ieeexplore.ieee.org/document/11423422
+
+- year: 2024
+  name: Australasian Association for Engineering Education Annual Conference
+  short_name: AAEE 2024
+  location: Christchurch, New Zealand
+  role: Oral presentation
+  summary: Shared our case study on the use of large language models in engineering report writing.
+  photos:
+    - src: /assets/img/Conference photos/2024_AAEE.jpeg
+      alt: Lirui Guo presenting at the 2024 AAEE Annual Conference
+  publications:
+    - key: hua2024use
+      title: "Use of large language models in engineering education: A case study on infrastructure design report introductions"
+      venue: 35th AAEE Annual Conference
+      url: https://easychair.org/publications/preprint/XpQv
+
+- year: 2024
+  name: Australasian Transport Research Forum
+  short_name: ATRF 2024
+  role: Presentation · Award recognition
+  summary: A memorable forum with the Monash transport research community, spanning research exchange, recognition, and new connections.
+  photos:
+    - src: /assets/img/Conference photos/2024_ATRF_award.JPG
+      alt: Lirui Guo receiving an award at ATRF 2024
+    - src: /assets/img/Conference photos/2024_ATRF_monash-group.JPG
+      alt: Monash University researchers at ATRF 2024
+    - src: /assets/img/Conference photos/2024_ATRF_session-group.jpeg
+      alt: Conference session group at ATRF 2024
+
+- year: 2024
+  name: Monash Engineering Conference
+  short_name: Monash Engineering 2024
+  location: Monash University
+  role: Research presentation
+  summary: Presented emerging PhD work connecting psychological ownership, anthropomorphism, and LLM-enabled interaction.
+  photos:
+    - src: /assets/img/Conference photos/2024_MonashEng-conference.JPG
+      alt: Lirui Guo presenting at the 2024 Monash Engineering Conference
+
+- year: 2023
+  name: ITS Australia Global Summit
+  short_name: Global Summit 2023
+  role: Oral presentation
+  summary: Presented early PhD findings on psychological ownership and public acceptance of shared autonomous vehicles.
+  photos:
+    - src: /assets/img/Conference photos/2023_ITS-Australia_1.JPG
+      alt: Lirui Guo presenting at the ITS Australia Global Summit 2023
+    - src: /assets/img/Conference photos/2023_ITS-Australia_2.jpg
+      alt: Audience view of Lirui Guo presenting at the ITS Australia Global Summit 2023
+
+- year: 2023
+  name: Monash Engineering Conference
+  short_name: Monash Engineering 2023
+  location: Monash University
+  role: Research presentation
+  summary: Shared PhD research with the wider Monash Engineering community.
+  photos:
+    - src: /assets/img/Conference photos/2023_MonashEng-conference.jpg
+      alt: Lirui Guo speaking at the 2023 Monash Engineering Conference

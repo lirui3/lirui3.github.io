@@ -19,6 +19,40 @@ body {
   }
 }
 
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 10000;
+  padding: 0.65rem 0.9rem;
+  border-radius: 4px;
+  background: var(--global-theme-color);
+  color: var(--global-hover-text-color);
+  font-weight: 700;
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+
+  &:focus {
+    color: var(--global-hover-text-color);
+    outline: 3px solid var(--global-text-color);
+    outline-offset: 2px;
+    transform: translateY(0);
+  }
+}
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--global-theme-color);
+  outline-offset: 3px;
+}
+
+html.page-bookshelf,
+body.page-bookshelf {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
 body.fixed-top-nav {
   // Add some padding for the nav-bar.
   padding-top: 57px;
