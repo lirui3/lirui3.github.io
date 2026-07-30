@@ -67,6 +67,7 @@ nav_order: 3
         <p>Foundational structural analysis concepts, mechanics reasoning, and problem-based engineering practice.</p>
       </a>
     </div>
+
   </section>
 
   <section class="teaching-block">
@@ -85,5 +86,6 @@ nav_order: 3
         <p>Sustainability concepts, commercial decision making, and interdisciplinary discussion of responsible practice.</p>
       </a>
     </div>
+
   </section>
 </div>

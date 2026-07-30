@@ -25,12 +25,13 @@ pagination:
         <i class="fa-solid fa-folder-open"></i> {{ category }}
       </a>
     {% endfor %}
-    
+
     {% for tag in site.display_tags %}
       <a class="tag-pill" href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">
         <i class="fa-solid fa-hashtag"></i> {{ tag }}
       </a>
     {% endfor %}
+
   </div>
   {% endif %}
 
