@@ -47,6 +47,21 @@ p.location {
   white-space: nowrap;
 }
 
+@media (max-width: 767.98px) {
+  body.page-cv #main-content > .row > .col-sm-3 {
+    display: none;
+  }
+
+  body.page-cv #main-content > .row > .col-sm-9 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  body.page-cv p.location {
+    white-space: normal;
+  }
+}
+
 i.iconlocation {
   color: var(--global-theme-color);
   font-size: 0.8rem;

@@ -11,6 +11,11 @@
   --project-blue: #006dae;
   --project-green: #2e7d32;
   --project-teal: #3c7471;
+  --project-hri: #8b4d3b;
+}
+
+html[data-theme="dark"] {
+  --project-hri: #d9a188;
 }
 
 html {
@@ -102,6 +107,21 @@ html {
     width: 42px;
   }
 
+  .hri-card::before {
+    background: var(--project-hri);
+  }
+
+  .hri-card h3,
+  .project-title-hri {
+    color: var(--project-hri);
+  }
+
+  .hri-card .nav-icon {
+    background: color-mix(in srgb, var(--project-hri) 12%, transparent);
+    border-color: color-mix(in srgb, var(--project-hri) 25%, var(--project-border));
+    color: var(--project-hri);
+  }
+
   .blue-card::before {
     background: var(--project-blue);
   }
@@ -158,6 +178,10 @@ html {
     padding: 34px 26px;
   }
 
+  .proj-hri {
+    background: color-mix(in srgb, var(--project-hri) 7%, var(--project-card-bg));
+  }
+
   .proj-blue {
     background: color-mix(in srgb, var(--project-blue) 7%, var(--project-card-bg));
   }
@@ -196,6 +220,10 @@ html {
     line-height: 1.65;
     margin: 14px 0 22px;
     padding: 16px 18px;
+  }
+
+  .hri-callout {
+    border-left: 6px solid var(--project-hri);
   }
 
   .blue-callout {
@@ -282,6 +310,12 @@ html {
     font-weight: 600;
     opacity: 0.9;
     padding: 6px 12px;
+  }
+
+  .badge-hri {
+    background: color-mix(in srgb, var(--project-hri) 12%, var(--project-card-bg));
+    border-color: color-mix(in srgb, var(--project-hri) 22%, var(--project-border));
+    color: var(--project-hri);
   }
 
   .badge-blue {
@@ -439,7 +473,7 @@ html {
 
 @media (min-width: 1100px) {
   .projects .nav-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

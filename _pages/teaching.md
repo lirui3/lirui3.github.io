@@ -46,7 +46,7 @@ nav_order: 3
       <a class="teaching-course-card" href="https://handbook.monash.edu/2025/units/CIV3283?year=2025">
         <span class="course-code">CIV3283</span>
         <h3>Road Engineering</h3>
-        <p>Road design principles, infrastructure planning, safety considerations, and engineering decision support.</p>
+        <p>Teaching Associate / TA Lead. Road design principles, infrastructure planning, safety considerations, and engineering decision support.</p>
       </a>
 
       <a class="teaching-course-card" href="https://handbook.monash.edu/2026/units/CIV5177?year=2026">

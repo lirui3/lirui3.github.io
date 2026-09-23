@@ -8,11 +8,11 @@ middle_name:
 last_name: Guo
 email: Lirui.Guo@monash.edu
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  PhD Candidate in Civil and Environmental Engineering at Monash University.
+  Postdoctoral Research Fellow in Human–Robot Interaction at Monash University, working with Monash Robotics and the ARC ITTC in Optimal Ageing.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: intelligent transport systems, human-AI interaction, business analytics, shared autonomous vehicles, Monash University # add your own keywords or leave empty
+keywords: human-robot interaction, human-AI interaction, adaptive intelligent systems, optimal ageing, shared autonomous vehicles, Monash University # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: icons8-planet-96.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 

@@ -1,10 +1,10 @@
 cv:
   name: Lirui Guo
-  label: PhD Candidate in Civil and Environmental Engineering
+  label: Postdoctoral Research Fellow (Human–Robot Interaction)
   email: Lirui.Guo@monash.edu
   location: Clayton, VIC, Australia
   image: "assets/img/avatar.jpg"
-  summary: PhD candidate in Civil and Environmental Engineering at Monash University with a research focus on intelligent transport systems, business analytics, and human–AI interaction. Experienced in interdisciplinary research, high-quality teaching, and industry-relevant applications of AI and analytics. Strong publication record (Q1 journals and conferences), with expertise in machine learning, LLMs, and user experience in mobility systems.
+  summary: Postdoctoral Research Fellow in Human–Robot Interaction with Monash Robotics and the ARC ITTC in Optimal Ageing. My PhD thesis in Civil and Environmental Engineering at Monash University was submitted in August 2026 and is under examination. My research connects user interaction with conversational AI in shared autonomous vehicles to adaptive, human-centred robotics for optimal ageing.
 
   social_networks:
     - network: LinkedIn
@@ -15,7 +15,7 @@ cv:
       url: https://scholar.google.com/citations?user=13uW1k0AAAAJ
 
   address:
-    street: Department of Civil and Environmental Engineering, Monash University
+    street: Department of Electrical and Computer Systems Engineering, Monash University
     city: Clayton
     region: Victoria
     postalCode: 3800
@@ -27,10 +27,12 @@ cv:
         location: Clayton, VIC
         url: https://www.monash.edu/
         area: Civil and Environmental Engineering
-        studyType: Ph.D.
+        studyType: PhD thesis under examination
         start_date: 2022-01-01
         end_date: Present
-        summary: "Thesis: From perception to interaction: Psychological drivers and adaptive conversational agents for shared autonomous vehicles (SAVs)"
+        highlights:
+          - "Thesis: From perception to interaction: Psychological drivers and adaptive conversational agents for shared autonomous vehicles (SAVs)"
+          - Thesis submitted August 2026; currently under examination. Research based in the Institute of Transport Studies, Department of Civil and Environmental Engineering.
 
       - institution: Monash University
         location: Clayton, VIC
@@ -48,6 +50,15 @@ cv:
 
     Experience:
       - company: Monash University
+        position: Postdoctoral Research Fellow (Human–Robot Interaction)
+        location: Clayton, VIC
+        start_date: 2026-09
+        end_date: Present
+        summary: Monash Robotics; ARC ITTC in Optimal Ageing; Department of Electrical and Computer Systems Engineering
+        highlights:
+          - Researching adaptive, human-centred interaction with robots for optimal ageing.
+
+      - company: Monash University
         position: Assistant Lecturer
         location: Clayton, VIC
         start_date: 2025-01-01
@@ -57,12 +68,13 @@ cv:
           - Assisted in coordinating administrative processes, led practical sessions, and managed student consultations for units with cohorts of up to 340 students.
           - Developed assessments and teaching materials.
           - Manage the online learning portal for course materials, discussions, and assessment markings.
+          - Teaching Associate / TA Lead for CIV3283 Road Engineering.
 
       - company: The University of Melbourne
         position: Tutor (Sustainable Commerce)
         location: Melbourne, VIC
         start_date: 2024-02-01
-        end_date: Present
+        end_date: 2025
         highlights:
           - Supported a large first-year cohort of ~1,700 students per semester.
           - Independently led and delivered tutorial sessions and interactive class activities.
@@ -90,11 +102,11 @@ cv:
           - Guided students in computing engineering drawings and road designs.
 
       - company: Monash University
-        position: Graduate Researcher (Ph.D. Candidate)
+        position: Graduate Researcher (PhD research)
         location: Clayton, VIC
         start_date: 2022-01-01
-        end_date: Present
-        summary: With Dr. Wynita Griggs and Dr. Michael Burke
+        end_date: 2026-08
+        summary: Institute of Transport Studies, Civil and Environmental Engineering; supervised by Dr. Wynita Griggs and Dr. Michael Burke. Thesis submitted August 2026 and under examination.
         highlights:
           - Proposed a framework to predict and visualize technology acceptance.
           - Explored the role of psychological ownership in autonomous mobilities.
@@ -191,7 +203,7 @@ cv:
     Interests:
       - name: Research
         icon: fa-solid fa-microscope
-        keywords: "Human–AI Interaction, Intelligent Transport Systems, Business Analytics, LLM Applications, Psychological Ownership"
+        keywords: "Human–AI Interaction, Human–Robot Interaction, Adaptive Intelligent Systems, Intelligent Mobility, Optimal Ageing"
 
     Certificates:
       - name: Working With Children Check (Employee)

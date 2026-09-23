@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: Human-centred interactive AI for autonomous mobility and human-robot interaction.
+subtitle: Human-centred interactive AI for autonomous mobility, human–robot interaction, and optimal ageing.
 
 profile:
   align: right
@@ -10,8 +10,9 @@ profile:
   image_circular: true
   more_info: >
     <div class="profile-card">
-      <p>Institute of Transport Studies</p>
-      <p>Department of Civil & Environmental Engineering</p>
+      <p><strong>Postdoctoral Research Fellow (Human–Robot Interaction)</strong></p>
+      <p>Monash Robotics | ARC ITTC in Optimal Ageing</p>
+      <p>Department of Electrical and Computer Systems Engineering</p>
       <p>
         <a href="https://www.monash.edu/engineering/liruiguo" target="_blank" rel="noopener noreferrer">
           Monash University
@@ -38,14 +39,14 @@ announcements:
   limit: 5
 ---
 
-I am a PhD candidate in Civil and Environmental Engineering at Monash University, supervised by **[Dr. Wynita Griggs](https://wynitagriggs.com/about-me/)** and **[Dr. Michael Burke](https://michaelburke.co.za/)**. My research sits at the intersection of **human–AI interaction**, **human–computer interaction**, **shared autonomous vehicles**, and adaptive interaction for autonomous systems.
+I am a **Postdoctoral Research Fellow in Human–Robot Interaction** at Monash University, working with **Monash Robotics** and the **ARC Industrial Transformation Training Centre (ITTC) in Optimal Ageing**. I submitted my PhD thesis in Civil and Environmental Engineering at Monash University in August 2026; it is currently under examination. My doctoral research was based in the Institute of Transport Studies, supervised by **[Dr. Wynita Griggs](https://wynitagriggs.com/about-me/)** and **[Dr. Michael Burke](https://michaelburke.co.za/)**.
 
-Currently, I am working on my thesis titled _"From perception to interaction: Psychological drivers and adaptive conversational agents for shared autonomous vehicles (SAVs)"_. My work explores how **Large Language Models (LLMs)**, psychological factors, and closed-loop feedback can measure and regulate user experience in autonomous mobility systems.
+My doctoral research focused on **user interaction with conversational AI** in shared autonomous vehicles. Across a **Predict–Interact–Measure–Control** workflow, I studied psychological factors shaping user acceptance, open-domain interaction with LLM-enabled agents, automated measurement of conversational responses, and adaptive control of AI response attributes.
 
-I use autonomous mobility as a testbed for broader questions in interactive autonomy: how intelligent systems should interpret open-ended human requests, communicate boundaries, adapt to users, and remain safe, transparent, and useful. I am especially interested in transferring this work to human-robot interaction, assistive and social robotics, engineering education, and transport-safety collaborations.
+My current research extends this work from conversational human–AI interaction into embodied human–robot interaction, with a broader interest in adaptive, human-centred intelligent systems for optimal ageing.
 
 ### Research Interests
 
-- **Human–AI Interaction, HCI & HRI:** Designing adaptive, safety-aware interaction for autonomous and robotic systems.
-- **Intelligent Transport Systems:** Predictive modelling, user-experience measurement, and behavioural analysis in transport contexts.
-- **LLM Applications:** Exploring LLM-based agents in autonomous mobility, engineering education, and applied collaboration settings.
+- **Human–AI Interaction & Human–Robot Interaction:** Human-centred interaction with conversational and embodied intelligent systems, including user preferences, trust, safety, and autonomy.
+- **Adaptive Intelligent Systems:** Measurement, modelling, and adaptive regulation of interactive AI behaviour in closed-loop, user-aware systems.
+- **Intelligent Mobility & Optimal Ageing:** Applications across autonomous mobility, assistive and social robotics, and technologies supporting optimal ageing.

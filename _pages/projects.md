@@ -2,7 +2,7 @@
 layout: page
 title: Projects
 permalink: /projects/
-description: "Closed-loop human–AI/HRI research, LLMs in engineering education, and selected transport-safety collaborations."
+description: "Human–robot interaction for optimal ageing, conversational AI in autonomous mobility, engineering education, and transport-safety collaborations."
 nav: true
 nav_order: 2
 ---
@@ -10,16 +10,24 @@ nav_order: 2
 <div class="projects">
 
   <p class="page-lead">
-    I build <b>closed-loop, human-centred interactive AI</b>—from modelling user perceptions to designing adaptive agents that can be
-    <b>measured</b> and <b>regulated</b> during real-time interaction. Below are my core research programs and selected collaborations.
+    My research follows a path from <b>understanding users</b> of conversational AI in autonomous mobility to <b>measuring and adapting</b>
+    intelligent behaviour. I now extend that work into embodied human–robot interaction for optimal ageing.
   </p>
 
   <!-- Nav cards (no "Project 1/2" wording) -->
   <div class="nav-grid">
+    <a href="#optimal-ageing" class="nav-card hri-card">
+      <div class="nav-top">
+        <span class="nav-icon"><i class="fas fa-hand-holding-heart"></i></span>
+        <h3>Human–Robot Interaction for Optimal Ageing</h3>
+      </div>
+      <p>Current postdoctoral research with Monash Robotics and the ARC ITTC in Optimal Ageing</p>
+    </a>
+
     <a href="#phd" class="nav-card blue-card">
       <div class="nav-top">
         <span class="nav-icon"><i class="fas fa-robot"></i></span>
-        <h3>PhD Research (Thesis)</h3>
+        <h3>PhD Research (Thesis Under Examination)</h3>
       </div>
       <p><b>From perception to interaction:</b> Psychological drivers and adaptive conversational agents for shared autonomous vehicles (SAVs)</p>
     </a>
@@ -42,25 +50,47 @@ nav_order: 2
 
   </div>
 
+  <!-- ===================== Current postdoctoral research ===================== -->
+  <div id="optimal-ageing" class="proj-section proj-hri anchor-offset">
+    <h2 class="proj-title project-title-hri">Human–Robot Interaction for Optimal Ageing</h2>
+
+    <div class="proj-callout hri-callout">
+      My current postdoctoral research with Monash Robotics and the ARC ITTC in Optimal Ageing extends my work on adaptive human–AI
+      interaction into embodied human–robot interaction. I am interested in how robots can understand human preferences, adapt their behaviour
+      over time, and interact safely and intuitively with people in everyday environments, particularly in the context of optimal ageing.
+    </div>
+
+    <div class="badge-container">
+      <span class="badge-item badge-hri">Human–Robot Interaction</span>
+      <span class="badge-item badge-hri">Social &amp; Assistive Robotics</span>
+      <span class="badge-item badge-hri">Human Preferences</span>
+      <span class="badge-item badge-hri">Adaptive Robot Behaviour</span>
+      <span class="badge-item badge-hri">Human-Centred AI</span>
+      <span class="badge-item badge-hri">Optimal Ageing</span>
+    </div>
+
+  </div>
+
   <!-- ===================== Thesis / PhD ===================== -->
   <div id="phd" class="proj-section proj-blue anchor-offset">
     <h2 class="proj-title project-title-blue">
       From perception to interaction: Psychological drivers and adaptive conversational agents for shared autonomous vehicles (SAVs)
     </h2>
+    <p>PhD thesis submitted August 2026; currently under examination.</p>
 
     <div class="proj-callout blue-callout">
-      <b>One-line summary:</b> I develop a closed-loop framework to <b>predict</b> user acceptance, <b>enable</b> scalable real-time interaction,
-      <b>measure</b> user experience from dialogue, and <b>regulate</b> agent behaviour via <b>closed-loop feedback + bang–bang control</b>—demonstrated in SAV interaction.
+      <b>One-line summary:</b> My PhD research developed a closed-loop framework to <b>predict</b> user acceptance, <b>enable</b> scalable real-time interaction,
+      <b>measure</b> user experience from dialogue, and <b>regulate</b> conversational agent responses via <b>closed-loop feedback + bang–bang control</b>—demonstrated in SAV interaction.
     </div>
 
     <div class="proj-grid">
       <div>
-        <h3 class="proj-subheading">What this program delivers</h3>
+        <h3 class="proj-subheading">What this research developed</h3>
         <ul class="icon-list">
           <li><i class="fas fa-chart-line blue-text"></i><b>Prediction:</b> data-driven modelling and interpretable visualisation of psychological drivers of acceptance.</li>
           <li><i class="fas fa-comments blue-text"></i><b>Interaction platform:</b> an LLM-based conversational testbed for open-domain human–agent interaction studies at scale.</li>
           <li><i class="fas fa-heartbeat blue-text"></i><b>Measurement:</b> interaction-level sentiment/subjectivity analysis to quantify user experience signals from dialogue.</li>
-          <li><i class="fas fa-sliders-h blue-text"></i><b>Regulation:</b> closed-loop feedback control for adaptive autonomy, enabling real-time adjustment of agent behaviour.</li>
+          <li><i class="fas fa-sliders-h blue-text"></i><b>Regulation:</b> closed-loop feedback control for real-time adjustment of conversational agent response attributes.</li>
         </ul>
 
         <h3 class="proj-subheading">Key outputs</h3>
@@ -219,7 +249,7 @@ nav_order: 2
   <div class="collab">
     <h2><i class="fas fa-hands-helping collab-icon"></i>Collaboration</h2>
     <p>
-      I welcome collaborations on human-centred interactive AI, adaptive autonomy, real-time evaluation of AI systems, and responsible deployment in high-impact domains.
+      I welcome collaborations on human-centred AI and HRI, adaptive interaction in autonomous mobility and robotics, and technologies supporting optimal ageing.
     </p>
     <div class="collab-actions" aria-label="Collaboration contact links">
       <a href="mailto:Lirui.Guo@monash.edu" class="collab-link collab-link-primary">

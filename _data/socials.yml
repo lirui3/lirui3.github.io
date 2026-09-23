@@ -4,7 +4,7 @@
 cv_custom:
   logo: /assets/img/cv_icon.png
   title: CV
-  url: /assets/pdf/cv.pdf
+  url: /cv/
 orcid_custom:
   logo: /assets/img/orcid_icon.png
   title: ORCID
