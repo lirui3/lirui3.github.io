@@ -1,14 +1,7 @@
 name: Render a CV
 on:
-  push:
-    branches:
-      - main
-      - master
-    paths:
-      - "_data/cv.yml"
-      - "assets/rendercv/design.yaml"
-      - "assets/rendercv/locale.yaml"
-      - "assets/rendercv/settings.yaml"
+  # The site's _data/cv.yml is Jekyll data, not a RenderCV input file.
+  # Keep PDF generation opt-in until a compatible source is provided.
   workflow_call:
   workflow_dispatch:
 permissions:
