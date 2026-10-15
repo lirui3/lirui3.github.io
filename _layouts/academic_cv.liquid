@@ -1,0 +1,159 @@
+---
+layout: default
+---
+{% assign cv = site.data.cv.cv %}
+{% assign sections = cv.sections %}
+
+<div class="cv-page">
+  <header class="cv-page-header">
+    <div class="cv-header-meta">
+      <span>Curriculum Vitae</span>
+      <span>Updated {{ cv.updated | escape }}</span>
+    </div>
+    <h1>{{ cv.name | escape }}</h1>
+    <p class="cv-role">{{ cv.label | escape }}</p>
+    <p class="cv-affiliation">{{ cv.affiliation | escape }}</p>
+    <p class="cv-introduction">{{ cv.summary | escape }}</p>
+    <div class="cv-header-actions">
+      <a class="cv-pdf-link" href="{{ cv.pdf | relative_url }}" download>
+        <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
+        Download CV (PDF)
+      </a>
+      <a href="mailto:{{ cv.email | escape }}">
+        <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+        Email
+      </a>
+      <a href="{{ cv.scholar | escape }}" target="_blank" rel="noopener noreferrer">
+        <i class="ai ai-google-scholar" aria-hidden="true"></i>
+        Google Scholar
+      </a>
+    </div>
+  </header>
+
+  <div class="cv-page-grid">
+    <nav class="cv-index" aria-label="CV sections">
+      <div class="cv-index-desktop">
+        <p class="cv-index-label">Contents</p>
+        <a href="#education">Education</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#recognition">Recognition</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#talks">Talks</a>
+        <a href="#service">Service</a>
+        <a href="#professional">Professional</a>
+        <a href="#skills">Skills</a>
+      </div>
+      <details class="cv-index-mobile">
+        <summary>Jump to section</summary>
+        <div class="cv-index-mobile-links">
+          <a href="#education">Education</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#recognition">Recognition</a>
+          <a href="#teaching">Teaching</a>
+          <a href="#talks">Talks</a>
+          <a href="#service">Service</a>
+          <a href="#professional">Professional</a>
+          <a href="#skills">Skills</a>
+        </div>
+      </details>
+    </nav>
+
+    <div class="cv-page-content">
+      <section class="cv-section" id="education" aria-labelledby="cv-education-title">
+        <h2 id="cv-education-title">Education</h2>
+        {% include cv/academic_entries.liquid entries=sections.education %}
+      </section>
+
+      <section class="cv-section" id="research" aria-labelledby="cv-research-title">
+        <h2 id="cv-research-title">Research experience</h2>
+        {% include cv/academic_entries.liquid entries=sections.research %}
+      </section>
+
+      <section class="cv-section" id="publications" aria-labelledby="cv-publications-title">
+        <h2 id="cv-publications-title">Publications & research outputs</h2>
+        {% for group in sections.publications %}
+          <div class="cv-publication-group">
+            <h3>{{ group.label | escape }}</h3>
+            <ol class="cv-publication-list">
+              {% for paper in group.entries %}
+                <li>
+                  <div class="cv-publication-main">
+                    <div class="cv-publication-authors">
+                      {% for author in paper.authors %}
+                        {% if author == 'Guo, L.' -%}
+                          <strong>{{ author | escape }}</strong>
+                        {%- else -%}
+                          {{- author | escape -}}
+                        {%- endif -%}
+                        {%- unless forloop.last %}, {% endunless %}
+                      {% endfor %}
+                    </div>
+                    <h4>
+                      {% if paper.url %}
+                        <a href="{{ paper.url | escape }}" target="_blank" rel="noopener noreferrer">{{ paper.title | escape }}</a>
+                      {% else %}
+                        {{ paper.title | escape }}
+                      {% endif %}
+                    </h4>
+                    <p class="cv-publication-venue">
+                      <em>{{ paper.venue | escape }}</em>
+                      {%- if paper.details %}, {{ paper.details | escape }}{% endif -%}
+                      {%- if paper.note %} · {{ paper.note | escape }}{% endif %}
+                    </p>
+                  </div>
+                  <span class="cv-publication-year">{{ paper.year | escape }}</span>
+                </li>
+              {% endfor %}
+            </ol>
+          </div>
+        {% endfor %}
+      </section>
+
+      <section class="cv-section" id="recognition" aria-labelledby="cv-recognition-title">
+        <h2 id="cv-recognition-title">Recognition & support</h2>
+        <div class="cv-subsection">
+          <h3>Awards & honours</h3>
+          {% include cv/academic_entries.liquid entries=sections.awards heading='h4' %}
+        </div>
+        <div class="cv-subsection">
+          <h3>Research grants, scholarships & support</h3>
+          {% include cv/academic_entries.liquid entries=sections.support heading='h4' %}
+        </div>
+      </section>
+
+      <section class="cv-section" id="teaching" aria-labelledby="cv-teaching-title">
+        <h2 id="cv-teaching-title">Teaching experience</h2>
+        {% include cv/academic_entries.liquid entries=sections.teaching %}
+      </section>
+
+      <section class="cv-section" id="talks" aria-labelledby="cv-talks-title">
+        <h2 id="cv-talks-title">Conferences & talks</h2>
+        {% include cv/academic_entries.liquid entries=sections.talks %}
+      </section>
+
+      <section class="cv-section" id="service" aria-labelledby="cv-service-title">
+        <h2 id="cv-service-title">Academic service & mentoring</h2>
+        {% include cv/academic_entries.liquid entries=sections.service %}
+      </section>
+
+      <section class="cv-section" id="professional" aria-labelledby="cv-professional-title">
+        <h2 id="cv-professional-title">Professional experience</h2>
+        {% include cv/academic_entries.liquid entries=sections.professional %}
+      </section>
+
+      <section class="cv-section" id="skills" aria-labelledby="cv-skills-title">
+        <h2 id="cv-skills-title">Languages & skills</h2>
+        <dl class="cv-skills-list">
+          {% for skill in sections.skills %}
+            <div>
+              <dt>{{ skill.label | escape }}</dt>
+              <dd>{{ skill.detail | escape }}</dd>
+            </div>
+          {% endfor %}
+        </dl>
+      </section>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+{% assign entry_heading = include.heading | default: 'h3' %}
+{% for entry in include.entries %}
+  <article class="cv-entry">
+    <div class="cv-entry-period">{{ entry.period | escape }}</div>
+    <div class="cv-entry-body">
+      <{{ entry_heading }} class="cv-entry-title">{{ entry.title | escape }}</{{ entry_heading }}>
+      {% if entry.organization %}
+        <p class="cv-entry-organization">{{ entry.organization | escape }}</p>
+      {% endif %}
+      {% if entry.detail %}
+        <p class="cv-entry-detail">{{ entry.detail | escape }}</p>
+      {% endif %}
+      {% if entry.status %}
+        <p class="cv-entry-status">{{ entry.status | escape }}</p>
+      {% endif %}
+      {% if entry.description %}
+        <p class="cv-entry-description">{{ entry.description | escape }}</p>
+      {% endif %}
+      {% if entry.highlights %}
+        <ul class="cv-entry-highlights">
+          {% for highlight in entry.highlights %}
+            <li>
+              {% if highlight.label %}
+                <strong>{{ highlight.label | escape }}:</strong> {{ highlight.text | escape }}
+              {% else %}
+                {{ highlight | escape }}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </article>
+{% endfor %}
